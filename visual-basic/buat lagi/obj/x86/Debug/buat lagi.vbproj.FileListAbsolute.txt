@@ -1,0 +1,9 @@
+D:\visual basic 2010\buat lagi\buat lagi\bin\Debug\buat lagi.exe
+D:\visual basic 2010\buat lagi\buat lagi\bin\Debug\buat lagi.pdb
+D:\visual basic 2010\buat lagi\buat lagi\bin\Debug\buat lagi.xml
+D:\visual basic 2010\buat lagi\buat lagi\obj\x86\Debug\WindowsApplication1.Form1.resources
+D:\visual basic 2010\buat lagi\buat lagi\obj\x86\Debug\WindowsApplication1.Resources.resources
+D:\visual basic 2010\buat lagi\buat lagi\obj\x86\Debug\buat lagi.vbproj.GenerateResource.Cache
+D:\visual basic 2010\buat lagi\buat lagi\obj\x86\Debug\buat lagi.exe
+D:\visual basic 2010\buat lagi\buat lagi\obj\x86\Debug\buat lagi.xml
+D:\visual basic 2010\buat lagi\buat lagi\obj\x86\Debug\buat lagi.pdb
