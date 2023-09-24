@@ -1,0 +1,9 @@
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\bin\Release\pelajaran_PDESK.exe
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\bin\Release\pelajaran_PDESK.pdb
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\bin\Release\pelajaran_PDESK.xml
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\obj\x86\Release\pelajaran_PDESK.Form1.resources
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\obj\x86\Release\pelajaran_PDESK.Resources.resources
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\obj\x86\Release\pelajaran_PDESK.vbproj.GenerateResource.Cache
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\obj\x86\Release\pelajaran_PDESK.exe
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\obj\x86\Release\pelajaran_PDESK.xml
+C:\TEST VBNET2010\TEST1\pelajaran_PDESK\pelajaran_PDESK\obj\x86\Release\pelajaran_PDESK.pdb

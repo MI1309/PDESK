@@ -1,0 +1,9 @@
+D:\visual basic 2010\pelajaran_PDESK\bin\Debug\pelajaran_PDESK.exe
+D:\visual basic 2010\pelajaran_PDESK\bin\Debug\pelajaran_PDESK.pdb
+D:\visual basic 2010\pelajaran_PDESK\bin\Debug\pelajaran_PDESK.xml
+D:\visual basic 2010\pelajaran_PDESK\obj\x86\Debug\pelajaran_PDESK.Form1.resources
+D:\visual basic 2010\pelajaran_PDESK\obj\x86\Debug\pelajaran_PDESK.Resources.resources
+D:\visual basic 2010\pelajaran_PDESK\obj\x86\Debug\pelajaran_PDESK.vbproj.GenerateResource.Cache
+D:\visual basic 2010\pelajaran_PDESK\obj\x86\Debug\pelajaran_PDESK.exe
+D:\visual basic 2010\pelajaran_PDESK\obj\x86\Debug\pelajaran_PDESK.xml
+D:\visual basic 2010\pelajaran_PDESK\obj\x86\Debug\pelajaran_PDESK.pdb
