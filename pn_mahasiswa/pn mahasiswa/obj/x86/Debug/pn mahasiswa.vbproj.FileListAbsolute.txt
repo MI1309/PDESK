@@ -1,0 +1,9 @@
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\bin\Debug\pn mahasiswa.exe
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\bin\Debug\pn mahasiswa.pdb
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\bin\Debug\pn mahasiswa.xml
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\obj\x86\Debug\pn_mahasiswa.Form1.resources
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\obj\x86\Debug\pn_mahasiswa.Resources.resources
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\obj\x86\Debug\pn mahasiswa.vbproj.GenerateResource.Cache
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\obj\x86\Debug\pn mahasiswa.exe
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\obj\x86\Debug\pn mahasiswa.xml
+E:\visual basic\PDESK\pn mahasiswa\pn mahasiswa\obj\x86\Debug\pn mahasiswa.pdb
