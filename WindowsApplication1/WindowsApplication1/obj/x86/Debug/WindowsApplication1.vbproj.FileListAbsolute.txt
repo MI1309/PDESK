@@ -16,3 +16,6 @@ D:\visual basic 2010\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsAp
 D:\visual basic 2010\WindowsApplication1\WindowsApplication1\obj\x86\Debug\WindowsApplication1.Form1.resources
 D:\visual basic 2010\WindowsApplication1\WindowsApplication1\obj\x86\Debug\WindowsApplication1.Resources.resources
 D:\visual basic 2010\WindowsApplication1\WindowsApplication1\obj\x86\Debug\WindowsApplication1.vbproj.GenerateResource.Cache
+E:\visual basic\PDESK\WindowsApplication1\WindowsApplication1\obj\x86\Debug\WindowsApplication1.exe
+E:\visual basic\PDESK\WindowsApplication1\WindowsApplication1\obj\x86\Debug\WindowsApplication1.xml
+E:\visual basic\PDESK\WindowsApplication1\WindowsApplication1\obj\x86\Debug\WindowsApplication1.pdb
