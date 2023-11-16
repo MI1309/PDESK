@@ -12,3 +12,14 @@ C:\Users\Windows-03L\Downloads\PDESK-main\Project Sendiri Imron\Project Sendiri 
 C:\Users\Windows-03L\Downloads\PDESK-main\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\Project Sendiri Imron.exe
 C:\Users\Windows-03L\Downloads\PDESK-main\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\Project Sendiri Imron.xml
 C:\Users\Windows-03L\Downloads\PDESK-main\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\Project Sendiri Imron.pdb
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\Project Sendiri Imron.exe
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\Project Sendiri Imron.xml
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\Project Sendiri Imron.pdb
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\bin\Debug\Project Sendiri Imron.exe
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\bin\Debug\Project Sendiri Imron.pdb
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\bin\Debug\Project Sendiri Imron.xml
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\WindowsApplication2.Form1.resources
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\WindowsApplication2.Form2.resources
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\WindowsApplication2.Form3.resources
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\WindowsApplication2.Resources.resources
+E:\VisualBasic\PDESK\ProjectSendiriImron\Project Sendiri Imron\obj\x86\Debug\Project Sendiri Imron.vbproj.GenerateResource.Cache

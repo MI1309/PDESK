@@ -1,0 +1,9 @@
+E:\VisualBasic\PDESK\belajar listview\belajar listview\bin\Debug\belajar listview.exe
+E:\VisualBasic\PDESK\belajar listview\belajar listview\bin\Debug\belajar listview.pdb
+E:\VisualBasic\PDESK\belajar listview\belajar listview\bin\Debug\belajar listview.xml
+E:\VisualBasic\PDESK\belajar listview\belajar listview\obj\x86\Debug\WindowsApplication2.Form1.resources
+E:\VisualBasic\PDESK\belajar listview\belajar listview\obj\x86\Debug\WindowsApplication2.Resources.resources
+E:\VisualBasic\PDESK\belajar listview\belajar listview\obj\x86\Debug\belajar listview.vbproj.GenerateResource.Cache
+E:\VisualBasic\PDESK\belajar listview\belajar listview\obj\x86\Debug\belajar listview.exe
+E:\VisualBasic\PDESK\belajar listview\belajar listview\obj\x86\Debug\belajar listview.xml
+E:\VisualBasic\PDESK\belajar listview\belajar listview\obj\x86\Debug\belajar listview.pdb
