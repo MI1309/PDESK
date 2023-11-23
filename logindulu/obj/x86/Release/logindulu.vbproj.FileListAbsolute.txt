@@ -1,0 +1,4 @@
+E:\VisualBasic\PDESK\logindulu\obj\x86\Release\WindowsApplication1.Form1.resources
+E:\VisualBasic\PDESK\logindulu\obj\x86\Release\WindowsApplication1.Form2.resources
+E:\VisualBasic\PDESK\logindulu\obj\x86\Release\WindowsApplication1.Resources.resources
+E:\VisualBasic\PDESK\logindulu\obj\x86\Release\logindulu.vbproj.GenerateResource.Cache

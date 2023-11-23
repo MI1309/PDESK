@@ -1,0 +1,10 @@
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\obj\x86\Debug\VB_ngarai_rusak.Form1.resources
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\obj\x86\Debug\VB_ngarai_rusak.Form2.resources
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\obj\x86\Debug\VB_ngarai_rusak.Resources.resources
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\obj\x86\Debug\VB ngarai rusak.vbproj.GenerateResource.Cache
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\bin\Debug\VB ngarai rusak.exe
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\bin\Debug\VB ngarai rusak.pdb
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\bin\Debug\VB ngarai rusak.xml
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\obj\x86\Debug\VB ngarai rusak.exe
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\obj\x86\Debug\VB ngarai rusak.xml
+C:\Users\DELL\AppData\Local\Temporary Projects\VB ngarai rusak\obj\x86\Debug\VB ngarai rusak.pdb
