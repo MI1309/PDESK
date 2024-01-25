@@ -1,0 +1,12 @@
+E:\VisualBasic\PDESK\form cv\bin\Debug\form cv.exe
+E:\VisualBasic\PDESK\form cv\bin\Debug\form cv.pdb
+E:\VisualBasic\PDESK\form cv\bin\Debug\form cv.xml
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\WindowsApplication1.Form1.resources
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\WindowsApplication1.Form2.resources
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\WindowsApplication1.Form3.resources
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\WindowsApplication1.Form4.resources
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\WindowsApplication1.Resources.resources
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\form cv.vbproj.GenerateResource.Cache
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\form cv.exe
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\form cv.xml
+E:\VisualBasic\PDESK\form cv\obj\x86\Debug\form cv.pdb

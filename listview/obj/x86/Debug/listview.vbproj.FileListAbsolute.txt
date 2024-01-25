@@ -1,0 +1,10 @@
+E:\VisualBasic\PDESK\listview\obj\x86\Debug\VB_ngarai_rusak.Form1.resources
+E:\VisualBasic\PDESK\listview\obj\x86\Debug\VB_ngarai_rusak.Form2.resources
+E:\VisualBasic\PDESK\listview\obj\x86\Debug\VB_ngarai_rusak.Resources.resources
+E:\VisualBasic\PDESK\listview\obj\x86\Debug\listview.vbproj.GenerateResource.Cache
+E:\VisualBasic\PDESK\listview\bin\Debug\listview.exe
+E:\VisualBasic\PDESK\listview\bin\Debug\listview.pdb
+E:\VisualBasic\PDESK\listview\bin\Debug\listview.xml
+E:\VisualBasic\PDESK\listview\obj\x86\Debug\listview.exe
+E:\VisualBasic\PDESK\listview\obj\x86\Debug\listview.xml
+E:\VisualBasic\PDESK\listview\obj\x86\Debug\listview.pdb

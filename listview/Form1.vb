@@ -13,10 +13,12 @@
             Form2.Show()
             Me.Hide()
         Else : MessageBox.Show("Sandi atau username salah,ingin mengulang?", "Peringatan", MessageBoxButtons.YesNo)
-            Me.Hide()
-            If vbNo = True Then
-                Me.Close()
-            End If
+
+        End If
+        Me.Hide()
+        If vbNo = True Then
+            Me.Close()
+        End If
 
     End Sub
 
