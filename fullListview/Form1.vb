@@ -4,10 +4,10 @@
         Call rancanglistbuku()
     End Sub
     Sub rancanglistbuku()
-        ListView1.Columns.Add("SEMEN ID", 200, HorizontalAlignment.Center)
+        ListView1.Columns.Add("SEMEN ID", 50, HorizontalAlignment.Center)
         ListView1.Columns.Add("BULL NAME", 250, HorizontalAlignment.Center)
         ListView1.Columns.Add("BREED", 190, HorizontalAlignment.Center)
-        ListView1.Columns.Add("QUANTITY", 130, HorizontalAlignment.Center)
+        ListView1.Columns.Add("QUANTITY", 50, HorizontalAlignment.Center)
         ListView1.Columns.Add("LOCATION", 130, HorizontalAlignment.Center)
         ListView1.Columns.Add("DATE PURCHASED", 230, HorizontalAlignment.Center)
         ListView1.View = View.Details
@@ -97,19 +97,30 @@
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        ListView1.Items.Clear()
+        If ListView1.SelectedItems.Count > 0 Then
+            ListView1.Items.Remove(ListView1.SelectedItems(0))
+        End If
+        Call clear()
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         If ListView1.SelectedItems.Count > 0 Then
-            Dim selecteditem As ListViewItem = ListView1.SelectedItems(0)
-            TextBox1.Text = selecteditem.Text
-            TextBox2.Text = selecteditem.SubItems(1).Text
-            TextBox3.Text = selecteditem.SubItems(2).Text
-            ComboBox3.Text = selecteditem.SubItems(3).Text
-            TextBox4.Text = selecteditem.SubItems(4).Text
-            DateTimePicker1.Text = selecteditem.SubItems(5).Text
-            ListView1.Items.Remove(ListView1.SelectedItems(0))
+            ListView1.SelectedItems(0).SubItems(0).Text = TextBox1.Text
+            ListView1.SelectedItems(0).SubItems(1).Text = TextBox2.Text
+            ListView1.SelectedItems(0).SubItems(2).Text = TextBox3.Text
+            ListView1.SelectedItems(0).SubItems(3).Text = ComboBox3.Text
+            ListView1.SelectedItems(0).SubItems(4).Text = TextBox4.Text
+            ListView1.SelectedItems(0).SubItems(5).Text = DateTimePicker1.Text
+            Call clear()
         End If
+    End Sub
+
+    Private Sub ListView1_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListView1.DoubleClick
+        TextBox1.Text = ListView1.SelectedItems(0).Text
+        TextBox2.Text = ListView1.SelectedItems(0).SubItems(1).Text
+        TextBox3.Text = ListView1.SelectedItems(0).SubItems(2).Text
+        ComboBox3.Text = ListView1.SelectedItems(0).SubItems(3).Text
+        TextBox4.Text = ListView1.SelectedItems(0).SubItems(4).Text
+        DateTimePicker1.Text = ListView1.SelectedItems(0).SubItems(5).Text
     End Sub
 End Class

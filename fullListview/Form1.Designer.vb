@@ -129,9 +129,9 @@ Partial Class Form1
         '
         'ListView1
         '
-        Me.ListView1.Location = New System.Drawing.Point(423, 19)
+        Me.ListView1.Location = New System.Drawing.Point(423, 12)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(596, 277)
+        Me.ListView1.Size = New System.Drawing.Size(596, 308)
         Me.ListView1.TabIndex = 69
         Me.ListView1.UseCompatibleStateImageBehavior = False
         '
@@ -327,7 +327,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Location = New System.Drawing.Point(10, 5)
+        Me.GroupBox2.Location = New System.Drawing.Point(20, 12)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(397, 308)
         Me.GroupBox2.TabIndex = 90
@@ -343,6 +343,7 @@ Partial Class Form1
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ListView1)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
