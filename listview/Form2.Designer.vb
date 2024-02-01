@@ -50,7 +50,7 @@ Partial Class Form2
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(550, 201)
+        Me.Button4.Location = New System.Drawing.Point(609, 260)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(117, 27)
         Me.Button4.TabIndex = 49
@@ -59,7 +59,7 @@ Partial Class Form2
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(712, 201)
+        Me.Button3.Location = New System.Drawing.Point(771, 260)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(117, 27)
         Me.Button3.TabIndex = 48
@@ -68,7 +68,7 @@ Partial Class Form2
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(396, 201)
+        Me.Button2.Location = New System.Drawing.Point(455, 260)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(117, 27)
         Me.Button2.TabIndex = 47
@@ -77,7 +77,7 @@ Partial Class Form2
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(236, 201)
+        Me.Button1.Location = New System.Drawing.Point(295, 260)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(117, 27)
         Me.Button1.TabIndex = 46
@@ -86,7 +86,7 @@ Partial Class Form2
         '
         'ListView1
         '
-        Me.ListView1.Location = New System.Drawing.Point(2, 241)
+        Me.ListView1.Location = New System.Drawing.Point(61, 300)
         Me.ListView1.Name = "ListView1"
         Me.ListView1.Size = New System.Drawing.Size(1033, 248)
         Me.ListView1.TabIndex = 45
@@ -95,7 +95,7 @@ Partial Class Form2
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(712, 84)
+        Me.RadioButton2.Location = New System.Drawing.Point(771, 143)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(79, 17)
         Me.RadioButton2.TabIndex = 44
@@ -106,7 +106,7 @@ Partial Class Form2
         'RadioButton1
         '
         Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(712, 30)
+        Me.RadioButton1.Location = New System.Drawing.Point(771, 89)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(64, 17)
         Me.RadioButton1.TabIndex = 43
@@ -118,7 +118,7 @@ Partial Class Form2
         '
         Me.ComboBox3.FormattingEnabled = True
         Me.ComboBox3.Items.AddRange(New Object() {"Islam", "kristen", "katholik", "hindu", "budha"})
-        Me.ComboBox3.Location = New System.Drawing.Point(712, 151)
+        Me.ComboBox3.Location = New System.Drawing.Point(771, 210)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(73, 21)
         Me.ComboBox3.TabIndex = 42
@@ -127,7 +127,7 @@ Partial Class Form2
         '
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
-        Me.ComboBox2.Location = New System.Drawing.Point(414, 151)
+        Me.ComboBox2.Location = New System.Drawing.Point(473, 210)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(39, 21)
         Me.ComboBox2.TabIndex = 41
@@ -136,21 +136,21 @@ Partial Class Form2
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"})
-        Me.ComboBox1.Location = New System.Drawing.Point(250, 150)
+        Me.ComboBox1.Location = New System.Drawing.Point(309, 209)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(39, 21)
         Me.ComboBox1.TabIndex = 40
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(289, 84)
+        Me.TextBox2.Location = New System.Drawing.Point(348, 143)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(189, 20)
         Me.TextBox2.TabIndex = 39
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(289, 23)
+        Me.TextBox1.Location = New System.Drawing.Point(348, 82)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(189, 20)
         Me.TextBox1.TabIndex = 38
@@ -159,7 +159,7 @@ Partial Class Form2
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label6.Location = New System.Drawing.Point(332, 146)
+        Me.Label6.Location = New System.Drawing.Point(391, 205)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(43, 24)
         Me.Label6.TabIndex = 37
@@ -169,7 +169,7 @@ Partial Class Form2
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label5.Location = New System.Drawing.Point(190, 79)
+        Me.Label5.Location = New System.Drawing.Point(249, 138)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(64, 24)
         Me.Label5.TabIndex = 36
@@ -179,7 +179,7 @@ Partial Class Form2
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label4.Location = New System.Drawing.Point(190, 146)
+        Me.Label4.Location = New System.Drawing.Point(249, 205)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(37, 24)
         Me.Label4.TabIndex = 35
@@ -189,7 +189,7 @@ Partial Class Form2
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(604, 23)
+        Me.Label3.Location = New System.Drawing.Point(663, 82)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(80, 24)
         Me.Label3.TabIndex = 34
@@ -199,7 +199,7 @@ Partial Class Form2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(604, 145)
+        Me.Label2.Location = New System.Drawing.Point(663, 204)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(75, 24)
         Me.Label2.TabIndex = 33
@@ -209,7 +209,7 @@ Partial Class Form2
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(190, 23)
+        Me.Label1.Location = New System.Drawing.Point(249, 82)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(43, 24)
         Me.Label1.TabIndex = 32
@@ -219,7 +219,7 @@ Partial Class Form2
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label7.Location = New System.Drawing.Point(267, 23)
+        Me.Label7.Location = New System.Drawing.Point(326, 82)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(16, 24)
         Me.Label7.TabIndex = 50
@@ -229,7 +229,7 @@ Partial Class Form2
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label8.Location = New System.Drawing.Point(680, 30)
+        Me.Label8.Location = New System.Drawing.Point(739, 89)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(16, 24)
         Me.Label8.TabIndex = 51
@@ -239,7 +239,7 @@ Partial Class Form2
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label9.Location = New System.Drawing.Point(267, 79)
+        Me.Label9.Location = New System.Drawing.Point(326, 138)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(16, 24)
         Me.Label9.TabIndex = 52
@@ -249,7 +249,7 @@ Partial Class Form2
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label10.Location = New System.Drawing.Point(680, 151)
+        Me.Label10.Location = New System.Drawing.Point(739, 210)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(16, 24)
         Me.Label10.TabIndex = 53
@@ -259,7 +259,7 @@ Partial Class Form2
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label11.Location = New System.Drawing.Point(392, 151)
+        Me.Label11.Location = New System.Drawing.Point(451, 210)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(16, 24)
         Me.Label11.TabIndex = 54
@@ -269,7 +269,7 @@ Partial Class Form2
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold)
-        Me.Label12.Location = New System.Drawing.Point(228, 150)
+        Me.Label12.Location = New System.Drawing.Point(287, 209)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(16, 24)
         Me.Label12.TabIndex = 55
@@ -279,7 +279,7 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1034, 490)
+        Me.ClientSize = New System.Drawing.Size(1132, 588)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label10)

@@ -1,0 +1,9 @@
+E:\VisualBasic\PDESK\tes\bin\Debug\tes.exe
+E:\VisualBasic\PDESK\tes\bin\Debug\tes.pdb
+E:\VisualBasic\PDESK\tes\bin\Debug\tes.xml
+E:\VisualBasic\PDESK\tes\obj\x86\Debug\WindowsApplication1.Form1.resources
+E:\VisualBasic\PDESK\tes\obj\x86\Debug\WindowsApplication1.Resources.resources
+E:\VisualBasic\PDESK\tes\obj\x86\Debug\tes.vbproj.GenerateResource.Cache
+E:\VisualBasic\PDESK\tes\obj\x86\Debug\tes.exe
+E:\VisualBasic\PDESK\tes\obj\x86\Debug\tes.xml
+E:\VisualBasic\PDESK\tes\obj\x86\Debug\tes.pdb
