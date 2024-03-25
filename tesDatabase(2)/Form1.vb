@@ -13,7 +13,7 @@ Public Class Form1
         Else
 
             Call koneksi()
-            cmd = New OleDbCommand("select * from TBL_USER where userID='" & TextBox1.Text & "'and userPass='" & TextBox2.Text & "'", conn)
+            cmd = New OleDbCommand("select * from Tabel_Client where USERNAME='" & TextBox1.Text & "'and PASSWORD='" & TextBox2.Text & "'", conn)
             rd = cmd.ExecuteReader
             rd.Read()
             If rd.HasRows Then
