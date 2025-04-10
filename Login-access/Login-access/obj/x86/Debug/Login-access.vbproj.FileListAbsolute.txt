@@ -1,0 +1,9 @@
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\bin\Debug\Login-access.exe
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\bin\Debug\Login-access.pdb
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\bin\Debug\Login-access.xml
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\obj\x86\Debug\WindowsApplication1.Form1.resources
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\obj\x86\Debug\WindowsApplication1.Resources.resources
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\obj\x86\Debug\Login-access.vbproj.GenerateResource.Cache
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\obj\x86\Debug\Login-access.exe
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\obj\x86\Debug\Login-access.xml
+C:\Users\Yafi\documents\visual studio 2010\Projects\Login-access\Login-access\obj\x86\Debug\Login-access.pdb
