@@ -5,6 +5,32 @@ Public Class Form1
     Dim da As OdbcDataAdapter
     Dim ds As DataSet
     Dim mysql As String
+    Dim loggedInUserUsername As String
+
+    Sub tampilDataKasir()
+        Try
+            test_conn()
+            ' Query untuk mengambil data nama lengkap kasir berdasarkan username yang login
+            Dim query As String = "SELECT username FROM account WHERE username = ?"
+            da = New OdbcDataAdapter(query, conn)
+
+            ' Menambahkan parameter untuk username kasir yang sedang login
+            da.SelectCommand.Parameters.AddWithValue("username", loggedInUserUsername)
+
+            ds = New DataSet()
+            da.Fill(ds, "username")
+
+            ' Jika ada data kasir, tampilkan nama lengkap kasir
+            If ds.Tables("username").Rows.Count > 0 Then
+                Dim namaKasir As String = ds.Tables("username").Rows(0)("username").ToString()
+                MsgBox("Welcome, " & namaKasir)
+            End If
+
+            conn.Close()
+        Catch ex As Exception
+            MsgBox("Gagal menampilkan data kasir: " & ex.Message)
+        End Try
+    End Sub
 
     Sub test_conn()
         Try
@@ -26,7 +52,7 @@ Public Class Form1
         ElseIf TextBox2.Text = "" And ComboBox1.Text = "" Then
             MsgBox("Password dan role kosong")
         ElseIf TextBox2.Text = "" And TextBox1.Text = "" Then
-            MsgBox("username dan password kosong")
+            MsgBox("Username dan password kosong")
         ElseIf ComboBox1.Text = "" Then
             MsgBox("Masukkan role yang benar")
         ElseIf TextBox1.Text = "" Then
@@ -46,14 +72,21 @@ Public Class Form1
 
                 If rd.HasRows Then
                     rd.Read()
+                    ' Menyimpan username yang login untuk digunakan di tampilDataKasir
+                    loggedInUserUsername = TextBox1.Text
+
                     ' routing form
                     If TextBox1.Text.ToLower = "admin" And TextBox2.Text.ToLower = "admin" And ComboBox1.Text.ToLower = "admin" Then
+                        tampilDataKasir()
+                        Threading.Thread.Sleep(100)
                         Form2.Show()
                         Me.Hide()
                     ElseIf ComboBox1.Text.ToLower = "kasir" Then
+                        Form3.loggedInUserUsername = TextBox1.Text
+                        tampilDataKasir()
+                        Threading.Thread.Sleep(100) ' Delay 1 detik
                         Form3.Show()
                         Me.Hide()
-
                     End If
                 Else
                     MsgBox("Kredensial Login Anda Salah")
@@ -78,6 +111,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ' meload data tabel ke combo box
         Try
             test_conn()

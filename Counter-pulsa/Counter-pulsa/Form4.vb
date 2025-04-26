@@ -1,6 +1,7 @@
 ﻿Imports System.Data.Odbc
 
 Public Class Form4
+    Public previousForm As Form ' Tambahan ini
     Dim conn As OdbcConnection
     Dim da As OdbcDataAdapter
     Dim ds As DataSet
@@ -35,6 +36,7 @@ Public Class Form4
 
     ' Styling DataGridView
     Private Sub Form4_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         tampilData()
         With DataGridView1
             .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
@@ -96,6 +98,9 @@ Public Class Form4
     ' Button untuk menutup form
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         Me.Close()
+        If previousForm IsNot Nothing Then
+            previousForm.Show()
+        End If
     End Sub
 
     ' Event ketika memilih data di DataGridView
@@ -184,6 +189,10 @@ Public Class Form4
     End Sub
 
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
 
     End Sub
 End Class
