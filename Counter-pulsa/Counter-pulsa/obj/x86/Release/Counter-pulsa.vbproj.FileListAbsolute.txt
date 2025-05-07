@@ -1,0 +1,14 @@
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\bin\Release\Counter-pulsa.exe
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\bin\Release\Counter-pulsa.pdb
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\bin\Release\Counter-pulsa.xml
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\WindowsApplication1.Form1.resources
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\WindowsApplication1.Form2.resources
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\WindowsApplication1.Form3.resources
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\WindowsApplication1.Form4.resources
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\WindowsApplication1.Form5.resources
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\WindowsApplication1.Form6.resources
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\WindowsApplication1.Resources.resources
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\Counter-pulsa.vbproj.GenerateResource.Cache
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\Counter-pulsa.exe
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\Counter-pulsa.xml
+C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\Counter-pulsa.pdb

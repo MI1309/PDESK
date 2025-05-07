@@ -1,0 +1,36 @@
+5/1/2025 9:25:50 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   --- End of inner exception stack trace ---
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 131
+5/1/2025 9:25:53 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   --- End of inner exception stack trace ---
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 131
+5/1/2025 9:45:45 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   --- End of inner exception stack trace ---
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 169
+5/1/2025 9:49:02 AM - System.InvalidCastException: Conversion from string "asfas" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   --- End of inner exception stack trace ---
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 166
+5/1/2025 9:49:13 AM - System.InvalidCastException: Conversion from string "asfas" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   --- End of inner exception stack trace ---
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 166
+5/1/2025 9:50:46 AM - System.InvalidCastException: Conversion from string "dszga" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   --- End of inner exception stack trace ---
+   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 168
