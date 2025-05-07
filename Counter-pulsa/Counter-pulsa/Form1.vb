@@ -109,8 +109,31 @@ Public Class Form1
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Me.Close()
     End Sub
+    Private Sub TextBox1_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles TextBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            TextBox2.Focus()
+        End If
+    End Sub
+
+    Private Sub TextBox2_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles TextBox2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            ComboBox1.Focus()
+        End If
+    End Sub
+
+    Private Sub ComboBox1_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles ComboBox1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            Button1.PerformClick() ' Login langsung
+        End If
+    End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.BeginInvoke(New MethodInvoker(Sub()
+                                             TextBox1.Focus()
+                                         End Sub))
         ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ' meload data tabel ke combo box
         Try
@@ -130,4 +153,7 @@ Public Class Form1
         End Try
     End Sub
 
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+
+    End Sub
 End Class

@@ -109,6 +109,7 @@
     <Compile Include="Form6.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="modvalid.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -170,6 +171,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Microsoft Wallpaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backg %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backg %281%29 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg vb.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg vb.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg vb1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vito.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vito %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vito1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ggg.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ggg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ggg1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ggg %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hyhyrfhy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg %283%29.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

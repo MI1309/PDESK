@@ -67,7 +67,7 @@ Partial Class Form6
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(108, 38)
         Me.Button1.TabIndex = 45
-        Me.Button1.Text = " "
+        Me.Button1.Text = "exit"
         Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.Button1.UseVisualStyleBackColor = True
         '

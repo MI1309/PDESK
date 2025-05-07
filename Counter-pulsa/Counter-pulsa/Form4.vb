@@ -7,6 +7,15 @@ Public Class Form4
     Dim ds As DataSet
     Dim mysql As String
     Dim selectedId As Integer = -1 ' Untuk menyimpan id yang dipilih
+    Private Sub ClearTextBoxes()
+        For i As Integer = 1 To 6
+            Dim tb As TextBox = TryCast(Me.Controls("TextBox" & i), TextBox)
+            If tb IsNot Nothing Then
+                tb.Clear()
+            End If
+        Next
+        selectedId = -1
+    End Sub
 
     ' Koneksi ke database
     Sub test_conn()
@@ -23,7 +32,7 @@ Public Class Form4
     Sub tampilData()
         Try
             test_conn()
-            da = New OdbcDataAdapter("SELECT * FROM account", conn)
+            da = New OdbcDataAdapter("SELECT id, nama_kasir, alamat, no_telpon, email, password, username FROM account WHERE role <> 'admin';", conn)
             ds = New DataSet()
             da.Fill(ds, "account")
             DataGridView1.DataSource = ds.Tables("account")
@@ -36,7 +45,7 @@ Public Class Form4
 
     ' Styling DataGridView
     Private Sub Form4_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
+
         tampilData()
         With DataGridView1
             .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
@@ -55,45 +64,69 @@ Public Class Form4
 
     ' Button untuk insert data ke database
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        If TextBox1.Text = "" And TextBox2.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Masukkan input yang benar")
-        ElseIf TextBox1.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Username dan role kosong")
-        ElseIf TextBox2.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Password dan role kosong")
-        ElseIf TextBox2.Text = "" And TextBox1.Text = "" Then
-            MsgBox("Username dan password kosong")
-        ElseIf ComboBox1.Text = "" Then
-            MsgBox("Masukkan role yang benar")
-        ElseIf TextBox1.Text = "" Then
-            MsgBox("Username Anda kosong")
-        ElseIf TextBox2.Text = "" Then
-            MsgBox("Password ga boleh kosong")
-        Else
-            Try
-                test_conn()
-                Dim cmd As New OdbcCommand("INSERT INTO account (username, password, role) VALUES (?, ?, ?)", conn)
-                cmd.Parameters.AddWithValue("@username", TextBox1.Text)
-                cmd.Parameters.AddWithValue("@password", TextBox2.Text)
-                cmd.Parameters.AddWithValue("@role", ComboBox1.Text)
+        TextBox1.Tag = "Nama Kasir"
+        TextBox2.Tag = "Alamat"
+        TextBox3.Tag = "No Telepon"
+        TextBox4.Tag = "Username"
+        TextBox5.Tag = "Email"
+        TextBox6.Tag = "Password"
+        Dim role As String = "kasir"
+
+        If Not ValidasiInputKosong(TextBox1, TextBox2, TextBox3, TextBox4, TextBox5, TextBox6) Then
+            Exit Sub
+        ElseIf Not IsEmailValid(TextBox5.Text) Then
+            MsgBox("Email tidak valid.")
+            Exit Sub
+        ElseIf Not IsPhoneNumberValid(TextBox3.Text) Then
+            MsgBox("Nomor telepon tidak valid.")
+            Exit Sub
+        End If
+
+        Try
+            test_conn()
+
+            ' Cek duplikat data
+            Using checkCmd As New OdbcCommand("SELECT COUNT(*) FROM account WHERE username = ? OR email = ? OR no_telpon = ?", conn)
+                checkCmd.Parameters.AddWithValue("@username", TextBox4.Text)
+                checkCmd.Parameters.AddWithValue("@email", TextBox5.Text)
+                checkCmd.Parameters.AddWithValue("@no_telpon", TextBox3.Text)
+
+                Dim count As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
+                If count > 0 Then
+                    MsgBox("Data sudah ada. Gunakan data unik untuk username/email/no telpon.")
+                    Exit Sub
+                End If
+            End Using
+
+            ' Insert data baru
+            Using cmd As New OdbcCommand("INSERT INTO account (username, password, role, alamat, no_telpon, email, nama_kasir) VALUES (?, ?, ?, ?, ?, ?, ?)", conn)
+                cmd.Parameters.AddWithValue("@username", TextBox4.Text)
+                cmd.Parameters.AddWithValue("@password", TextBox6.Text)
+                cmd.Parameters.AddWithValue("@role", role)
+                cmd.Parameters.AddWithValue("@alamat", TextBox2.Text)
+                cmd.Parameters.AddWithValue("@no_telpon", TextBox3.Text)
+                cmd.Parameters.AddWithValue("@email", TextBox5.Text)
+                cmd.Parameters.AddWithValue("@nama_kasir", TextBox1.Text)
 
                 Dim result As Integer = cmd.ExecuteNonQuery()
                 If result > 0 Then
                     MsgBox("Akun berhasil ditambahkan!")
-                    TextBox1.Text = ""
-                    TextBox2.Text = ""
-                    ComboBox1.Text = ""
-                    tampilData() ' Refresh datagrid setelah insert
+                    ClearTextBoxes()
+                    tampilData()
                 Else
                     MsgBox("Gagal menambahkan akun.")
                 End If
-            Catch ex As Exception
-                MsgBox("Terjadi kesalahan: " & ex.Message)
-            Finally
+            End Using
+
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan: " & ex.Message)
+        Finally
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then
                 conn.Close()
-            End Try
-        End If
+            End If
+        End Try
     End Sub
+
 
     ' Button untuk menutup form
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
@@ -103,7 +136,6 @@ Public Class Form4
         End If
     End Sub
 
-    ' Event ketika memilih data di DataGridView
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
@@ -114,85 +146,191 @@ Public Class Form4
             Else
                 ' Menetapkan nilai ke textbox dan combobox jika ada data
                 selectedId = row.Cells("id").Value
-                TextBox1.Text = If(IsDBNull(row.Cells("username").Value), "", row.Cells("username").Value.ToString())
-                TextBox2.Text = If(IsDBNull(row.Cells("password").Value), "", row.Cells("password").Value.ToString())
-                ComboBox1.Text = If(IsDBNull(row.Cells("role").Value), "", row.Cells("role").Value.ToString())
+                TextBox1.Text = If(IsDBNull(row.Cells("nama_kasir").Value), "", row.Cells("nama_kasir").Value.ToString())
+                TextBox2.Text = If(IsDBNull(row.Cells("alamat").Value), "", row.Cells("alamat").Value.ToString())
+                TextBox3.Text = If(IsDBNull(row.Cells("no_telpon").Value), "", row.Cells("no_telpon").Value.ToString())
+                TextBox4.Text = If(IsDBNull(row.Cells("username").Value), "", row.Cells("username").Value.ToString())
+                TextBox5.Text = If(IsDBNull(row.Cells("email").Value), "", row.Cells("email").Value.ToString())
+                TextBox6.Text = If(IsDBNull(row.Cells("password").Value), "", row.Cells("password").Value.ToString())
+
+                ' Cek jika role adalah admin
+                If row.Cells("id").Value.ToString() = "1" Then
+                    MsgBox("Admin tidak boleh diganggu!")
+                    ' Menghentikan update dan hapus untuk admin
+                    Button3.Enabled = False ' Disable update button
+                    Button2.Enabled = False ' Disable delete button
+                Else
+                    Button3.Enabled = True ' Enable update button
+                    Button2.Enabled = True ' Enable delete button
+                End If
             End If
         End If
     End Sub
 
-    ' Button untuk update data
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        TextBox1.Tag = "Nama Kasir"
+        TextBox2.Tag = "Alamat"
+        TextBox3.Tag = "No Telepon"
+        TextBox4.Tag = "Username"
+        TextBox5.Tag = "Email"
+        TextBox6.Tag = "Password"
+
         If selectedId = -1 Then
             MsgBox("Pilih data yang mau diupdate dulu.")
             Return
         End If
 
+        ' Validasi input
+        If Not valid(TextBox1, TextBox2, TextBox3, TextBox4, TextBox5, TextBox6) Then
+            Exit Sub
+        ElseIf Not IsEmailValid(TextBox5.Text) Then
+            MsgBox("Email tidak valid.")
+            Return
+        ElseIf Not IsPhoneNumberValid(TextBox3.Text) Then
+            MsgBox("Nomor telepon tidak valid.")
+            Return
+        End If
+
         Try
             test_conn()
-            Dim cmd As New OdbcCommand("UPDATE account SET username=?, password=?, role=? WHERE id=?", conn)
-            cmd.Parameters.AddWithValue("@username", TextBox1.Text)
-            cmd.Parameters.AddWithValue("@password", TextBox2.Text)
-            cmd.Parameters.AddWithValue("@role", ComboBox1.Text)
-            cmd.Parameters.AddWithValue("@id", selectedId)
 
-            Dim result As Integer = cmd.ExecuteNonQuery()
-            If result > 0 Then
-                MsgBox("Data berhasil diupdate!")
-                tampilData()
-                TextBox1.Text = ""
-                TextBox2.Text = ""
-                ComboBox1.Text = ""
-                selectedId = -1
+            ' Ambil data lama dari database
+            Dim oldDataCmd As New OdbcCommand("SELECT username, password, role, alamat, no_telpon, email, nama_kasir FROM account WHERE id = ?", conn)
+            oldDataCmd.Parameters.AddWithValue("@id", selectedId)
+
+            Dim reader As OdbcDataReader = oldDataCmd.ExecuteReader()
+            If reader.Read() Then
+                Dim sameData As Boolean = (
+                    reader("username").ToString() = TextBox4.Text AndAlso
+                    reader("password").ToString() = TextBox6.Text AndAlso
+                    reader("role").ToString() = "kasir" AndAlso
+                    reader("alamat").ToString() = TextBox2.Text AndAlso
+                    reader("no_telpon").ToString() = TextBox3.Text AndAlso
+                    reader("email").ToString() = TextBox5.Text AndAlso
+                    reader("nama_kasir").ToString() = TextBox1.Text
+                )
+
+                reader.Close()
+
+                If sameData Then
+                    MsgBox("Tidak ada data yang diubah.")
+                    Exit Sub
+                End If
             Else
-                MsgBox("Gagal update data.")
+                MsgBox("Data tidak ditemukan.")
+                reader.Close()
+                Exit Sub
             End If
+
+
+            ' Lakukan update data
+            Using cmd As New OdbcCommand("UPDATE account SET username=?, password=?, role=?, alamat=?, no_telpon=?, email=?, nama_kasir=? WHERE id=?", conn)
+                cmd.Parameters.AddWithValue("@username", TextBox4.Text)
+                cmd.Parameters.AddWithValue("@password", TextBox6.Text)
+                cmd.Parameters.AddWithValue("@role", "kasir")
+                cmd.Parameters.AddWithValue("@alamat", TextBox2.Text)
+                cmd.Parameters.AddWithValue("@no_telpon", TextBox3.Text)
+                cmd.Parameters.AddWithValue("@email", TextBox5.Text)
+                cmd.Parameters.AddWithValue("@nama_kasir", TextBox1.Text)
+                cmd.Parameters.AddWithValue("@id", selectedId)
+
+                Dim result As Integer = cmd.ExecuteNonQuery()
+                If result > 0 Then
+                    MsgBox("Data berhasil diupdate!")
+                    tampilData()
+                    ClearTextBoxes()
+                Else
+                    MsgBox("Gagal update data.")
+                End If
+            End Using
+
         Catch ex As Exception
             MsgBox("Terjadi kesalahan saat update: " & ex.Message)
         Finally
-            conn.Close()
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
         End Try
     End Sub
 
-    ' Button untuk hapus data
+
+
+
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub Label2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox2.TextChanged
+
+    End Sub
+
+    Private Sub TextBox5_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox5.TextChanged
+
+    End Sub
+
+    Private Sub TextBox3_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TextBox3.KeyPress
+        ' Hanya izinkan angka dan tombol kontrol seperti backspace
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+            MsgBox("Hanya angka yang diperbolehkan di nomor telepon!")
+        End If
+    End Sub
+
+
+    Private Sub TextBox3_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox3.TextChanged
+
+    End Sub
+
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        TextBox1.Clear()
+        TextBox2.Clear()
+        TextBox3.Clear()
+        TextBox4.Clear()
+        TextBox5.Clear()
+        TextBox6.Clear()
+    End Sub
+
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         If selectedId = -1 Then
             MsgBox("Pilih data yang ingin dihapus terlebih dahulu.")
             Return
         End If
 
-        ' Konfirmasi penghapusan data
+        ' Cek apakah admin
+        If selectedId = 1 Then
+            MsgBox("Data admin tidak boleh dihapus!")
+            Return
+        End If
+
         Dim result As DialogResult = MsgBox("Apakah Anda yakin ingin menghapus data ini?", MsgBoxStyle.YesNo, "Konfirmasi Hapus")
         If result = DialogResult.Yes Then
             Try
                 test_conn()
-                Dim cmd As New OdbcCommand("DELETE FROM account WHERE id=?", conn)
-                cmd.Parameters.AddWithValue("@id", selectedId)
+                Using cmd As New OdbcCommand("DELETE FROM account WHERE id=?", conn)
+                    cmd.Parameters.AddWithValue("@id", selectedId)
 
-                Dim deleteResult As Integer = cmd.ExecuteNonQuery()
-                If deleteResult > 0 Then
-                    MsgBox("Data berhasil dihapus!")
-                    tampilData() ' Refresh datagrid setelah hapus
-                    TextBox1.Text = ""
-                    TextBox2.Text = ""
-                    ComboBox1.Text = ""
-                    selectedId = -1
-                Else
-                    MsgBox("Gagal menghapus data.")
-                End If
+                    Dim deleteResult As Integer = cmd.ExecuteNonQuery()
+                    If deleteResult > 0 Then
+                        MsgBox("Data berhasil dihapus!")
+                        tampilData()
+                        ClearTextBoxes()
+                    Else
+                        MsgBox("Gagal menghapus data.")
+                    End If
+                End Using
+
             Catch ex As Exception
                 MsgBox("Terjadi kesalahan saat menghapus: " & ex.Message)
             Finally
-                conn.Close()
+                If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
             End Try
         End If
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
-    End Sub
-
-    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
-
-    End Sub
 End Class
