@@ -109,6 +109,18 @@
     <Compile Include="Form6.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form7.Designer.vb">
+      <DependentUpon>Form7.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form7.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form8.Designer.vb">
+      <DependentUpon>Form8.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form8.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modvalid.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -144,6 +156,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form6.resx">
       <DependentUpon>Form6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form7.resx">
+      <DependentUpon>Form7.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form8.resx">
+      <DependentUpon>Form8.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -228,6 +246,102 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-07 at 14.46.03.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.32.35.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.32.35.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.32.35 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.38.42.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.41.11.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.41.11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.41.11 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.44.33.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.40.14.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.40.141.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.40.14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %284%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %285%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %286%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %284%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %285%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %286%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rmlg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lprn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lprn1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rmlg1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rmlg2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-07 at 14.46.031.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

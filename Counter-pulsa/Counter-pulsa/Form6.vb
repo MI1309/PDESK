@@ -58,4 +58,27 @@ Public Class Form6
             previousForm.Show()
         End If
     End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker1.ValueChanged
+        Try
+            test_conn()
+            Dim tanggal As String = DateTimePicker1.Value.ToString("yyyy-MM-dd")
+            Dim query As String = "SELECT * FROM transaksi WHERE DATE(waktu_transaksi) = ?"
+            da = New OdbcDataAdapter(query, conn)
+            da.SelectCommand.Parameters.AddWithValue("?", tanggal)
+            ds = New DataSet()
+            da.Fill(ds, "transaksi")
+            DataGridView1.DataSource = ds.Tables("transaksi")
+        Catch ex As Exception
+            MsgBox("Gagal memfilter data: " & ex.Message)
+        Finally
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
+        End Try
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        DateTimePicker1.Value = DateTime.Now ' Reset ke hari ini
+        tampilData() ' Menampilkan semua data
+    End Sub
+
 End Class

@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -38,37 +39,40 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.Transparent
         Me.Button1.Location = New System.Drawing.Point(69, 253)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(130, 46)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Login"
+        Me.Button1.Text = "LOGIN"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.Transparent
         Me.Button2.Location = New System.Drawing.Point(214, 253)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(130, 46)
         Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Clear"
+        Me.Button2.Text = "CLEAR"
         Me.Button2.UseVisualStyleBackColor = False
         '
         'Button3
         '
         Me.Button3.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.Button3.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_461
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.Transparent
         Me.Button3.Location = New System.Drawing.Point(360, 252)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(130, 47)
         Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Exit"
+        Me.Button3.Text = "EXIT"
         Me.Button3.UseVisualStyleBackColor = False
         '
         'Label2
@@ -136,7 +140,7 @@ Partial Class Form1
         Me.PictureBox1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.hyhyrfhy
         Me.PictureBox1.Location = New System.Drawing.Point(507, 152)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(118, 123)
+        Me.PictureBox1.Size = New System.Drawing.Size(129, 127)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 11
         Me.PictureBox1.TabStop = False

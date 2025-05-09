@@ -7,20 +7,21 @@ Public Class Form1
     Dim mysql As String
     Dim loggedInUserUsername As String
 
+    ' Simplified function without querying by kasir_username
     Sub tampilDataKasir()
         Try
             test_conn()
-            ' Query untuk mengambil data nama lengkap kasir berdasarkan username yang login
+            ' Query for the username directly from the account table
             Dim query As String = "SELECT username FROM account WHERE username = ?"
             da = New OdbcDataAdapter(query, conn)
 
-            ' Menambahkan parameter untuk username kasir yang sedang login
+            ' Add parameter for the logged-in username
             da.SelectCommand.Parameters.AddWithValue("username", loggedInUserUsername)
 
             ds = New DataSet()
             da.Fill(ds, "username")
 
-            ' Jika ada data kasir, tampilkan nama lengkap kasir
+            ' Show the username as a welcome message
             If ds.Tables("username").Rows.Count > 0 Then
                 Dim namaKasir As String = ds.Tables("username").Rows(0)("username").ToString()
                 MsgBox("Welcome, " & namaKasir)
@@ -28,39 +29,38 @@ Public Class Form1
 
             conn.Close()
         Catch ex As Exception
-            MsgBox("Gagal menampilkan data kasir: " & ex.Message)
+            MsgBox("Failed to fetch cashier data: " & ex.Message)
         End Try
     End Sub
 
     Sub test_conn()
         Try
-            ' Menggunakan DSN yang sudah dikonfigurasi di ODBC Data Source Administrator
             mysql = "DSN=pulsa;"
             conn = New OdbcConnection(mysql)
             conn.Open()
         Catch ex As Exception
-            MsgBox("Koneksi gagal: " & ex.Message)
+            MsgBox("Connection failed: " & ex.Message)
         End Try
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        ' validasi input
+        ' Validate inputs
         If TextBox1.Text = "" And TextBox2.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Masukkan input yang benar")
+            MsgBox("Please enter valid input")
         ElseIf TextBox1.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Username dan role kosong")
+            MsgBox("Username and role are empty")
         ElseIf TextBox2.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Password dan role kosong")
+            MsgBox("Password and role are empty")
         ElseIf TextBox2.Text = "" And TextBox1.Text = "" Then
-            MsgBox("Username dan password kosong")
+            MsgBox("Username and password are empty")
         ElseIf ComboBox1.Text = "" Then
-            MsgBox("Masukkan role yang benar")
+            MsgBox("Please select a valid role")
         ElseIf TextBox1.Text = "" Then
-            MsgBox("Username Anda kosong")
+            MsgBox("Username cannot be empty")
         ElseIf TextBox2.Text = "" Then
-            MsgBox("Password ga boleh kosong")
+            MsgBox("Password cannot be empty")
         Else
-            ' Koneksi dan pengecekan ke database
+            ' Connect to database and check credentials
             Try
                 Call test_conn()
                 Dim cmd As New OdbcCommand("SELECT * FROM account WHERE username=? AND password=? AND role=?", conn)
@@ -72,10 +72,10 @@ Public Class Form1
 
                 If rd.HasRows Then
                     rd.Read()
-                    ' Menyimpan username yang login untuk digunakan di tampilDataKasir
+                    ' Store the logged-in username
                     loggedInUserUsername = TextBox1.Text
 
-                    ' routing form
+                    ' Routing to different forms based on the role
                     If TextBox1.Text.ToLower = "admin" And TextBox2.Text.ToLower = "admin" And ComboBox1.Text.ToLower = "admin" Then
                         tampilDataKasir()
                         Threading.Thread.Sleep(100)
@@ -84,16 +84,16 @@ Public Class Form1
                     ElseIf ComboBox1.Text.ToLower = "kasir" Then
                         Form3.loggedInUserUsername = TextBox1.Text
                         tampilDataKasir()
-                        Threading.Thread.Sleep(100) ' Delay 1 detik
+                        Threading.Thread.Sleep(100) ' Delay 1 second
                         Form3.Show()
                         Me.Hide()
                     End If
                 Else
-                    MsgBox("Kredensial Login Anda Salah")
+                    MsgBox("Incorrect login credentials")
                 End If
 
             Catch ex As Exception
-                MsgBox("Terjadi kesalahan: " & ex.Message)
+                MsgBox("An error occurred: " & ex.Message)
             Finally
                 conn.Close()
             End Try
@@ -109,10 +109,15 @@ Public Class Form1
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         Me.Close()
     End Sub
+
+    ' Handle the KeyDown events for the TextBoxes and ComboBox to manage user input and navigation
     Private Sub TextBox1_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles TextBox1.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
             TextBox2.Focus()
+        End If
+        If e.Control AndAlso e.KeyCode = Keys.V Then
+            e.SuppressKeyPress = True
         End If
     End Sub
 
@@ -121,21 +126,28 @@ Public Class Form1
             e.SuppressKeyPress = True
             ComboBox1.Focus()
         End If
+        If e.Control AndAlso e.KeyCode = Keys.V Then
+            e.SuppressKeyPress = True
+        End If
     End Sub
 
     Private Sub ComboBox1_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles ComboBox1.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            Button1.PerformClick() ' Login langsung
+            Button1.PerformClick() ' Trigger login
+        End If
+        If e.Control AndAlso e.KeyCode = Keys.V Then
+            e.SuppressKeyPress = True
         End If
     End Sub
 
+    ' Form Load Event - Setup ComboBox and TextBox Focus
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.BeginInvoke(New MethodInvoker(Sub()
                                              TextBox1.Focus()
                                          End Sub))
         ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
-        ' meload data tabel ke combo box
+        ' Load role data into ComboBox
         Try
             test_conn()
             Dim cmd As New OdbcCommand("SELECT DISTINCT role FROM account", conn)
@@ -149,11 +161,11 @@ Public Class Form1
             rd.Close()
             conn.Close()
         Catch ex As Exception
-            MsgBox("Gagal mengambil data role: " & ex.Message)
+            MsgBox("Failed to load roles: " & ex.Message)
         End Try
     End Sub
 
+    ' TextBox TextChanged Event (Not Used But Left for Structure)
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
-
     End Sub
 End Class

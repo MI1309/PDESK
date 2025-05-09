@@ -33,19 +33,20 @@ Partial Class Form2
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft JhengHei", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(162, 26)
+        Me.Label1.Location = New System.Drawing.Point(125, 24)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(293, 35)
+        Me.Label1.Size = New System.Drawing.Size(372, 44)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "DASHBOARD ADMIN"
         '
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Button1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
         Me.Button1.Font = New System.Drawing.Font("Segoe UI Historic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Button1.Location = New System.Drawing.Point(12, 92)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(190, 60)
@@ -56,8 +57,9 @@ Partial Class Form2
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Button2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
         Me.Button2.Font = New System.Drawing.Font("Segoe UI Historic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Button2.Location = New System.Drawing.Point(12, 177)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(190, 60)
@@ -68,8 +70,9 @@ Partial Class Form2
         'Button3
         '
         Me.Button3.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Button3.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
         Me.Button3.Font = New System.Drawing.Font("Segoe UI Historic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Button3.Location = New System.Drawing.Point(397, 92)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(212, 60)
@@ -80,8 +83,9 @@ Partial Class Form2
         'Button4
         '
         Me.Button4.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Button4.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
         Me.Button4.Font = New System.Drawing.Font("Segoe UI Historic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Button4.Location = New System.Drawing.Point(397, 177)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(212, 60)
@@ -103,7 +107,7 @@ Partial Class Form2
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Client"
+        Me.Text = " "
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

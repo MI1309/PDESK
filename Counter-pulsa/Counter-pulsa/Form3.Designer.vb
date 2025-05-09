@@ -37,6 +37,7 @@ Partial Class Form3
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -44,47 +45,55 @@ Partial Class Form3
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(11, 202)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 236)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(656, 92)
         Me.DataGridView1.TabIndex = 24
         '
         'Button4
         '
+        Me.Button4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Button4.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rmlg1
         Me.Button4.Font = New System.Drawing.Font("Javanese Text", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(487, 300)
+        Me.Button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Button4.Location = New System.Drawing.Point(562, 334)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(130, 35)
+        Me.Button4.Size = New System.Drawing.Size(106, 44)
         Me.Button4.TabIndex = 23
-        Me.Button4.Text = "EXIT"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Button2.Location = New System.Drawing.Point(487, 144)
+        Me.Button2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
+        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Button2.Location = New System.Drawing.Point(503, 142)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(130, 35)
+        Me.Button2.Size = New System.Drawing.Size(138, 43)
         Me.Button2.TabIndex = 21
         Me.Button2.Text = "CLEAR"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button1
         '
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Button1.Location = New System.Drawing.Point(487, 103)
+        Me.Button1.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.Button1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
+        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Button1.Location = New System.Drawing.Point(503, 93)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(130, 35)
+        Me.Button1.Size = New System.Drawing.Size(138, 43)
         Me.Button1.TabIndex = 20
         Me.Button1.Text = "INPUT"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 12.0!)
-        Me.Label2.Location = New System.Drawing.Point(33, 93)
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label2.Location = New System.Drawing.Point(52, 93)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(146, 21)
         Me.Label2.TabIndex = 26
@@ -95,7 +104,8 @@ Partial Class Form3
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Century Gothic", 12.0!)
-        Me.Label3.Location = New System.Drawing.Point(35, 119)
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label3.Location = New System.Drawing.Point(54, 119)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(144, 21)
         Me.Label3.TabIndex = 27
@@ -118,7 +128,8 @@ Partial Class Form3
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Century Gothic", 12.0!)
-        Me.Label4.Location = New System.Drawing.Point(35, 146)
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label4.Location = New System.Drawing.Point(54, 146)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(144, 21)
         Me.Label4.TabIndex = 28
@@ -129,6 +140,7 @@ Partial Class Form3
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Palatino Linotype", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Label5.Location = New System.Drawing.Point(169, 29)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(205, 28)
@@ -139,17 +151,17 @@ Partial Class Form3
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"Indosat", "XL", "Smartfren"})
-        Me.ComboBox1.Location = New System.Drawing.Point(236, 122)
+        Me.ComboBox1.Location = New System.Drawing.Point(223, 122)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(206, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(244, 21)
         Me.ComboBox1.TabIndex = 33
         '
         'ComboBox2
         '
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(236, 149)
+        Me.ComboBox2.Location = New System.Drawing.Point(223, 149)
         Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(206, 21)
+        Me.ComboBox2.Size = New System.Drawing.Size(244, 21)
         Me.ComboBox2.TabIndex = 34
         '
         'Label6
@@ -157,7 +169,8 @@ Partial Class Form3
         Me.Label6.AutoSize = True
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Century Gothic", 12.0!)
-        Me.Label6.Location = New System.Drawing.Point(35, 173)
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label6.Location = New System.Drawing.Point(54, 173)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(144, 21)
         Me.Label6.TabIndex = 35
@@ -165,23 +178,37 @@ Partial Class Form3
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(236, 176)
+        Me.TextBox3.Location = New System.Drawing.Point(223, 176)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(206, 20)
+        Me.TextBox3.Size = New System.Drawing.Size(244, 20)
         Me.TextBox3.TabIndex = 36
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(236, 93)
+        Me.TextBox2.Location = New System.Drawing.Point(223, 93)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(206, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(244, 20)
         Me.TextBox2.TabIndex = 37
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label1.Location = New System.Drawing.Point(65, 205)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(220, 28)
+        Me.Label1.TabIndex = 38
+        Me.Label1.Text = "DATA PRODUCT      :"
         '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(687, 348)
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rm__4_
+        Me.ClientSize = New System.Drawing.Size(686, 384)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.Label6)
@@ -197,6 +224,7 @@ Partial Class Form3
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form3"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form3"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -218,4 +246,5 @@ Partial Class Form3
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

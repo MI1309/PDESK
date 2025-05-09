@@ -1,36 +1,24 @@
-5/1/2025 9:25:50 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+5/8/2025 1:59:53 PM - System.Data.Odbc.OdbcException (0x80131937): ERROR [42S22] [MySQL][ODBC 8.0(a) Driver][mysqld-5.5.5-10.4.32-MariaDB]Unknown column 'harga_modal' in 'field list'
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 187
+5/8/2025 2:28:03 PM - System.OverflowException: Arithmetic operation resulted in an overflow.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 171
+5/8/2025 2:31:25 PM - System.OverflowException: Arithmetic operation resulted in an overflow.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 131
-5/1/2025 9:25:53 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 170
+5/8/2025 3:18:29 PM - System.OverflowException: Arithmetic operation resulted in an overflow.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 171
+5/8/2025 3:19:46 PM - System.OverflowException: Arithmetic operation resulted in an overflow.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 131
-5/1/2025 9:45:45 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 170
+5/8/2025 3:20:34 PM - System.OverflowException: Arithmetic operation resulted in an overflow.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 170
+5/8/2025 3:21:02 PM - System.OverflowException: Arithmetic operation resulted in an overflow.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 169
-5/1/2025 9:49:02 AM - System.InvalidCastException: Conversion from string "asfas" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 166
-5/1/2025 9:49:13 AM - System.InvalidCastException: Conversion from string "asfas" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 166
-5/1/2025 9:50:46 AM - System.InvalidCastException: Conversion from string "dszga" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 168
+   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 170
