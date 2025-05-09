@@ -1,6 +1,6 @@
 ﻿Imports System.Data.Odbc
 
-Public Class Form8
+Public Class form_stock
     Dim conn As OdbcConnection
     Dim da As OdbcDataAdapter
     Public previousForm As Form
@@ -75,40 +75,43 @@ Public Class Form8
     End Sub
 
     ' Fungsi untuk menutup aplikasi
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
         If previousForm IsNot Nothing Then
             previousForm.Show()
         End If
     End Sub
 
-    ' Fungsi yang dijalankan saat Form8 diload
     Private Sub Form8_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Label1.AutoSize = False           ' Agar bisa dikontrol ukurannya secara manual
-        Label1.Width = 207               ' Atur lebar label (sesuaikan sesuai kebutuhan)
-        Label1.Height = 15                ' Opsional: atur tinggi label
-        Label1.BorderStyle = BorderStyle.FixedSingle  ' Opsional: tambahkan garis biar terlihat jelas
-        Label1.TextAlign = ContentAlignment.MiddleCenter
+        ' Set dock untuk form agar mengikuti ukuran TabPage
+        Me.Dock = DockStyle.Fill
 
+        ' Atur kontrol agar mengikuti ukuran form
+        Label1.AutoSize = True
+        Label1.Height = 30
+        Label1.Width = 100
+        Label1.BorderStyle = BorderStyle.FixedSingle
+        'Label1.TextAlign = ContentAlignment.MiddleCenter
+        'Label1.Location = New Point(301, 272)
 
-        test_conn() ' Menguji koneksi saat form dimuat
+        ' Set DockStyle for ComboBoxes and Button
+
+        ' Padding and Margin Adjustments
+        ComboBox1.Margin = New Padding(10, 10, 10, 5)
+        ComboBox3.Margin = New Padding(10, 5, 10, 10)
+        Button1.Margin = New Padding(10)
+
+        ' Test koneksi dan inisialisasi
+        test_conn()
         ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
-        product()
-        stok()
-        tipe()
-        Label1.Show()
 
-        ' Mengonversi nilai TextBox1 ke angka dan cek apakah itu 0
-        Dim stokValue As Integer
-        If Integer.TryParse(Label1.Text, stokValue) Then
-            ' Jika nilai stok adalah 0, beri warna merah
-            If stokValue = 0 Then
-                Label1.ForeColor = Color.Red
-            Else
-                Label1.ForeColor = Color.Black ' Mengembalikan warna teks ke hitam jika tidak "0"
-            End If
-        End If
+        product()
+        tipe()
+
+        ' Atur label awal
+        Label1.Text = "Belum ada produk dipilih"
+        Label1.ForeColor = Color.Gray
     End Sub
 
     ' Event handler untuk menangani perubahan teks di TextBox1
@@ -124,6 +127,7 @@ Public Class Form8
             End If
         End If
     End Sub
+
     Private Sub ComboBox3_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox3.SelectedIndexChanged
         Try
             Dim selectedProduct As String = ComboBox3.SelectedItem.ToString()
@@ -147,10 +151,14 @@ Public Class Form8
                     Label1.ForeColor = Color.Black
                 End If
 
-                ' Tampilkan tipe: hanya 1 tipe yang ditampilkan di ComboBox1
+                ' Tampilkan tipe
                 ComboBox1.Items.Clear()
                 ComboBox1.Items.Add(tipeValue)
                 ComboBox1.SelectedIndex = 0
+            Else
+                ' Jika tidak ditemukan, tampilkan pesan default
+                Label1.Text = "Belum ada produk dipilih"
+                Label1.ForeColor = Color.Gray
             End If
 
             dr.Close()
@@ -159,14 +167,10 @@ Public Class Form8
         End Try
     End Sub
 
-
-
     Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
-
     End Sub
 
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -226,5 +230,4 @@ Public Class Form8
             MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-
 End Class
