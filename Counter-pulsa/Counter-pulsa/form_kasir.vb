@@ -1,5 +1,7 @@
 ﻿Imports System.Data.Odbc
 
+
+'refactor keluar harga jual 
 Public Class form_kasir
     Dim conn As OdbcConnection
     Dim da As OdbcDataAdapter

@@ -39,6 +39,8 @@ Partial Class form_kasir
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.logout = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -46,7 +48,7 @@ Partial Class form_kasir
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 236)
+        Me.DataGridView1.Location = New System.Drawing.Point(10, 290)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(656, 92)
         Me.DataGridView1.TabIndex = 24
@@ -57,7 +59,7 @@ Partial Class form_kasir
         Me.Button4.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rmlg1
         Me.Button4.Font = New System.Drawing.Font("Javanese Text", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button4.Location = New System.Drawing.Point(562, 334)
+        Me.Button4.Location = New System.Drawing.Point(583, 486)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(106, 44)
         Me.Button4.TabIndex = 23
@@ -197,7 +199,7 @@ Partial Class form_kasir
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label1.Location = New System.Drawing.Point(65, 205)
+        Me.Label1.Location = New System.Drawing.Point(51, 259)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(220, 28)
         Me.Label1.TabIndex = 38
@@ -209,18 +211,39 @@ Partial Class form_kasir
         Me.logout.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rmlg1
         Me.logout.Font = New System.Drawing.Font("Javanese Text", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.logout.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.logout.Location = New System.Drawing.Point(312, 328)
+        Me.logout.Location = New System.Drawing.Point(333, 480)
         Me.logout.Name = "logout"
         Me.logout.Size = New System.Drawing.Size(106, 44)
         Me.logout.TabIndex = 39
         Me.logout.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(223, 203)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(244, 20)
+        Me.TextBox1.TabIndex = 41
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.BackColor = System.Drawing.Color.Transparent
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 12.0!)
+        Me.Label7.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label7.Location = New System.Drawing.Point(54, 200)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(54, 21)
+        Me.Label7.TabIndex = 40
+        Me.Label7.Text = "Bayar"
         '
         'form_kasir
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rm__4_
-        Me.ClientSize = New System.Drawing.Size(686, 384)
+        Me.ClientSize = New System.Drawing.Size(926, 536)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.logout)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox2)
@@ -262,4 +285,6 @@ Partial Class form_kasir
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents logout As System.Windows.Forms.Button
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
 End Class

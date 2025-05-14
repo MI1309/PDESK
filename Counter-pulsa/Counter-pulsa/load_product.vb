@@ -7,6 +7,7 @@ Public Class load_product
     Private isProviderLoaded As Boolean = False
     Private isStokLoaded As Boolean = False
 
+    ' load tab
     Private Sub load_product_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.BackColor = Color.WhiteSmoke
         TabControl1.DrawMode = TabDrawMode.OwnerDrawFixed
@@ -128,4 +129,10 @@ Public Class load_product
         isStokLoaded = True
     End Sub
 
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
+
+    End Sub
+    Private Sub Label2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
 End Class

@@ -30,9 +30,9 @@ Partial Class daftar_product
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(21, 133)
+        Me.DataGridView1.Location = New System.Drawing.Point(66, 159)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1187, 425)
+        Me.DataGridView1.Size = New System.Drawing.Size(851, 326)
         Me.DataGridView1.TabIndex = 56
         '
         'Label2
@@ -41,7 +41,7 @@ Partial Class daftar_product
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Palatino Linotype", 24.0!, System.Drawing.FontStyle.Bold)
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(480, 49)
+        Me.Label2.Location = New System.Drawing.Point(335, 74)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(263, 44)
         Me.Label2.TabIndex = 57
@@ -52,11 +52,10 @@ Partial Class daftar_product
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.bg__3_
-        Me.ClientSize = New System.Drawing.Size(1256, 640)
+        Me.ClientSize = New System.Drawing.Size(1270, 633)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "daftar_product"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Daftar Product"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
