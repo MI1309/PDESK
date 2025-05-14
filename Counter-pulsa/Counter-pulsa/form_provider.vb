@@ -368,46 +368,102 @@ Public Class form_provider
         End Try
     End Sub
 
-    ' Delete selected product
+    ' Delete selected product or price type
     Private Sub Button3_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button3.Click
-        If String.IsNullOrEmpty(TextBox1.Text) Then
+        If String.IsNullOrEmpty(TextBox2.Text) Then
             MsgBox("Pilih produk yang ingin dihapus dulu, ya.", vbExclamation)
             Exit Sub
         End If
 
         Try
-            ' Ambil ID produk
-            Dim idProduk As Integer = Integer.Parse(TextBox1.Text.Replace("LP", ""))
+            ' Ambil nama produk yang dimasukkan oleh user
+            Dim namaProduk As String = TextBox2.Text.Trim()
 
             ' Cek koneksi
             test_conn()
 
-            ' Ambil nama provider sebelum konfirmasi hapus
-            Dim namaProvider As String = ""
-            Dim selectCmd As New OdbcCommand("SELECT nama_produk FROM admin_product WHERE id = ?", conn)
-            selectCmd.Parameters.AddWithValue("?", idProduk)
+            ' Menggunakan LIKE untuk mencocokkan nama produk
+            Dim productName As String = ""
+            Dim selectCmd As New OdbcCommand("SELECT nama_produk FROM admin_product WHERE LOWER(nama_produk) LIKE LOWER(?)", conn)
+            selectCmd.Parameters.AddWithValue("?", "%" & namaProduk & "%")
             Using reader As OdbcDataReader = selectCmd.ExecuteReader()
                 If reader.Read() Then
-                    namaProvider = reader("nama_produk").ToString()
+                    productName = reader("nama_produk").ToString()
                 End If
             End Using
 
-            ' Jika nama provider ditemukan, tampilkan konfirmasi hapus
-            If Not String.IsNullOrEmpty(namaProvider) Then
-                Dim result = MessageBox.Show("Yakin ingin menghapus produk '" & namaProvider & "'?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                If result = DialogResult.No Then Exit Sub
-
-                ' Lakukan hapus produk
-                Dim sql As String = "DELETE FROM admin_product WHERE nama_produk = ?"
-                Using cmd As New OdbcCommand(sql, conn)
-                    cmd.Parameters.AddWithValue("?", namaProvider)
-                    cmd.ExecuteNonQuery()
+            ' Jika nama produk ditemukan, tampilkan konfirmasi hapus
+            If Not String.IsNullOrEmpty(productName) Then
+                ' Ambil daftar tipe harga yang terkait dengan produk ini berdasarkan nama_produk
+                Dim tipeHargaList As New List(Of String)
+                Dim selectTipeHargaCmd As New OdbcCommand("SELECT tipe FROM admin_product WHERE nama_produk = ?", conn)
+                selectTipeHargaCmd.Parameters.AddWithValue("?", productName)
+                Using reader As OdbcDataReader = selectTipeHargaCmd.ExecuteReader()
+                    While reader.Read()
+                        tipeHargaList.Add(reader("tipe").ToString())
+                    End While
                 End Using
 
-                MsgBox("Produk '" & namaProvider & "' berhasil dihapus.")
-                resetForm()
-                LoadDataToGrid()
-                loadidproduk()
+                ' Jika ada tipe harga yang ditemukan, tampilkan ke pengguna
+                If tipeHargaList.Count > 0 Then
+                    ' Gabungkan semua tipe harga menjadi satu string
+                    Dim tipeHargaString As String = String.Join(vbCrLf, tipeHargaList)
+
+                    ' Menampilkan pilihan tindakan kepada pengguna menggunakan MessageBox
+                    Dim result As DialogResult = MessageBox.Show("Pilih tindakan untuk '" & productName & "':" & vbCrLf & vbCrLf & _
+                                               "yes. Hapus produk" & vbCrLf & _
+                                               "no. Hapus hanya tipe harga" & vbCrLf & _
+                                               "cancel untuk membatalkan" & vbCrLf & vbCrLf & _
+                                               "Daftar tipe harga yang ada:" & vbCrLf & _
+                                               tipeHargaString, _
+                                               "Konfirmasi Hapus", _
+                                               MessageBoxButtons.YesNoCancel, _
+                                               MessageBoxIcon.Question)
+
+
+
+                    Select Case result
+                        Case DialogResult.Yes
+                            ' Hapus produk secara keseluruhan berdasarkan nama produk
+                            Dim sql As String = "DELETE FROM admin_product WHERE nama_produk = ?"
+                            Using cmd As New OdbcCommand(sql, conn)
+                                cmd.Parameters.AddWithValue("?", productName)
+                                cmd.ExecuteNonQuery()
+                            End Using
+                            MsgBox("Produk '" & productName & "' berhasil dihapus.")
+
+                        Case DialogResult.No
+                            ' Menampilkan pilihan tipe harga yang ingin dihapus
+                            Dim tipeHargaToDelete As String = InputBox("Masukkan nama tipe harga yang ingin dihapus:" & vbCrLf & tipeHargaString,
+                                                                       "Hapus Tipe Harga",
+                                                                       tipeHargaList(0)) ' Default ke tipe harga pertama
+
+                            If String.IsNullOrEmpty(tipeHargaToDelete) OrElse Not tipeHargaList.Contains(tipeHargaToDelete) Then
+                                MsgBox("Tipe harga tidak valid atau tidak ditemukan.", vbExclamation)
+                                Exit Sub
+                            End If
+
+                            ' Hapus tipe harga spesifik yang dipilih berdasarkan nama produk dan tipe harga
+                            Dim sqlDeleteTipe As String = "DELETE FROM admin_product WHERE nama_produk = ? AND tipe = ?"
+                            Using cmd As New OdbcCommand(sqlDeleteTipe, conn)
+                                cmd.Parameters.AddWithValue("?", productName)
+                                cmd.Parameters.AddWithValue("?", tipeHargaToDelete)
+                                cmd.ExecuteNonQuery()
+                            End Using
+                            MsgBox("Tipe harga '" & tipeHargaToDelete & "' untuk produk '" & productName & "' berhasil dihapus.")
+
+                        Case DialogResult.Cancel
+                            ' Jika pengguna memilih Cancel, keluar dari prosedur
+                            MsgBox("Operasi dibatalkan.", vbInformation)
+
+                    End Select
+
+                    resetForm()
+                    LoadDataToGrid()
+                    loadidproduk()
+                Else
+                    MsgBox("Produk tidak memiliki tipe harga yang dapat dihapus.", vbExclamation)
+                End If
             Else
                 MsgBox("Produk tidak ditemukan.", vbExclamation)
             End If

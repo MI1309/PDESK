@@ -23,7 +23,7 @@ Public Class form_stock
     Sub product()
         Try
             ' Query untuk mengambil data dari database
-            mysql = "SELECT nama_produk FROM admin_product"
+            mysql = "SELECT DISTINCT nama_produk FROM admin_product"
             da = New OdbcDataAdapter(mysql, conn)
             ds = New DataSet()
             da.Fill(ds, "nama_produk")
@@ -128,44 +128,76 @@ Public Class form_stock
         End If
     End Sub
 
-    Private Sub ComboBox3_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox3.SelectedIndexChanged
+    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
         Try
+            If ComboBox3.SelectedIndex = -1 Or ComboBox1.SelectedIndex = -1 Then Exit Sub
+
             Dim selectedProduct As String = ComboBox3.SelectedItem.ToString()
-            Dim cmd As New OdbcCommand("SELECT stok, tipe FROM admin_product WHERE nama_produk = ?", conn)
+            Dim selectedTipe As String = ComboBox1.SelectedItem.ToString()
+
+            ' Ambil stok dari produk + tipe
+            Dim cmd As New OdbcCommand("SELECT stok FROM admin_product WHERE nama_produk = ? AND tipe = ?", conn)
             cmd.Parameters.AddWithValue("@nama_produk", selectedProduct)
+            cmd.Parameters.AddWithValue("@tipe", selectedTipe)
 
             Dim dr As OdbcDataReader = cmd.ExecuteReader()
 
             If dr.Read() Then
-                ' Ambil nilai stok dan tipe
                 Dim stokValue As Integer = Convert.ToInt32(dr("stok"))
-                Dim tipeValue As String = dr("tipe").ToString()
-
-                ' Tampilkan stok
                 Label1.Text = stokValue.ToString()
-
-                ' Warna merah jika stok 0
-                If stokValue = 0 Then
-                    Label1.ForeColor = Color.Red
-                Else
-                    Label1.ForeColor = Color.Black
-                End If
-
-                ' Tampilkan tipe
-                ComboBox1.Items.Clear()
-                ComboBox1.Items.Add(tipeValue)
-                ComboBox1.SelectedIndex = 0
+                Label1.ForeColor = If(stokValue = 0, Color.Red, Color.Black)
             Else
-                ' Jika tidak ditemukan, tampilkan pesan default
+                Label1.Text = "Stok tidak ditemukan"
+                Label1.ForeColor = Color.Gray
+            End If
+            dr.Close()
+        Catch ex As Exception
+            MsgBox("Error saat menampilkan stok: " & ex.Message)
+        End Try
+    End Sub
+
+
+    Private Sub ComboBox3_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox3.SelectedIndexChanged
+        Try
+            Dim selectedProduct As String = ComboBox3.SelectedItem.ToString()
+
+            ' Ambil stok total dari semua baris produk yang sama
+            Dim cmd As New OdbcCommand("SELECT SUM(stok) AS total_stok FROM admin_product WHERE nama_produk = ?", conn)
+            cmd.Parameters.AddWithValue("@nama_produk", selectedProduct)
+            Dim dr As OdbcDataReader = cmd.ExecuteReader()
+
+            If dr.Read() Then
+                Dim stokValue As Integer = Convert.ToInt32(dr("total_stok"))
+                Label1.Text = stokValue.ToString()
+                Label1.ForeColor = If(stokValue = 0, Color.Red, Color.Black)
+            Else
                 Label1.Text = "Belum ada produk dipilih"
                 Label1.ForeColor = Color.Gray
             End If
-
             dr.Close()
+
+            ' Ambil semua tipe unik dari produk ini
+            Dim tipeCmd As New OdbcCommand("SELECT DISTINCT tipe FROM admin_product WHERE nama_produk = ?", conn)
+            tipeCmd.Parameters.AddWithValue("@nama_produk", selectedProduct)
+            Dim tipeDr As OdbcDataReader = tipeCmd.ExecuteReader()
+
+            ComboBox1.Items.Clear()
+            While tipeDr.Read()
+                ComboBox1.Items.Add(tipeDr("tipe").ToString())
+            End While
+            tipeDr.Close()
+
+            ' Auto-select tipe pertama jika ada
+            If ComboBox1.Items.Count > 0 Then
+                ComboBox1.SelectedIndex = 0
+            End If
+
         Catch ex As Exception
             MsgBox("Error saat mengambil data produk: " & ex.Message)
         End Try
     End Sub
+
+
 
     Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
     End Sub
@@ -175,53 +207,53 @@ Public Class form_stock
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Try
-            ' Pastikan ada produk yang dipilih
-            If ComboBox3.SelectedIndex = -1 Then
-                MsgBox("Pilih produk terlebih dahulu.", MsgBoxStyle.Exclamation, "Error")
+            ' Pastikan ada produk dan tipe yang dipilih
+            If ComboBox3.SelectedIndex = -1 Or ComboBox1.SelectedIndex = -1 Then
+                MsgBox("Pilih produk dan tipe terlebih dahulu.", MsgBoxStyle.Exclamation, "Error")
                 Return
             End If
 
-            ' Ambil produk yang dipilih dari ComboBox3
+            ' Ambil produk dan tipe yang dipilih
             Dim selectedProduct As String = ComboBox3.SelectedItem.ToString()
+            Dim selectedTipe As String = ComboBox1.SelectedItem.ToString()
 
-            ' Ambil jumlah stok yang ingin ditambah dari TextBox (misalnya TextBox2)
+            ' Ambil jumlah stok yang ingin ditambah dari TextBox3
             Dim tambahStok As Integer
             If Not Integer.TryParse(TextBox3.Text, tambahStok) OrElse tambahStok <= 0 Then
                 MsgBox("Masukkan jumlah stok yang valid untuk ditambahkan.", MsgBoxStyle.Exclamation, "Error")
                 Return
             End If
 
-            ' Query untuk mengambil stok saat ini
-            Dim cmd As New OdbcCommand("SELECT stok FROM admin_product WHERE nama_produk = ?", conn)
+            ' Ambil stok saat ini untuk produk + tipe yang dipilih
+            Dim cmd As New OdbcCommand("SELECT stok FROM admin_product WHERE nama_produk = ? AND tipe = ?", conn)
             cmd.Parameters.AddWithValue("@nama_produk", selectedProduct)
+            cmd.Parameters.AddWithValue("@tipe", selectedTipe)
 
             Dim currentStok As Integer = 0
             Dim dr As OdbcDataReader = cmd.ExecuteReader()
 
             If dr.Read() Then
-                ' Ambil nilai stok saat ini
                 currentStok = Convert.ToInt32(dr("stok"))
+            Else
+                MsgBox("Data produk dan tipe tidak ditemukan.", MsgBoxStyle.Exclamation, "Error")
+                dr.Close()
+                Return
             End If
             dr.Close()
 
             ' Hitung stok baru
             Dim newStok As Integer = currentStok + tambahStok
 
-            ' Update stok di database
-            Dim updateCmd As New OdbcCommand("UPDATE admin_product SET stok = ? WHERE nama_produk = ?", conn)
+            ' Update stok hanya untuk produk + tipe tersebut
+            Dim updateCmd As New OdbcCommand("UPDATE admin_product SET stok = ? WHERE nama_produk = ? AND tipe = ?", conn)
             updateCmd.Parameters.AddWithValue("@stok", newStok)
             updateCmd.Parameters.AddWithValue("@nama_produk", selectedProduct)
+            updateCmd.Parameters.AddWithValue("@tipe", selectedTipe)
             updateCmd.ExecuteNonQuery()
 
-            ' Tampilkan stok baru di Label1
+            ' Tampilkan stok baru
             Label1.Text = newStok.ToString()
-
-            ' Sesuaikan warna stok: merah jika stok = 0
-            If newStok = 0 Then
-                Label1.ForeColor = Color.Red
-            Else
-                Label1.ForeColor = Color.Black
-            End If
+            Label1.ForeColor = If(newStok = 0, Color.Red, Color.Black)
             TextBox3.Clear()
 
             MsgBox("Stok berhasil ditambahkan!", MsgBoxStyle.Information, "Berhasil")
@@ -230,4 +262,5 @@ Public Class form_stock
             MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+
 End Class

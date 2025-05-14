@@ -158,7 +158,7 @@ Partial Class form_provider
         Me.Button5.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Button5.BackgroundImage = CType(resources.GetObject("Button5.BackgroundImage"), System.Drawing.Image)
         Me.Button5.Font = New System.Drawing.Font("Century Gothic", 9.75!)
-        Me.Button5.Location = New System.Drawing.Point(587, 395)
+        Me.Button5.Location = New System.Drawing.Point(610, 395)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(138, 59)
         Me.Button5.TabIndex = 66

@@ -24,6 +24,7 @@ Partial Class daftar_product
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,12 +48,22 @@ Partial Class daftar_product
         Me.Label2.TabIndex = 57
         Me.Label2.Text = "LIST PRODUK :"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(1072, 203)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(131, 66)
+        Me.Button1.TabIndex = 58
+        Me.Button1.Text = "refresh"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'daftar_product
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.bg__3_
         Me.ClientSize = New System.Drawing.Size(1270, 633)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "daftar_product"
@@ -64,4 +75,5 @@ Partial Class daftar_product
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class
