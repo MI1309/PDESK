@@ -45,7 +45,7 @@ Public Class data_kasir
 
     ' Styling DataGridView
     Private Sub Form4_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        TextBox6.PasswordChar = "*"
         tampilData()
         With DataGridView1
             .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
@@ -129,7 +129,7 @@ Public Class data_kasir
 
 
     ' Button untuk menutup form
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
         If previousForm IsNot Nothing Then
             previousForm.Show()
@@ -302,6 +302,7 @@ Public Class data_kasir
         TextBox4.Clear()
         TextBox5.Clear()
         TextBox6.Clear()
+        selectedId = -1
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click

@@ -42,8 +42,7 @@ Public Class form_login
             MsgBox("Connection failed: " & ex.Message)
         End Try
     End Sub
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         ' Validate inputs
         If TextBox1.Text = "" And TextBox2.Text = "" And ComboBox1.Text = "" Then
             MsgBox("Please enter valid input")
@@ -74,17 +73,14 @@ Public Class form_login
                     rd.Read()
                     ' Store the logged-in username
                     loggedInUserUsername = TextBox1.Text
+                    Dim userRole As String = ComboBox1.Text
 
                     ' Routing to different forms based on the role
-                    If TextBox1.Text.ToLower = "admin" And TextBox2.Text.ToLower = "admin" And ComboBox1.Text.ToLower = "admin" Then
-                        tampilDataKasir()
-                        Threading.Thread.Sleep(100)
+                    If userRole.ToLower = "admin" Then
                         admin.Show()
                         Me.Hide()
-                    ElseIf ComboBox1.Text.ToLower = "kasir" Then
+                    ElseIf userRole.ToLower = "kasir" Then
                         form_kasir.loggedInUserUsername = TextBox1.Text
-                        tampilDataKasir()
-                        Threading.Thread.Sleep(100) ' Delay 1 second
                         form_kasir.Show()
                         Me.Hide()
                     End If
@@ -100,14 +96,16 @@ Public Class form_login
         End If
     End Sub
 
+
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        TextBox1.Text = ""
-        TextBox2.Text = ""
-        ComboBox1.Items.Clear()
+        TextBox1.Text = "" ' Clear username
+        TextBox2.Text = "" ' Clear password
+        ComboBox1.SelectedIndex = -1 ' Clear ComboBox selection
     End Sub
 
+
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        Me.Close()
+        Application.Exit()
     End Sub
 
     ' Handle the KeyDown events for the TextBoxes and ComboBox to manage user input and navigation
@@ -167,5 +165,13 @@ Public Class form_login
 
     ' TextBox TextChanged Event (Not Used But Left for Structure)
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox2.TextChanged
+
     End Sub
 End Class

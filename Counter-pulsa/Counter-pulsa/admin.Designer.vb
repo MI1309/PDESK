@@ -23,15 +23,12 @@ Partial Class admin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -41,63 +38,12 @@ Partial Class admin
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(125, 24)
+        Me.Label1.Location = New System.Drawing.Point(677, 353)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(372, 44)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "DASHBOARD ADMIN"
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Button1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI Historic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button1.Location = New System.Drawing.Point(562, 273)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(190, 60)
-        Me.Button1.TabIndex = 20
-        Me.Button1.Text = "Data User"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Button2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
-        Me.Button2.Font = New System.Drawing.Font("Segoe UI Historic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button2.Location = New System.Drawing.Point(584, 356)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(190, 60)
-        Me.Button2.TabIndex = 21
-        Me.Button2.Text = "Data Product"
-        Me.Button2.UseVisualStyleBackColor = False
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Button3.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
-        Me.Button3.Font = New System.Drawing.Font("Segoe UI Historic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button3.Location = New System.Drawing.Point(562, 122)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(212, 60)
-        Me.Button3.TabIndex = 22
-        Me.Button3.Text = "Laporan"
-        Me.Button3.UseVisualStyleBackColor = False
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Button4.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
-        Me.Button4.Font = New System.Drawing.Font("Segoe UI Historic", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button4.Location = New System.Drawing.Point(562, 207)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(212, 60)
-        Me.Button4.TabIndex = 23
-        Me.Button4.Text = "Exit"
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TabControl1
         '
@@ -154,19 +100,29 @@ Partial Class admin
         Me.TabPage4.Text = "TabPage4"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Palatino Linotype", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label2.Location = New System.Drawing.Point(677, 474)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(372, 44)
+        Me.Label2.TabIndex = 61
+        Me.Label2.Text = "DASHBOARD ADMIN"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'admin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.bg__3_
-        Me.ClientSize = New System.Drawing.Size(804, 505)
+        Me.ClientSize = New System.Drawing.Size(1864, 947)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
         Me.Name = "admin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " "
@@ -177,13 +133,10 @@ Partial Class admin
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class

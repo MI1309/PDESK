@@ -28,7 +28,6 @@ Partial Class data_kasir
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -98,18 +97,6 @@ Partial Class data_kasir
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(830, 176)
         Me.DataGridView1.TabIndex = 40
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button4.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rmlg
-        Me.Button4.Font = New System.Drawing.Font("Javanese Text", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button4.Location = New System.Drawing.Point(682, 439)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(106, 44)
-        Me.Button4.TabIndex = 39
-        Me.Button4.UseVisualStyleBackColor = False
         '
         'Button3
         '
@@ -266,7 +253,7 @@ Partial Class data_kasir
         Me.PictureBox1.TabIndex = 41
         Me.PictureBox1.TabStop = False
         '
-        'Form4
+        'data_kasir
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -288,12 +275,11 @@ Partial Class data_kasir
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
-        Me.Name = "Form4"
+        Me.Name = "data_kasir"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " "
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -308,7 +294,6 @@ Partial Class data_kasir
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button

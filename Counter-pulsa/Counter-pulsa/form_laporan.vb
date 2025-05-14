@@ -133,7 +133,7 @@ Public Class form_laporan
         loadUsersToRadioButtons()
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs)
         Me.Close()
         If previousForm IsNot Nothing Then
             previousForm.Show()

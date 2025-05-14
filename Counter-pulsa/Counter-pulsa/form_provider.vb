@@ -8,6 +8,7 @@ Public Class form_provider
     Dim mysql As String
     Public loggedInUserId As Integer
     Private selectedId As Integer = -1
+
     ' load harga
     Private Sub loadTipeHarga()
         Dim tipeList As New Dictionary(Of String, Integer) From {
@@ -26,8 +27,6 @@ Public Class form_provider
         ComboBox2.SelectedIndex = -1
         ComboBox2.Text = ""
     End Sub
-
-
 
 
     ' validasi function
@@ -78,8 +77,13 @@ Public Class form_provider
     ' Load form data
     Private Sub Form5_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         loadTipeHarga()
+        ComboBox2.SelectedIndex = -1 ' Optionally reset combobox on load
         TextBox1.ReadOnly = True
         LoadDataToGrid()
+        TextBox1.Clear()
+        TextBox2.Clear()
+        TextBox3.Clear()
+        TextBox4.Clear()
         loadidproduk()
         ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
         setupDataGridView()
@@ -123,28 +127,33 @@ Public Class form_provider
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
         End Try
     End Sub
+
+    ' memuat data ke grid
     Sub LoadDataToGrid()
         Try
             test_conn()
 
-            ' Ambil semua data, tapi hanya tampilkan kolom tertentu
-            Dim query As String = "SELECT id, nama_produk, harga_jual, harga_kulak, tipe FROM admin_product"
+            ' Ambil nama_produk saja
+            Dim query As String = "SELECT * FROM admin_product GROUP BY nama_produk"
+
             Dim cmd As New OdbcCommand(query, conn)
             Dim da As New OdbcDataAdapter(cmd)
             Dim dt As New DataTable
             da.Fill(dt)
 
+            ' Mengatur data sumber ke DataGridView
             DataGridView1.DataSource = dt
 
-            ' Atur header
+            ' Hanya menampilkan nama_produk
             DataGridView1.Columns("nama_produk").HeaderText = "Nama Produk"
+            DataGridView1.Columns("nama_produk").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill ' Memastikan kolom mengisi lebar grid
 
-            ' Sembunyikan kolom lain (biar nggak kelihatan tapi tetap bisa dipakai)
-            DataGridView1.Columns("id").Visible = False
-            DataGridView1.Columns("harga_jual").Visible = False
-            DataGridView1.Columns("harga_kulak").Visible = False
-            DataGridView1.Columns("tipe").Visible = False
-
+            ' Menyembunyikan kolom lainnya jika ada
+            For Each col As DataGridViewColumn In DataGridView1.Columns
+                If col.Name <> "nama_produk" Then
+                    col.Visible = False
+                End If
+            Next
         Catch ex As Exception
             MsgBox("Gagal memuat data: " & ex.Message, vbCritical)
         Finally
@@ -221,51 +230,48 @@ Public Class form_provider
     End Function
 
     ' Insert new product
-    ' Add new product
-    ' Insert new product
     Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
-        ' Validasi input kosong
-        If Not ValidasiInputKosong(TextBox2, TextBox3, TextBox4, ComboBox2) Then Exit Sub
-
+        ' Validasi input
         Try
-            ' Ambil nilai input dari TextBox dan ComboBox
-            Dim namaProduk As String = TextBox2.Text
-            Dim hargaJual As Integer = CInt(TextBox3.Text)
-            Dim hargaKulak As Integer = CInt(TextBox4.Text)
-            ' Stok tidak perlu diambil dari input lagi
-            Dim tipe As Integer = CInt(DirectCast(ComboBox2.SelectedItem, KeyValuePair(Of String, Integer)).Value)
+            Dim namaProduk As String = TextBox2.Text.Trim()
+            Dim hargaJual As Integer = Integer.Parse(TextBox3.Text)
+            Dim hargaKulak As Integer = Integer.Parse(TextBox4.Text)
+            Dim tipe As Integer = CType(ComboBox2.SelectedItem, KeyValuePair(Of String, Integer)).Value
 
-            ' Test koneksi ke database
+            ' Cek apakah produk dengan nama, tipe, dan harga sudah ada
             test_conn()
 
-            ' Cek apakah produk sudah ada di database
-            Dim checkCmd As New OdbcCommand("SELECT COUNT(*) FROM admin_product WHERE nama_produk = ?", conn)
-            checkCmd.Parameters.AddWithValue("@nama_produk", namaProduk)
-            Dim exists As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
+            ' Memastikan urutan parameter sesuai
+            Dim checkCmd As New OdbcCommand("SELECT COUNT(*) FROM admin_product WHERE nama_produk = ? AND tipe = ? AND harga_jual = ? AND harga_kulak = ?", conn)
+            checkCmd.Parameters.AddWithValue("?", namaProduk)  ' Menambahkan parameter nama_produk
+            checkCmd.Parameters.AddWithValue("?", tipe)  ' Menambahkan parameter tipe
+            checkCmd.Parameters.AddWithValue("?", hargaJual)  ' Menambahkan parameter harga_jual
+            checkCmd.Parameters.AddWithValue("?", hargaKulak)  ' Menambahkan parameter harga_kulak
 
-            If exists > 0 Then
-                MsgBox("Produk sudah ada di penjualan", vbExclamation)
+            If Convert.ToInt32(checkCmd.ExecuteScalar()) > 0 Then
+                MsgBox("Produk dengan nama, tipe, dan harga ini sudah ada.", vbExclamation)
                 Exit Sub
             End If
 
-            ' Insert produk baru tanpa mengisi stok secara manual
+            ' Insert produk baru
             Dim sql As String = "INSERT INTO admin_product (nama_produk, harga_jual, harga_kulak, tanggal_restock, stok, tipe) " &
-                                "VALUES (?, ?, ?, ?, 0, ?)" ' Stok default 0
+                                "VALUES (?, ?, ?, ?, 0, ?)"
             Using cmd As New OdbcCommand(sql, conn)
-                cmd.Parameters.AddWithValue("@nama_produk", namaProduk)
-                cmd.Parameters.AddWithValue("@harga_jual", hargaJual)
-                cmd.Parameters.AddWithValue("@harga_kulak", hargaKulak)
-                cmd.Parameters.AddWithValue("@tanggal_restock", DateTime.Now)
-                cmd.Parameters.AddWithValue("@tipe", tipe)
+                ' Memastikan urutan parameter yang benar
+                cmd.Parameters.AddWithValue("?", namaProduk)  ' Menambahkan parameter nama_produk
+                cmd.Parameters.AddWithValue("?", hargaJual)  ' Menambahkan parameter harga_jual
+                cmd.Parameters.AddWithValue("?", hargaKulak)  ' Menambahkan parameter harga_kulak
+                cmd.Parameters.AddWithValue("?", DateTime.Now)  ' Menambahkan parameter tanggal_restock
+                cmd.Parameters.AddWithValue("?", tipe)  ' Menambahkan parameter tipe
                 cmd.ExecuteNonQuery()
             End Using
 
-            MsgBox("Produk berhasil ditambahkan ke penjualan")
-            resetForm() ' Reset form setelah data disimpan
-            LoadDataToGrid() ' Load data terbaru ke Grid
+            MsgBox("Produk berhasil ditambahkan.")
+            resetForm()
+            LoadDataToGrid()
+            loadidproduk()
 
         Catch ex As Exception
-            ' Log error
             IO.File.AppendAllText("error_log.txt", Now & " - " & ex.ToString() & Environment.NewLine)
             MsgBox("Terjadi kesalahan saat menyimpan data.", vbCritical)
         Finally
@@ -274,7 +280,25 @@ Public Class form_provider
     End Sub
 
 
+
+
+
+
     Private Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button2.Click
+        If selectedId = -1 OrElse String.IsNullOrWhiteSpace(TextBox1.Text) Then
+            MsgBox("Tidak ada data yang dipilih untuk diperbarui!", vbExclamation)
+            Exit Sub
+        End If
+
+        If TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox2.SelectedIndex = -1 Then
+            MsgBox("Pilih data yang ingin diupdate di list dan pastikan semua kolom diisi.", vbExclamation)
+            Exit Sub
+        End If
+        If selectedId = -1 Then
+            MsgBox("Silakan pilih data yang ingin diupdate dari daftar terlebih dahulu.", vbExclamation)
+            Exit Sub
+        End If
+
         ' Validasi input kosong
         If TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox2.SelectedIndex = -1 Then
             MsgBox("Pilih data yang ingin diupdate di list dan pastikan semua kolom diisi.", vbExclamation)
@@ -295,7 +319,6 @@ Public Class form_provider
         End If
 
         Try
-            Dim idProduk As Integer = Integer.Parse(TextBox1.Text.Replace("LP", ""))
             Dim namaProduk As String = TextBox2.Text
             Dim tipe As Integer = CInt(DirectCast(ComboBox2.SelectedItem, KeyValuePair(Of String, Integer)).Value)
 
@@ -304,7 +327,7 @@ Public Class form_provider
             ' Cek apakah data sama
             Dim sqlCek As String = "SELECT nama_produk, harga_jual, harga_kulak, tipe FROM admin_product WHERE id = ?"
             Using cmdCek As New OdbcCommand(sqlCek, conn)
-                cmdCek.Parameters.AddWithValue("@id", idProduk)
+                cmdCek.Parameters.AddWithValue("@id", selectedId)
 
                 Using reader = cmdCek.ExecuteReader()
                     If reader.Read() Then
@@ -328,7 +351,7 @@ Public Class form_provider
                 cmd.Parameters.AddWithValue("@harga_jual", hargaJual)
                 cmd.Parameters.AddWithValue("@harga_kulak", hargaKulak)
                 cmd.Parameters.AddWithValue("@tipe", tipe)
-                cmd.Parameters.AddWithValue("@id", idProduk)
+                cmd.Parameters.AddWithValue("@id", selectedId)
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -345,9 +368,6 @@ Public Class form_provider
         End Try
     End Sub
 
-
-
-
     ' Delete selected product
     Private Sub Button3_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button3.Click
         If String.IsNullOrEmpty(TextBox1.Text) Then
@@ -355,24 +375,43 @@ Public Class form_provider
             Exit Sub
         End If
 
-        ' Konfirmasi sebelum hapus
-        Dim result = MessageBox.Show("Yakin ingin menghapus produk ini?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.No Then Exit Sub
-
         Try
+            ' Ambil ID produk
             Dim idProduk As Integer = Integer.Parse(TextBox1.Text.Replace("LP", ""))
+
+            ' Cek koneksi
             test_conn()
 
-            Dim sql As String = "DELETE FROM admin_product WHERE id = ?"
-            Using cmd As New OdbcCommand(sql, conn)
-                cmd.Parameters.AddWithValue("@id", idProduk)
-                cmd.ExecuteNonQuery()
+            ' Ambil nama provider sebelum konfirmasi hapus
+            Dim namaProvider As String = ""
+            Dim selectCmd As New OdbcCommand("SELECT nama_produk FROM admin_product WHERE id = ?", conn)
+            selectCmd.Parameters.AddWithValue("?", idProduk)
+            Using reader As OdbcDataReader = selectCmd.ExecuteReader()
+                If reader.Read() Then
+                    namaProvider = reader("nama_produk").ToString()
+                End If
             End Using
 
-            MsgBox("Produk berhasil dihapus.")
-            resetForm()
-            LoadDataToGrid()
-            loadidproduk()
+            ' Jika nama provider ditemukan, tampilkan konfirmasi hapus
+            If Not String.IsNullOrEmpty(namaProvider) Then
+                Dim result = MessageBox.Show("Yakin ingin menghapus produk '" & namaProvider & "'?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.No Then Exit Sub
+
+                ' Lakukan hapus produk
+                Dim sql As String = "DELETE FROM admin_product WHERE nama_produk = ?"
+                Using cmd As New OdbcCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("?", namaProvider)
+                    cmd.ExecuteNonQuery()
+                End Using
+
+                MsgBox("Produk '" & namaProvider & "' berhasil dihapus.")
+                resetForm()
+                LoadDataToGrid()
+                loadidproduk()
+            Else
+                MsgBox("Produk tidak ditemukan.", vbExclamation)
+            End If
+
         Catch ex As Exception
             IO.File.AppendAllText("error_log.txt", Now & " - " & ex.ToString() & Environment.NewLine)
             MsgBox("Gagal menghapus data: " & ex.Message, vbCritical)
@@ -399,6 +438,9 @@ Public Class form_provider
                     TextBox1.Clear()
                 End If
 
+                ' Set selectedId
+                selectedId = Convert.ToInt32(selectedRow.Cells("id").Value)
+
                 ' Ambil data lain dan tampilkan di form
                 TextBox2.Text = selectedRow.Cells("nama_produk").Value.ToString() ' Nama Produk
                 TextBox3.Text = selectedRow.Cells("harga_jual").Value.ToString() ' Harga Jual
@@ -415,6 +457,7 @@ Public Class form_provider
             End Try
         End If
     End Sub
+
 
 
 
@@ -438,12 +481,16 @@ Public Class form_provider
 
     ' Reset form fields
     Private Sub resetForm()
+        TextBox1.Clear()
         TextBox2.Clear()
         TextBox3.Clear()
         TextBox4.Clear()
         ComboBox2.SelectedIndex = -1
+        ComboBox2.Text = ""
         selectedId = -1
     End Sub
+
+
     Private Sub TextBox2_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TextBox2.KeyPress
         ' Cegah input angka
         If Char.IsDigit(e.KeyChar) Then
@@ -488,6 +535,7 @@ Public Class form_provider
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
         resetForm()
         loadidproduk()
+        selectedId = -1
     End Sub
 
     'formatting 
@@ -507,7 +555,76 @@ Public Class form_provider
             End Try
         End If
     End Sub
+    Private Sub UpdateHarga(ByVal tipe As Integer)
+        Try
+            test_conn() ' Make sure to open a connection
 
+            ' Query to fetch harga_jual and harga_kulak based on tipe
+            Dim query As String = "SELECT harga_jual, harga_kulak FROM admin_product WHERE tipe = ? LIMIT 1"
+            Using cmd As New OdbcCommand(query, conn)
+                cmd.Parameters.AddWithValue("?", tipe)
+
+                Using reader As OdbcDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        ' Update TextBoxes with the fetched prices
+                        TextBox3.Text = reader("harga_jual").ToString()
+                        TextBox4.Text = reader("harga_kulak").ToString()
+                    End If
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox("Error fetching harga: " & ex.Message, vbCritical)
+        Finally
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
+        End Try
+    End Sub
+    Private Sub ComboBox2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+        If ComboBox2.SelectedIndex <> -1 Then
+            ' Ambil produk yang dipilih dari ComboBox2
+            Dim selectedItem As KeyValuePair(Of String, Integer) = CType(ComboBox2.SelectedItem, KeyValuePair(Of String, Integer))
+            Dim tipeHarga As Integer = selectedItem.Value
+
+            ' Cari produk di database berdasarkan nama produk yang ada di TextBox1
+            Dim namaProduk As String = TextBox1.Text
+
+            ' Pastikan TextBox1 tidak kosong
+            'If String.IsNullOrWhiteSpace(namaProduk) Then
+            '    MsgBox("Nama produk tidak boleh kosong", vbExclamation)
+            '    Exit Sub
+            'End If
+
+            ' Cari produk berdasarkan nama produk di database
+            Try
+                test_conn()
+
+                ' Query untuk mendapatkan harga jual dan harga kulak berdasarkan nama produk
+                Dim query As String = "SELECT harga_jual, harga_kulak FROM admin_product WHERE nama_produk = ?"
+                Using cmd As New OdbcCommand(query, conn)
+                    cmd.Parameters.AddWithValue("?", namaProduk)
+                    Using reader As OdbcDataReader = cmd.ExecuteReader()
+                        If reader.Read() Then
+                            ' Set harga jual dan harga kulak ke TextBox
+                            TextBox3.Text = reader("harga_jual").ToString()
+                            TextBox4.Text = reader("harga_kulak").ToString()
+                        Else
+                            ' Tidak ada produk yang ditemukan, bersihkan TextBox
+                            TextBox3.Clear()
+                            TextBox4.Clear()
+                        End If
+                    End Using
+                End Using
+            Catch ex As Exception
+                ' Tampilkan pesan error jika terjadi kesalahan
+                MsgBox("Gagal memuat harga produk: " & ex.Message, vbCritical)
+                ' Bersihkan TextBox pada error
+                TextBox3.Clear()
+                TextBox4.Clear()
+            Finally
+                ' Pastikan koneksi selalu ditutup
+                If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
+            End Try
+        End If
+    End Sub
 
 
     'exit
