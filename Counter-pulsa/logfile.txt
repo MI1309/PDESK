@@ -1,0 +1,70 @@
+=====================================
+Date: 5/9/2025 10:13:01 AM
+Error Message: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+Stack Trace:    at System.Data.Odbc.OdbcConnection.SetStateExecuting(String method, OdbcTransaction transaction)
+   at System.Data.Odbc.OdbcCommand.ValidateConnectionAndTransaction(String method)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.Form3.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form3.vb:line 219
+=====================================
+=====================================
+Date: 5/9/2025 10:14:36 AM
+Error Message: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+Stack Trace:    at System.Data.Odbc.OdbcConnection.SetStateExecuting(String method, OdbcTransaction transaction)
+   at System.Data.Odbc.OdbcCommand.ValidateConnectionAndTransaction(String method)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.Form3.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form3.vb:line 219
+=====================================
+=====================================
+Date: 5/9/2025 10:18:06 AM
+Error Message: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+Stack Trace:    at System.Data.Odbc.OdbcConnection.SetStateExecuting(String method, OdbcTransaction transaction)
+   at System.Data.Odbc.OdbcCommand.ValidateConnectionAndTransaction(String method)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.Form3.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form3.vb:line 220
+=====================================
+=====================================
+Date: 5/9/2025 10:20:01 AM
+Error Message: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+Stack Trace:    at System.Data.Odbc.OdbcConnection.SetStateExecuting(String method, OdbcTransaction transaction)
+   at System.Data.Odbc.OdbcCommand.ValidateConnectionAndTransaction(String method)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.Form3.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form3.vb:line 227
+=====================================
+=====================================
+Date: 5/9/2025 10:22:06 AM
+Error Message: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+Stack Trace:    at System.Data.Odbc.OdbcConnection.SetStateExecuting(String method, OdbcTransaction transaction)
+   at System.Data.Odbc.OdbcCommand.ValidateConnectionAndTransaction(String method)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.Form3.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form3.vb:line 227
+=====================================
+=====================================
+Date: 5/9/2025 10:22:23 AM
+Error Message: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+Stack Trace:    at System.Data.Odbc.OdbcConnection.SetStateExecuting(String method, OdbcTransaction transaction)
+   at System.Data.Odbc.OdbcCommand.ValidateConnectionAndTransaction(String method)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.Form3.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form3.vb:line 227
+=====================================
+=====================================
+Date: 5/9/2025 10:28:55 AM
+Error Message: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+Stack Trace:    at System.Data.Odbc.OdbcConnection.SetStateExecuting(String method, OdbcTransaction transaction)
+   at System.Data.Odbc.OdbcCommand.ValidateConnectionAndTransaction(String method)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.Form3.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form3.vb:line 231
+=====================================

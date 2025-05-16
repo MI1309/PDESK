@@ -1,36 +1,51 @@
-5/1/2025 9:25:50 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+5/9/2025 5:22:05 PM - System.InvalidCastException: Conversion from string "LP00126" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
    --- End of inner exception stack trace ---
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 131
-5/1/2025 9:25:53 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+   at WindowsApplication1.form_provider.Button3_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 318
+5/9/2025 5:22:12 PM - System.InvalidCastException: Conversion from string "LP00118" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
    --- End of inner exception stack trace ---
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 131
-5/1/2025 9:45:45 AM - System.InvalidCastException: Conversion from string "" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
+   at WindowsApplication1.form_provider.Button2_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 275
+5/9/2025 5:22:17 PM - System.InvalidCastException: Conversion from string "LP00126" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
    at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
    --- End of inner exception stack trace ---
    at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 169
-5/1/2025 9:49:02 AM - System.InvalidCastException: Conversion from string "asfas" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 166
-5/1/2025 9:49:13 AM - System.InvalidCastException: Conversion from string "asfas" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 166
-5/1/2025 9:50:46 AM - System.InvalidCastException: Conversion from string "dszga" to type 'Integer' is not valid. ---> System.FormatException: Input string was not in a correct format.
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ParseDouble(String Value, NumberFormatInfo NumberFormat)
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   --- End of inner exception stack trace ---
-   at Microsoft.VisualBasic.CompilerServices.Conversions.ToInteger(String Value)
-   at WindowsApplication1.Form5.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\Form5.vb:line 168
+   at WindowsApplication1.form_provider.Button3_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 318
+5/9/2025 5:36:41 PM - System.NullReferenceException: Object reference not set to an instance of an object.
+   at WindowsApplication1.form_provider.Button2_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 296
+5/14/2025 12:53:59 PM - System.Data.Odbc.OdbcException (0x80131937): ERROR [07001] [MySQL][ODBC 8.0(a) Driver][mysqld-5.5.5-10.4.32-MariaDB]The number of parameter markers is not equal to the number of parameters provided
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteScalar()
+   at WindowsApplication1.form_provider.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 243
+5/14/2025 12:54:06 PM - System.Data.Odbc.OdbcException (0x80131937): ERROR [07001] [MySQL][ODBC 8.0(a) Driver][mysqld-5.5.5-10.4.32-MariaDB]The number of parameter markers is not equal to the number of parameters provided
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteScalar()
+   at WindowsApplication1.form_provider.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 243
+5/14/2025 12:57:40 PM - System.Data.Odbc.OdbcException (0x80131937): ERROR [07001] [MySQL][ODBC 8.0(a) Driver][mysqld-5.5.5-10.4.32-MariaDB]The number of parameter markers is not equal to the number of parameters provided
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteScalar()
+   at WindowsApplication1.form_provider.Button1_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 242
+5/14/2025 1:32:53 PM - System.Data.Odbc.OdbcException (0x80131937): ERROR [HY000] [MySQL][ODBC 8.0(a) Driver][mysqld-5.5.5-10.4.32-MariaDB]Unknown table 'nama_produk' in MULTI DELETE
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteNonQuery()
+   at WindowsApplication1.form_provider.Button3_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 399
+5/14/2025 6:07:53 PM - System.Data.Odbc.OdbcException (0x80131937): ERROR [42S02] [MySQL][ODBC 8.0(a) Driver][mysqld-5.5.5-10.4.32-MariaDB]Table 'pulsa.admin_price_type' doesn't exist
+   at System.Data.Odbc.OdbcConnection.HandleError(OdbcHandle hrHandle, RetCode retcode)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader, Object[] methodArguments, SQL_API odbcApiMethod)
+   at System.Data.Odbc.OdbcCommand.ExecuteReaderObject(CommandBehavior behavior, String method, Boolean needReader)
+   at System.Data.Odbc.OdbcCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Odbc.OdbcCommand.ExecuteReader()
+   at WindowsApplication1.form_provider.Button3_Click(Object sender, EventArgs e) in C:\Users\Antartika - Rafi\Documents\pdesk\Counter-pulsa\Counter-pulsa\form_provider.vb:line 401

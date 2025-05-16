@@ -72,41 +72,59 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="form_login.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="form_login.Designer.vb">
+      <DependentUpon>form_login.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.vb">
-      <DependentUpon>Form2.vb</DependentUpon>
+    <Compile Include="admin.Designer.vb">
+      <DependentUpon>admin.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form2.vb">
+    <Compile Include="admin.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form3.Designer.vb">
-      <DependentUpon>Form3.vb</DependentUpon>
+    <Compile Include="form_kasir.Designer.vb">
+      <DependentUpon>form_kasir.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form3.vb">
+    <Compile Include="form_kasir.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form4.Designer.vb">
-      <DependentUpon>Form4.vb</DependentUpon>
+    <Compile Include="data_kasir.Designer.vb">
+      <DependentUpon>data_kasir.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form4.vb">
+    <Compile Include="data_kasir.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form5.Designer.vb">
-      <DependentUpon>Form5.vb</DependentUpon>
+    <Compile Include="form_provider.Designer.vb">
+      <DependentUpon>form_provider.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form5.vb">
+    <Compile Include="form_provider.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form6.Designer.vb">
-      <DependentUpon>Form6.vb</DependentUpon>
+    <Compile Include="form_laporan.Designer.vb">
+      <DependentUpon>form_laporan.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form6.vb">
+    <Compile Include="form_laporan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="daftar_product.Designer.vb">
+      <DependentUpon>daftar_product.vb</DependentUpon>
+    </Compile>
+    <Compile Include="daftar_product.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_stock.Designer.vb">
+      <DependentUpon>form_stock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="form_stock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="load_product.Designer.vb">
+      <DependentUpon>load_product.vb</DependentUpon>
+    </Compile>
+    <Compile Include="load_product.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modvalid.vb" />
@@ -127,23 +145,32 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="form_login.resx">
+      <DependentUpon>form_login.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.vb</DependentUpon>
+    <EmbeddedResource Include="admin.resx">
+      <DependentUpon>admin.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.vb</DependentUpon>
+    <EmbeddedResource Include="form_kasir.resx">
+      <DependentUpon>form_kasir.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form4.resx">
-      <DependentUpon>Form4.vb</DependentUpon>
+    <EmbeddedResource Include="data_kasir.resx">
+      <DependentUpon>data_kasir.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form5.resx">
-      <DependentUpon>Form5.vb</DependentUpon>
+    <EmbeddedResource Include="form_provider.resx">
+      <DependentUpon>form_provider.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form6.resx">
-      <DependentUpon>Form6.vb</DependentUpon>
+    <EmbeddedResource Include="form_laporan.resx">
+      <DependentUpon>form_laporan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="daftar_product.resx">
+      <DependentUpon>daftar_product.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_stock.resx">
+      <DependentUpon>form_stock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="load_product.resx">
+      <DependentUpon>load_product.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -228,6 +255,102 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-07 at 14.46.03.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.32.35.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.32.35.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.32.35 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.38.42.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.41.11.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.41.11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.41.11 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.44.33.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.40.14.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.40.141.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-08 at 07.40.14.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %284%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %285%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rm %286%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %284%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %285%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit %286%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rmlg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lprn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lprn1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rmlg1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rmlg2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2025-05-07 at 14.46.031.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
