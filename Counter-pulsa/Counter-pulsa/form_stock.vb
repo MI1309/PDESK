@@ -128,7 +128,7 @@ Public Class form_stock
         End If
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
+    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Try
             If ComboBox3.SelectedIndex = -1 Or ComboBox1.SelectedIndex = -1 Then Exit Sub
 

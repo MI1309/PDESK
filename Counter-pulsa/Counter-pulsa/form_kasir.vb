@@ -53,7 +53,7 @@ Public Class form_kasir
     Sub tampilData()
         Try
             test_conn() ' Pastikan koneksi dibuka sebelum menjalankan query
-            Dim query As String = "SELECT id, nama_produk, harga_jual, stok, tanggal_restock FROM admin_product WHERE stok > 0"
+            Dim query As String = "SELECT id, nama_produk, harga_jual, stok, tipe, tanggal_restock FROM admin_product WHERE stok > 0"
             Using cmd As New OdbcCommand(query, conn)
                 da = New OdbcDataAdapter(cmd)
                 ds = New DataSet()
@@ -64,6 +64,31 @@ Public Class form_kasir
                     DataGridView1.DataSource = Nothing
                 Else
                     DataGridView1.DataSource = ds.Tables("admin_product")
+
+                    ' Ganti header dan gaya
+                    With DataGridView1
+                        .Columns("id").HeaderText = "Kode Produk"
+                        .Columns("nama_produk").HeaderText = "Nama Produk"
+                        .Columns("harga_jual").HeaderText = "Harga Jual"
+                        .Columns("stok").HeaderText = "Stok"
+                        .Columns("tipe").HeaderText = "Tipe"
+                        .BackgroundColor = Color.White
+                        .DefaultCellStyle.BackColor = Color.White
+
+                        .Columns("tanggal_restock").HeaderText = "Tanggal Restok"
+
+                        .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+
+                        .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 9, FontStyle.Bold)
+                        .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+                        .EnableHeadersVisualStyles = False
+                        .ColumnHeadersDefaultCellStyle.BackColor = Color.Navy
+                        .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+
+                        .AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
+                    End With
+
                 End If
             End Using
             DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
@@ -76,6 +101,8 @@ Public Class form_kasir
 
 
     Private Sub Form3_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        Me.FormBorderStyle = FormBorderStyle.None
+        Me.WindowState = FormWindowState.Maximized
         TextBox3.ReadOnly = True
         DataGridView1.ReadOnly = True
         DataGridView1.AllowUserToAddRows = False
@@ -83,10 +110,17 @@ Public Class form_kasir
         DataGridView1.AllowUserToOrderColumns = False ' Optional: agar tidak bisa urutkan kolom
         ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
-        loadproduk()
         tampilData()
         Label5.Text = "Operator : " & loggedInUserUsername
     End Sub
+
+    'Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TextBox1..KeyPress
+    '    ' Hanya izinkan angka dan tombol kontrol seperti backspace
+    '    If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
+    '        e.Handled = True
+    '        MsgBox("Hanya angka yang diperbolehkan di nomor telepon!")
+    '    End If
+    'End Sub
 
     Private Sub DataGridView1_CellFormatting(ByVal sender As Object, ByVal e As DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
         If DataGridView1.Columns(e.ColumnIndex).Name = "id" Then
@@ -138,28 +172,33 @@ Public Class form_kasir
 
         Try
             test_conn()
-            Dim query As String = "SELECT tipe, harga_jual FROM admin_product WHERE nama_produk = ?"
-            Using cmd As New OdbcCommand(query, conn)
+
+            Using cmd As New OdbcCommand("SELECT tipe, harga_jual FROM admin_product WHERE nama_produk = ? AND stok > 0", conn)
                 cmd.Parameters.AddWithValue("@nama_produk", namaProdukDipilih)
+
                 Using dr = cmd.ExecuteReader()
                     ComboBox2.Items.Clear()
-                    If dr.Read() Then
-                        Dim hargatipe As Integer = Convert.ToInt32(dr("tipe"))
-                        Dim hargajual As Integer = Convert.ToInt32(dr("harga_jual"))
-                        Dim formattedHargajual As String = hargajual.ToString("N0")
-                        Dim formattedHargatipe As String = hargatipe.ToString("N0")
-                        ComboBox2.Items.Add(formattedHargatipe)
-                        ComboBox2.SelectedIndex = 0
-                        TextBox3.Text = formattedHargajual
+
+                    While dr.Read()
+                        Dim tipe As Integer = Convert.ToInt32(dr("tipe"))
+                        Dim hargaJual As Integer = Convert.ToInt32(dr("harga_jual"))
+                        Dim displayTipe As String = tipe.ToString("N0")
+                        ComboBox2.Items.Add(displayTipe)
+                    End While
+
+                    If ComboBox2.Items.Count > 0 Then
+                        ComboBox2.SelectedIndex = 0 ' Auto pilih tipe pertama
                     End If
                 End Using
             End Using
+
         Catch ex As Exception
             MsgBox("Gagal mengambil data produk: " & ex.Message)
         Finally
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
         End Try
     End Sub
+
 
     ' Tombol Proses
     Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
@@ -196,17 +235,18 @@ Public Class form_kasir
 
         ' Validasi provider dengan nomor
         Dim namaProdukDipilih As String = ComboBox1.SelectedItem.ToString().ToLower()
-        If (namaProdukDipilih.Contains("telkomsel") AndAlso Not (nomorHp.StartsWith("0811") OrElse nomorHp.StartsWith("0812") OrElse nomorHp.StartsWith("0813") OrElse nomorHp.StartsWith("0821"))) OrElse
-           (namaProdukDipilih.Contains("xl") AndAlso Not (nomorHp.StartsWith("0817") OrElse nomorHp.StartsWith("0818") OrElse nomorHp.StartsWith("0859"))) OrElse
-           (namaProdukDipilih.Contains("indosat") AndAlso Not (nomorHp.StartsWith("0856") OrElse nomorHp.StartsWith("0857"))) OrElse
-           (namaProdukDipilih.Contains("axis") AndAlso Not nomorHp.StartsWith("0838")) OrElse
-           (namaProdukDipilih.Contains("tri") AndAlso Not nomorHp.StartsWith("0895")) OrElse
-           (namaProdukDipilih.Contains("smartfren") AndAlso Not nomorHp.StartsWith("0881")) OrElse
-           (namaProdukDipilih.Contains("byu") AndAlso Not nomorHp.StartsWith("0896")) Then
-            MsgBox("Nomor HP tidak cocok dengan provider dari produk yang dipilih.")
-            TextBox2.Focus()
-            TextBox3.Clear()
-            Return
+        If (namaProdukDipilih.Contains("telkomsel") AndAlso Not (nomorHp.StartsWith("0811") OrElse nomorHp.StartsWith("0812") OrElse nomorHp.StartsWith("0813") OrElse nomorHp.StartsWith("0821") OrElse nomorHp.StartsWith("0822") OrElse nomorHp.StartsWith("0823") OrElse
+        nomorHp.StartsWith("0852") OrElse nomorHp.StartsWith("0853") OrElse nomorHp.StartsWith("0851"))) OrElse (namaProdukDipilih.Contains("xl") AndAlso Not (nomorHp.StartsWith("0817") OrElse nomorHp.StartsWith("0818") OrElse nomorHp.StartsWith("0819") OrElse
+        nomorHp.StartsWith("0859") OrElse nomorHp.StartsWith("0877") OrElse nomorHp.StartsWith("0878"))) OrElse
+(namaProdukDipilih.Contains("indosat") AndAlso Not (
+        nomorHp.StartsWith("0855") OrElse nomorHp.StartsWith("0856") OrElse nomorHp.StartsWith("0857") OrElse
+        nomorHp.StartsWith("0858") OrElse nomorHp.StartsWith("0814") OrElse nomorHp.StartsWith("0815") OrElse
+        nomorHp.StartsWith("0816"))) OrElse (namaProdukDipilih.Contains("axis") AndAlso Not (nomorHp.StartsWith("0838") OrElse nomorHp.StartsWith("0831") OrElse nomorHp.StartsWith("0832") OrElse
+        nomorHp.StartsWith("0833"))) OrElse (namaProdukDipilih.Contains("tri") AndAlso Not (nomorHp.StartsWith("0895") OrElse nomorHp.StartsWith("0896") OrElse nomorHp.StartsWith("0897") OrElse
+        nomorHp.StartsWith("0898") OrElse nomorHp.StartsWith("0899"))) OrElse (namaProdukDipilih.Contains("smartfren") AndAlso Not (nomorHp.StartsWith("0881") OrElse nomorHp.StartsWith("0882") OrElse nomorHp.StartsWith("0883") OrElse
+        nomorHp.StartsWith("0884") OrElse nomorHp.StartsWith("0885") OrElse nomorHp.StartsWith("0886") OrElse nomorHp.StartsWith("0887") OrElse nomorHp.StartsWith("0888") OrElse nomorHp.StartsWith("0889"))) OrElse
+   (namaProdukDipilih.Contains("byu") AndAlso Not (nomorHp.StartsWith("0851"))) Then
+
         End If
 
         ' Ambil informasi produk
@@ -223,7 +263,7 @@ Public Class form_kasir
 
         Dim totalHarga As Integer = hargaJual * qty
         If uangPembeli < totalHarga Then
-            MsgBox("Saldo pembeli Tidak cukup")
+            MsgBox("Saldo pembeli Tidak cukup", vbExclamation)
             Return
         End If
 
@@ -368,7 +408,7 @@ Public Class form_kasir
         ' Hanya izinkan angka dan tombol kontrol seperti backspace
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
-            MsgBox("Hanya angka yang diperbolehkan !")
+            MsgBox("Hanya angka yang diperbolehkan !", MsgBoxStyle.Exclamation)
         End If
     End Sub
     Private Sub TextBox3_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs)
@@ -376,11 +416,11 @@ Public Class form_kasir
             e.SuppressKeyPress = True
         End If
     End Sub
-    Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs)
+    Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TextBox1.KeyPress
         ' Hanya izinkan angka dan tombol kontrol seperti backspace
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
-            MsgBox("Hanya angka yang diperbolehkan !")
+            MsgBox("Hanya angka yang diperbolehkan !", MsgBoxStyle.Exclamation)
         End If
     End Sub
     Private Sub TextBox1_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs)
@@ -389,24 +429,52 @@ Public Class form_kasir
         End If
     End Sub
 
+    Private Sub ComboBox2_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ComboBox2.SelectedIndexChanged
+        If ComboBox1.SelectedItem Is Nothing Or ComboBox2.SelectedItem Is Nothing Then Exit Sub
+
+        Dim namaProduk As String = ComboBox1.SelectedItem.ToString()
+        Dim tipeDipilih As String = ComboBox2.SelectedItem.ToString().Replace(".", "").Replace(",", "") ' Bersihkan format
+
+        Try
+            test_conn()
+
+            Using cmd As New OdbcCommand("SELECT harga_jual FROM admin_product WHERE nama_produk = ? AND tipe = ?", conn)
+                cmd.Parameters.AddWithValue("@nama_produk", namaProduk)
+                cmd.Parameters.AddWithValue("@tipe", Convert.ToInt32(tipeDipilih))
+
+                Dim harga = cmd.ExecuteScalar()
+                If harga IsNot Nothing Then
+                    TextBox3.Text = Convert.ToInt32(harga).ToString("N0")
+                End If
+            End Using
+        Catch ex As Exception
+            MsgBox("Gagal mengambil harga jual: " & ex.Message)
+        Finally
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
+        End Try
+    End Sub
+
+
     ' Saat produk dipilih, tampilkan harga
- 
+
+
     Private Sub TextBox2_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TextBox2.TextChanged
         Dim nomorHp As String = TextBox2.Text.Trim()
 
-        ' Kosongkan ComboBox jika input kosong atau terlalu pendek
+        ' Bersihkan semua input jika nomor terlalu pendek
         If nomorHp.Length < 4 Then
             ComboBox1.Items.Clear()
             ComboBox1.SelectedIndex = -1
             ComboBox2.Items.Clear()
             ComboBox2.SelectedIndex = -1
+            TextBox3.Clear()
             Exit Sub
         End If
 
-        Dim prefix = nomorHp.Substring(0, 4)
+        Dim prefix As String = nomorHp.Substring(0, 4)
         Dim provider As String = ""
 
-        ' Deteksi provider berdasarkan prefix
+        ' Deteksi provider dari prefix nomor
         Select Case prefix
             Case "0811", "0812", "0813", "0821", "0822", "0852", "0853"
                 provider = "telkomsel"
@@ -419,46 +487,52 @@ Public Class form_kasir
             Case "0895", "0897", "0898", "0899"
                 provider = "tri"
             Case "0896"
-                ' Spesifikasikan pengecekan untuk BYU
-                If nomorHp.StartsWith("0896") Then
-                    provider = "byu"
-                End If
+                provider = "byu"
             Case "0881", "0882", "0883", "0884", "0885", "0886", "0887", "0888", "0889"
                 provider = "smartfren"
         End Select
 
-        ' Filter produk berdasarkan provider
+        ' Tampilkan produk yang cocok dengan provider
         If provider <> "" Then
             Try
                 test_conn()
-                Using cmd As New OdbcCommand("SELECT nama_produk FROM admin_product WHERE stok > 0 AND LOWER(nama_produk) LIKE ?", conn)
+                Using cmd As New OdbcCommand("SELECT nama_produk FROM admin_product WHERE stok > 0 AND LOWER(nama_produk) LIKE ? GROUP BY nama_produk", conn)
                     cmd.Parameters.AddWithValue("@p", "%" & provider & "%")
+
                     Using dr = cmd.ExecuteReader()
                         ComboBox1.Items.Clear()
                         ComboBox2.Items.Clear()
                         TextBox3.Clear()
+
                         While dr.Read()
                             ComboBox1.Items.Add(dr("nama_produk").ToString())
                         End While
+
                         If ComboBox1.Items.Count = 1 Then
-                            ComboBox1.SelectedIndex = 0 ' Auto-pilih jika hanya 1 produk
+                            ComboBox1.SelectedIndex = 0 ' Auto-select jika cuma 1
+                        Else
+                            ComboBox1.SelectedIndex = -1
                         End If
                     End Using
                 End Using
+
+
+
             Catch ex As Exception
                 MsgBox("Gagal memuat produk berdasarkan provider: " & ex.Message)
             Finally
                 If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
             End Try
         Else
-            ' Jika provider tidak dikenali, kosongkan pilihan
-            TextBox3.Text = ""
+            ' Provider tidak dikenali, kosongkan semua input
             ComboBox1.Items.Clear()
             ComboBox1.SelectedIndex = -1
             ComboBox2.Items.Clear()
             ComboBox2.SelectedIndex = -1
+            TextBox3.Clear()
         End If
     End Sub
+
 
     Private Sub logout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles logout.Click
         Me.Close()

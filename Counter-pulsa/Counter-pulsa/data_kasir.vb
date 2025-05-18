@@ -93,7 +93,7 @@ Public Class data_kasir
 
                 Dim count As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
                 If count > 0 Then
-                    MsgBox("Data sudah ada. Gunakan data unik untuk username/email/no telpon.")
+                    MsgBox("Data sudah ada", MsgBoxStyle.Information)
                     Exit Sub
                 End If
             End Using
@@ -142,7 +142,8 @@ Public Class data_kasir
 
             ' Memeriksa apakah nilai pada cell kosong dan menampilkan pesan
             If IsDBNull(row.Cells("username").Value) OrElse String.IsNullOrEmpty(row.Cells("username").Value.ToString()) Then
-                MsgBox("Tidak Ada Data Di kolom Ini !")
+                MsgBox("Tidak Ada Data Di kolom Ini !", MsgBoxStyle.Exclamation)
+                selectedId = -1
             Else
                 ' Menetapkan nilai ke textbox dan combobox jika ada data
                 selectedId = row.Cells("id").Value

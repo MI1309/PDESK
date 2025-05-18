@@ -573,7 +573,7 @@ Public Class form_provider
         End If
     End Sub
 
-    
+
 
     ' Get kasir id by username
     Function getKasirId(ByVal username As String) As Integer

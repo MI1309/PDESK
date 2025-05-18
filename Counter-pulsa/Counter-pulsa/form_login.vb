@@ -42,7 +42,7 @@ Public Class form_login
             MsgBox("Connection failed: " & ex.Message)
         End Try
     End Sub
-Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         ' Validate inputs
         If TextBox1.Text = "" And TextBox2.Text = "" And ComboBox1.Text = "" Then
             MsgBox("Please enter valid input")

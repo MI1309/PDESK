@@ -23,7 +23,7 @@ Public Class daftar_product
             MsgBox("Koneksi gagal: " & ex.Message)
         End Try
     End Sub
-    Private Sub Form7_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Form7_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)
         LoadDataToGrid()
         setupDataGridView()
     End Sub
@@ -144,7 +144,7 @@ Public Class daftar_product
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
         End Try
     End Sub
-    Private Sub Label2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label2.Click
+    Private Sub Label2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
@@ -156,11 +156,12 @@ Public Class daftar_product
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
 
     End Sub
 
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         LoadDataToGrid()
     End Sub
+
 End Class

@@ -28,6 +28,7 @@ Partial Class data_kasir
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -43,26 +44,31 @@ Partial Class data_kasir
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(208, 101)
+        Me.TextBox1.Location = New System.Drawing.Point(629, 207)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(427, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(825, 36)
         Me.TextBox1.TabIndex = 46
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Font = New System.Drawing.Font("Microsoft JhengHei", 20.25!, System.Drawing.FontStyle.Bold)
+        Me.Label5.Font = New System.Drawing.Font("Microsoft JhengHei", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label5.Location = New System.Drawing.Point(183, 30)
+        Me.Label5.Location = New System.Drawing.Point(966, 51)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(176, 35)
+        Me.Label5.Size = New System.Drawing.Size(390, 76)
         Me.Label5.TabIndex = 45
         Me.Label5.Text = "DATA KASIR"
         '
@@ -70,13 +76,14 @@ Partial Class data_kasir
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Century Gothic", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(47, 228)
+        Me.Label3.Location = New System.Drawing.Point(193, 497)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(114, 21)
+        Me.Label3.Size = New System.Drawing.Size(289, 44)
         Me.Label3.TabIndex = 43
-        Me.Label3.Text = "Password       :"
+        Me.Label3.Text = "Password        :"
         '
         'Label2
         '
@@ -84,28 +91,45 @@ Partial Class data_kasir
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(41, 169)
+        Me.Label2.Location = New System.Drawing.Point(42, 323)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(0, 21)
+        Me.Label2.Size = New System.Drawing.Size(0, 23)
         Me.Label2.TabIndex = 42
         '
         'DataGridView1
         '
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 257)
+        Me.DataGridView1.Location = New System.Drawing.Point(103, 610)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(830, 176)
+        Me.DataGridView1.Size = New System.Drawing.Size(1798, 335)
         Me.DataGridView1.TabIndex = 40
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Button4.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rmlg
+        Me.Button4.Font = New System.Drawing.Font("Javanese Text", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Button4.Location = New System.Drawing.Point(1678, 960)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(187, 54)
+        Me.Button4.TabIndex = 39
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'Button3
         '
         Me.Button3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button3.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
+        Me.Button3.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button3.Location = New System.Drawing.Point(662, 177)
+        Me.Button3.Location = New System.Drawing.Point(1580, 391)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(148, 31)
+        Me.Button3.Size = New System.Drawing.Size(285, 75)
         Me.Button3.TabIndex = 38
         Me.Button3.Text = "UPDATE"
         Me.Button3.UseVisualStyleBackColor = False
@@ -113,11 +137,13 @@ Partial Class data_kasir
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
+        Me.Button2.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button2.Location = New System.Drawing.Point(662, 142)
+        Me.Button2.Location = New System.Drawing.Point(1580, 299)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(148, 31)
+        Me.Button2.Size = New System.Drawing.Size(285, 75)
         Me.Button2.TabIndex = 37
         Me.Button2.Text = "DELETE"
         Me.Button2.UseVisualStyleBackColor = False
@@ -125,11 +151,13 @@ Partial Class data_kasir
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
+        Me.Button1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button1.Location = New System.Drawing.Point(662, 107)
+        Me.Button1.Location = New System.Drawing.Point(1580, 207)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(148, 31)
+        Me.Button1.Size = New System.Drawing.Size(285, 82)
         Me.Button1.TabIndex = 36
         Me.Button1.Text = "CREATE"
         Me.Button1.UseVisualStyleBackColor = False
@@ -138,105 +166,122 @@ Partial Class data_kasir
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Century Gothic", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(44, 98)
+        Me.Label1.Location = New System.Drawing.Point(184, 199)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(113, 21)
+        Me.Label1.Size = New System.Drawing.Size(295, 44)
         Me.Label1.TabIndex = 35
-        Me.Label1.Text = "Nama Kasir   :"
+        Me.Label1.Text = "Nama Kasir     :"
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(208, 127)
+        Me.TextBox2.Location = New System.Drawing.Point(629, 268)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(427, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(825, 36)
         Me.TextBox2.TabIndex = 49
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Century Gothic", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label4.Location = New System.Drawing.Point(44, 124)
+        Me.Label4.Location = New System.Drawing.Point(184, 260)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(114, 21)
+        Me.Label4.Size = New System.Drawing.Size(295, 44)
         Me.Label4.TabIndex = 50
-        Me.Label4.Text = "Alamat          :"
+        Me.Label4.Text = "Alamat            :"
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(208, 153)
+        Me.TextBox3.Location = New System.Drawing.Point(629, 329)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(427, 20)
+        Me.TextBox3.Size = New System.Drawing.Size(825, 36)
         Me.TextBox3.TabIndex = 52
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Century Gothic", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label7.Location = New System.Drawing.Point(47, 150)
+        Me.Label7.Location = New System.Drawing.Point(190, 314)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(112, 21)
+        Me.Label7.Size = New System.Drawing.Size(289, 44)
         Me.Label7.TabIndex = 53
-        Me.Label7.Text = "No. Telp         :"
+        Me.Label7.Text = "No. Telp          :"
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(208, 179)
+        Me.TextBox4.Location = New System.Drawing.Point(629, 391)
+        Me.TextBox4.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox4.Multiline = True
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(427, 20)
+        Me.TextBox4.Size = New System.Drawing.Size(825, 36)
         Me.TextBox4.TabIndex = 54
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Font = New System.Drawing.Font("Century Gothic", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label8.Location = New System.Drawing.Point(44, 176)
+        Me.Label8.Location = New System.Drawing.Point(190, 371)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(116, 21)
+        Me.Label8.Size = New System.Drawing.Size(292, 44)
         Me.Label8.TabIndex = 55
-        Me.Label8.Text = "Username      :"
+        Me.Label8.Text = "Username       :"
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(208, 205)
+        Me.TextBox5.Location = New System.Drawing.Point(629, 458)
+        Me.TextBox5.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox5.Multiline = True
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(427, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(825, 36)
         Me.TextBox5.TabIndex = 56
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(208, 231)
+        Me.TextBox6.Location = New System.Drawing.Point(629, 517)
+        Me.TextBox6.Margin = New System.Windows.Forms.Padding(4)
+        Me.TextBox6.Multiline = True
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(427, 20)
+        Me.TextBox6.Size = New System.Drawing.Size(825, 36)
         Me.TextBox6.TabIndex = 58
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Font = New System.Drawing.Font("Century Gothic", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label9.Location = New System.Drawing.Point(44, 202)
+        Me.Label9.Location = New System.Drawing.Point(185, 438)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(115, 21)
+        Me.Label9.Size = New System.Drawing.Size(294, 44)
         Me.Label9.TabIndex = 57
         Me.Label9.Text = "Email               :"
         '
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button5.Font = New System.Drawing.Font("Century Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button5.BackgroundImage = CType(resources.GetObject("Button5.BackgroundImage"), System.Drawing.Image)
+        Me.Button5.Font = New System.Drawing.Font("Century Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button5.Location = New System.Drawing.Point(662, 212)
+        Me.Button5.Location = New System.Drawing.Point(1580, 474)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(4)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(148, 31)
+        Me.Button5.Size = New System.Drawing.Size(285, 75)
         Me.Button5.TabIndex = 59
         Me.Button5.Text = "CLEAR"
         Me.Button5.UseVisualStyleBackColor = False
@@ -244,21 +289,36 @@ Partial Class data_kasir
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.vito1
+        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.logo
         Me.PictureBox1.InitialImage = Nothing
-        Me.PictureBox1.Location = New System.Drawing.Point(45, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(224, 13)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(109, 82)
+        Me.PictureBox1.Size = New System.Drawing.Size(233, 157)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 41
         Me.PictureBox1.TabStop = False
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = CType(resources.GetObject("PictureBox2.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.Black_Cream_Elegant_Monogram_Initial_Name_I_C_Logo_
+        Me.PictureBox2.InitialImage = Nothing
+        Me.PictureBox2.Location = New System.Drawing.Point(224, 13)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(233, 157)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 60
+        Me.PictureBox2.TabStop = False
+        '
         'data_kasir
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_08_at_07_402
-        Me.ClientSize = New System.Drawing.Size(865, 497)
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.bg_kasir__2_
+        Me.ClientSize = New System.Drawing.Size(1924, 1047)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.TextBox6)
         Me.Controls.Add(Me.Label9)
@@ -275,15 +335,19 @@ Partial Class data_kasir
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "data_kasir"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " "
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -294,6 +358,7 @@ Partial Class data_kasir
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
@@ -308,4 +373,5 @@ Partial Class data_kasir
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
 End Class

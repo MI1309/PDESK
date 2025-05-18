@@ -352,6 +352,57 @@
   <ItemGroup>
     <None Include="Resources\WhatsApp Image 2025-05-07 at 14.46.031.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg dashboard.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg dashboard %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg dashboard %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg dashboard %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg dashboard %283%291.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg data kasir %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg kasir %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg kasir %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg laporan %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg laporan %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg laporan %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg laporan %284%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg laporan %285%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg laporan %286%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg laporan %287%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Black Cream Elegant Monogram Initial Name I C Logo .png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

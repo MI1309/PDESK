@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2025 at 02:53 AM
+-- Generation Time: May 18, 2025 at 02:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,8 +45,8 @@ CREATE TABLE `account` (
 INSERT INTO `account` (`id`, `username`, `password`, `role`, `alamat`, `no_telpon`, `email`, `nama_kasir`) VALUES
 (1, 'admin', 'admin', 'admin', 'idk man', '2147483647', 'admin@kasir.com', 'bro admin'),
 (23, 'imron', 'imron', 'kasir', 'jl kedinding lor gang sedap malam no 19, surabaya', '089514366445', 'imron@gmail.co', 'Muhammad Imron'),
-(25, 'hello', 'hello', 'kasir', 'jl.siwalan panji gang 3', '085755458450', 'pramodya@gmail.com', 'wisnu'),
-(26, 'vito', 'vito', 'kasir', 'baskfbasukbfkjasbjlfnaslkfnlkafcanknflkas', '0809123892381', 'vito@gmail.co', 'vito hai');
+(25, 'rido', 'RidhoHusein678', 'kasir', 'KEC Candi sydney', '08221234568789', 'imron@imron.com', 'Ridho Husein Carpenther'),
+(26, 'vito123', 'vito', 'kasir', 'jl candi sukodono blblabala', '0809123892381', 'vito@gmail.co', 'vito basuki');
 
 -- --------------------------------------------------------
 
@@ -69,9 +69,7 @@ CREATE TABLE `admin_product` (
 --
 
 INSERT INTO `admin_product` (`id`, `nama_produk`, `harga_jual`, `harga_kulak`, `tanggal_restock`, `stok`, `tipe`) VALUES
-(118, 'byu', 7000, 6000, '2025-05-09', 0, 5000),
-(120, 'telkomsel', 11000, 10000, '2025-05-09', 9, 10000),
-(122, 'indosat', 11000, 10000, '2025-05-09', 20, 100000);
+(143, 'telkomsel', 120000, 110000, '2025-05-16', 17, 100000);
 
 -- --------------------------------------------------------
 
@@ -87,20 +85,40 @@ CREATE TABLE `transaksi` (
   `waktu_transaksi` timestamp NULL DEFAULT current_timestamp(),
   `quantity` int(100) DEFAULT NULL,
   `product` varchar(255) DEFAULT NULL,
-  `kasir_username` varchar(100) DEFAULT NULL
+  `kasir_username` varchar(100) DEFAULT NULL,
+  `uang_pembeli` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id`, `nomor_tujuan`, `product_id`, `harga`, `waktu_transaksi`, `quantity`, `product`, `kasir_username`) VALUES
-(42, '085755458450', 111, '50,000', '2025-05-09 06:33:57', 10, 'Indosat Paket D', 'vito'),
-(43, '085755458450', 111, '50,000', '2025-05-09 06:34:33', 30, 'Indosat Paket D', 'vito'),
-(44, '0895336412345', 119, '7,000', '2025-05-09 06:49:04', 20, 'tri paket A', 'hello'),
-(45, '08961244124124', 118, '5,000', '2025-05-09 11:01:47', 10, 'byu', 'imron'),
-(46, '0896872983176893', 118, '5,000', '2025-05-09 11:01:59', 100, 'byu', 'imron'),
-(47, '081123121247091', 120, '10,000', '2025-05-09 11:05:27', 1, 'telkomsel', 'imron');
+INSERT INTO `transaksi` (`id`, `nomor_tujuan`, `product_id`, `harga`, `waktu_transaksi`, `quantity`, `product`, `kasir_username`, `uang_pembeli`) VALUES
+(42, '085755458450', 111, '50,000', '2025-05-09 06:33:57', 10, 'Indosat Paket D', 'vito', 0),
+(43, '085755458450', 111, '50,000', '2025-05-09 06:34:33', 30, 'Indosat Paket D', 'vito', 0),
+(44, '0895336412345', 119, '7,000', '2025-05-09 06:49:04', 20, 'tri paket A', 'hello', 0),
+(45, '08961244124124', 118, '5,000', '2025-05-09 11:01:47', 10, 'byu', 'imron', 0),
+(46, '0896872983176893', 118, '5,000', '2025-05-09 11:01:59', 100, 'byu', 'imron', 0),
+(47, '081123121247091', 120, '10,000', '2025-05-09 11:05:27', 1, 'telkomsel', 'imron', 0),
+(48, '081112312321321', 122, '100,000', '2025-05-14 03:25:46', 11, 'telkomsel', '0', 0),
+(49, '081123812412', 122, '11000', '2025-05-14 03:50:24', 1, 'telkomsel', '0', 0),
+(50, '081212834129848192', 122, '11000', '2025-05-14 03:56:44', 1, 'telkomsel', '0', 0),
+(51, '0812898921489', 122, '11000', '2025-05-14 04:02:25', 1, 'telkomsel', '0', 19000),
+(52, '081111241241234', 122, '11000', '2025-05-14 04:03:28', 1, 'telkomsel', '0', 11000),
+(53, '0811123123123', 122, '11000', '2025-05-14 04:08:11', 1, 'telkomsel', '0', 11000),
+(54, '0811212649812', 122, '11000', '2025-05-14 04:08:33', 1, 'telkomsel', '0', 12000),
+(55, '0811214124', 122, '11000', '2025-05-14 04:10:53', 1, 'telkomsel', '0', 11000),
+(56, '081122143123', 122, '11000', '2025-05-14 04:12:17', 1, 'telkomsel', '0', 100000),
+(57, '08121241241234', 122, '11000', '2025-05-14 04:14:23', 1, 'telkomsel', '0', 1900001),
+(58, '08957123721323213', 120, '11000', '2025-05-14 04:16:20', 1, 'tri', 'imron', 12000),
+(59, '08951213766715276', 120, '11000', '2025-05-14 04:19:58', 1, 'tri', 'imron', 12000),
+(60, '0895336412345', 120, '11000', '2025-05-14 04:51:03', 1, 'tri', 'imron', 100000),
+(61, '089512399012', 135, '12000', '2025-05-14 11:44:16', 1, 'tri', '0', 13000),
+(62, '0895141215271526712', 135, '7000', '2025-05-15 09:28:48', 1, 'tri', '0', 8000),
+(63, '08951278587327819312', 135, '22000', '2025-05-16 02:21:52', 1, 'tri', 'imron', 23000),
+(64, '08227147207109274091212412', 143, '120000', '2025-05-16 02:35:41', 1, 'telkomsel', 'imron', 123000),
+(65, '08221271271239', 143, '120000', '2025-05-16 02:37:26', 1, 'telkomsel', 'imron', 150000),
+(66, '0811123736217412423144', 143, '120000', '2025-05-18 00:14:49', 1, 'telkomsel', 'imron', 130000);
 
 --
 -- Indexes for dumped tables
@@ -132,19 +150,19 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `admin_product`
 --
 ALTER TABLE `admin_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
