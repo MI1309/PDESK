@@ -78,11 +78,11 @@ Public Class form_login
                     ' Routing to different forms based on the role
                     If userRole.ToLower = "admin" Then
                         admin.Show()
-                        Me.Hide()
+                        Me.Close()
                     ElseIf userRole.ToLower = "kasir" Then
                         form_kasir.loggedInUserUsername = TextBox1.Text
                         form_kasir.Show()
-                        Me.Hide()
+                        Me.Close()
                     End If
                 Else
                     MsgBox("Incorrect login credentials")
