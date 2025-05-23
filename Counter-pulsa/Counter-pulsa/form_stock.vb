@@ -127,8 +127,7 @@ Public Class form_stock
             End If
         End If
     End Sub
-
-    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
         Try
             If ComboBox3.SelectedIndex = -1 Or ComboBox1.SelectedIndex = -1 Then Exit Sub
 
@@ -155,6 +154,7 @@ Public Class form_stock
             MsgBox("Error saat menampilkan stok: " & ex.Message)
         End Try
     End Sub
+
 
 
     Private Sub ComboBox3_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox3.SelectedIndexChanged
@@ -262,5 +262,4 @@ Public Class form_stock
             MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-
 End Class

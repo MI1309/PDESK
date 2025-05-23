@@ -67,26 +67,45 @@ Public Class form_kasir
 
                     ' Ganti header dan gaya
                     With DataGridView1
-                        .Columns("id").HeaderText = "Kode Produk"
-                        .Columns("nama_produk").HeaderText = "Nama Produk"
-                        .Columns("harga_jual").HeaderText = "Harga Jual"
-                        .Columns("stok").HeaderText = "Stok"
-                        .Columns("tipe").HeaderText = "Tipe"
+                        ' Header 
                         .BackgroundColor = Color.White
-                        .DefaultCellStyle.BackColor = Color.White
-
-                        .Columns("tanggal_restock").HeaderText = "Tanggal Restok"
-
-                        .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
-
-                        .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 9, FontStyle.Bold)
+                        .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
                         .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-
-                        .EnableHeadersVisualStyles = False
-                        .ColumnHeadersDefaultCellStyle.BackColor = Color.Navy
+                        .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 85, 155)
                         .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+                        .EnableHeadersVisualStyles = False
 
-                        .AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
+                        ' Cell style
+                        .DefaultCellStyle.Font = New Font("Segoe UI", 10)
+                        .DefaultCellStyle.BackColor = Color.White
+                        .DefaultCellStyle.ForeColor = Color.Black
+                        .DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255)
+                        .DefaultCellStyle.SelectionForeColor = Color.Black
+
+                        ' Alternating rows
+                        .AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
+
+                        ' Grid behavior
+                        .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+                        .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+                        .RowTemplate.Height = 30
+                        .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+                        .ReadOnly = True
+                        .MultiSelect = False
+
+                        ' Grid border settings
+                        .ScrollBars = ScrollBars.None
+                        .BorderStyle = BorderStyle.None
+                        .CellBorderStyle = DataGridViewCellBorderStyle.Single           ' Garis antar cell
+                        .GridColor = Color.LightGray                                   ' Warna garis pemisah
+                        .RowHeadersVisible = False
+
+                        ' Disable user interaction
+                        .AllowUserToAddRows = False
+                        .AllowUserToDeleteRows = False
+                        .AllowUserToResizeRows = False
+                        .AllowUserToResizeColumns = False
+                        .AllowUserToOrderColumns = False
                     End With
 
                 End If
@@ -98,21 +117,24 @@ Public Class form_kasir
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close() ' Menutup koneksi setelah selesai
         End Try
     End Sub
-
-
     Private Sub Form3_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        ' Mode fullscreen total
         Me.FormBorderStyle = FormBorderStyle.None
-        Me.WindowState = FormWindowState.Maximized
+        Me.Bounds = Screen.PrimaryScreen.Bounds
+        Me.TopMost = True ' Pastikan berada di atas semua jendela
+
+        ' UI setup
         TextBox3.ReadOnly = True
         DataGridView1.ReadOnly = True
         DataGridView1.AllowUserToAddRows = False
         DataGridView1.AllowUserToDeleteRows = False
-        DataGridView1.AllowUserToOrderColumns = False ' Optional: agar tidak bisa urutkan kolom
+        DataGridView1.AllowUserToOrderColumns = False
         ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
         tampilData()
         Label5.Text = "Operator : " & loggedInUserUsername
     End Sub
+
 
     'Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TextBox1..KeyPress
     '    ' Hanya izinkan angka dan tombol kontrol seperti backspace
@@ -162,7 +184,7 @@ Public Class form_kasir
     End Sub
 
     ' Tutup Form
-    Private Sub Button4_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(ByVal sender As Object, ByVal e As EventArgs)
         Application.Exit()
     End Sub
     Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ComboBox1.SelectedIndexChanged
@@ -320,8 +342,8 @@ Public Class form_kasir
                 End Using
 
                 ' Update stok
-                Using cmdUpdate As New OdbcCommand("UPDATE admin_product SET stok = stok - ? WHERE id = ?", conn, trans)
-                    cmdUpdate.Parameters.AddWithValue("@qty", qty)
+                ' Update stok secara eksplisit
+                Using cmdUpdate As New OdbcCommand("UPDATE admin_product SET stok = stok - 1 WHERE id = ?", conn, trans)
                     cmdUpdate.Parameters.AddWithValue("@id", productId)
                     cmdUpdate.ExecuteNonQuery()
                 End Using
@@ -534,9 +556,10 @@ Public Class form_kasir
     End Sub
 
 
-    Private Sub logout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles logout.Click
+    Private Sub logout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
         form_login.Show()
+        loggedInUserUsername = ""
     End Sub
 
     Private Sub Label6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -557,5 +580,14 @@ Public Class form_kasir
 
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
 
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Me.Close()
+        form_login.Show()
+        loggedInUserUsername = ""
+        form_login.TextBox1.Clear()
+        form_login.TextBox2.Clear()
+        form_login.ComboBox1.SelectedIndex = -1
     End Sub
 End Class

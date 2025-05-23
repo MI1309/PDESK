@@ -72,7 +72,10 @@
     End Sub
 
     ' === Tab Selection Handler ===
+    Private isResettingTab As Boolean = False
+
     Private Sub TabControl1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TabControl1.SelectedIndexChanged
+        If isResettingTab Then Return
 
         Select Case TabControl1.SelectedIndex
             Case 0
@@ -85,12 +88,20 @@
                 LoadKasirForm()
             Case 2
                 LoadLaporanForm()
-            Case 3 ' Logout tab
+            Case 3
                 Me.Hide()
                 form_login.Show()
+                form_login.TextBox1.Clear()
+                form_login.TextBox2.Clear()
+                form_login.ComboBox1.SelectedIndex = -1
 
+                ' Cegah event berulang
+                isResettingTab = True
+                TabControl1.SelectedIndex = 0
+                isResettingTab = False
         End Select
     End Sub
+
 
     Private Sub LoadKasirForm()
         If isKasirLoaded Then Return

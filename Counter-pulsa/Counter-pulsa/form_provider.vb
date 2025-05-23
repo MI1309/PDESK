@@ -35,7 +35,6 @@ Public Class form_provider
         Dim controlDescriptions As New Dictionary(Of String, String) From {
             {"TextBox2", "Nama Produk"},
             {"TextBox3", "Harga Jual"},
-            {"TextBox4", "Harga kulak"},
             {"ComboBox2", "Tipe Harga"}
         }
 
@@ -83,7 +82,6 @@ Public Class form_provider
         TextBox1.Clear()
         TextBox2.Clear()
         TextBox3.Clear()
-        TextBox4.Clear()
         loadidproduk()
         ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
         setupDataGridView()
@@ -166,6 +164,7 @@ Public Class form_provider
     Sub setupDataGridView()
         With DataGridView1
             .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .BackgroundColor = Color.White
             .EnableHeadersVisualStyles = False
             .DefaultCellStyle.Font = New Font("Segoe UI", 10)
             .DefaultCellStyle.BackColor = Color.White
@@ -207,7 +206,6 @@ Public Class form_provider
     Function ValidasiInput() As Boolean
         If String.IsNullOrWhiteSpace(TextBox1.Text) OrElse
            String.IsNullOrWhiteSpace(TextBox2.Text) OrElse
-           String.IsNullOrWhiteSpace(TextBox4.Text) OrElse
             ComboBox2.SelectedIndex = -1 Then
             MsgBox("Semua field harus diisi dan kasir harus dipilih!", vbExclamation)
             Return False
@@ -215,7 +213,7 @@ Public Class form_provider
 
         Dim hargaJual, hargaModal, tipe As Integer
 
-        If Not Integer.TryParse(TextBox1.Text, hargaJual) OrElse Not Integer.TryParse(TextBox2.Text, hargaModal) OrElse Not Integer.TryParse(TextBox4.Text, tipe) Then
+        If Not Integer.TryParse(TextBox1.Text, hargaJual) OrElse Not Integer.TryParse(TextBox2.Text, hargaModal) Then
             MsgBox("Harus diisi angka untuk harga jual, harga modal, dan tipe.")
             Return False
         End If
@@ -235,18 +233,16 @@ Public Class form_provider
         Try
             Dim namaProduk As String = TextBox2.Text.Trim()
             Dim hargaJual As Integer = Integer.Parse(TextBox3.Text)
-            Dim hargaKulak As Integer = Integer.Parse(TextBox4.Text)
             Dim tipe As Integer = CType(ComboBox2.SelectedItem, KeyValuePair(Of String, Integer)).Value
 
             ' Cek apakah produk dengan nama, tipe, dan harga sudah ada
             test_conn()
 
             ' Memastikan urutan parameter sesuai
-            Dim checkCmd As New OdbcCommand("SELECT COUNT(*) FROM admin_product WHERE nama_produk = ? AND tipe = ? AND harga_jual = ? AND harga_kulak = ?", conn)
+            Dim checkCmd As New OdbcCommand("SELECT COUNT(*) FROM admin_product WHERE nama_produk = ? AND tipe = ?", conn)
             checkCmd.Parameters.AddWithValue("?", namaProduk)  ' Menambahkan parameter nama_produk
             checkCmd.Parameters.AddWithValue("?", tipe)  ' Menambahkan parameter tipe
             checkCmd.Parameters.AddWithValue("?", hargaJual)  ' Menambahkan parameter harga_jual
-            checkCmd.Parameters.AddWithValue("?", hargaKulak)  ' Menambahkan parameter harga_kulak
 
             If Convert.ToInt32(checkCmd.ExecuteScalar()) > 0 Then
                 MsgBox("Produk dengan nama, tipe, dan harga ini sudah ada.", vbExclamation)
@@ -254,13 +250,12 @@ Public Class form_provider
             End If
 
             ' Insert produk baru
-            Dim sql As String = "INSERT INTO admin_product (nama_produk, harga_jual, harga_kulak, tanggal_restock, stok, tipe) " &
-                                "VALUES (?, ?, ?, ?, 0, ?)"
+            Dim sql As String = "INSERT INTO admin_product (nama_produk, harga_jual, tanggal_restock, tipe) " &
+                                "VALUES (?, ?, ?, ?)"
             Using cmd As New OdbcCommand(sql, conn)
                 ' Memastikan urutan parameter yang benar
                 cmd.Parameters.AddWithValue("?", namaProduk)  ' Menambahkan parameter nama_produk
                 cmd.Parameters.AddWithValue("?", hargaJual)  ' Menambahkan parameter harga_jual
-                cmd.Parameters.AddWithValue("?", hargaKulak)  ' Menambahkan parameter harga_kulak
                 cmd.Parameters.AddWithValue("?", DateTime.Now)  ' Menambahkan parameter tanggal_restock
                 cmd.Parameters.AddWithValue("?", tipe)  ' Menambahkan parameter tipe
                 cmd.ExecuteNonQuery()
@@ -280,17 +275,13 @@ Public Class form_provider
     End Sub
 
 
-
-
-
-
     Private Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button2.Click
         If selectedId = -1 OrElse String.IsNullOrWhiteSpace(TextBox1.Text) Then
             MsgBox("Tidak ada data yang dipilih untuk diperbarui!", vbExclamation)
             Exit Sub
         End If
 
-        If TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox2.SelectedIndex = -1 Then
+        If TextBox2.Text = "" Or TextBox3.Text = "" Or ComboBox2.SelectedIndex = -1 Then
             MsgBox("Pilih data yang ingin diupdate di list dan pastikan semua kolom diisi.", vbExclamation)
             Exit Sub
         End If
@@ -300,23 +291,18 @@ Public Class form_provider
         End If
 
         ' Validasi input kosong
-        If TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Or ComboBox2.SelectedIndex = -1 Then
+        If TextBox2.Text = "" Or TextBox3.Text = ""  Or ComboBox2.SelectedIndex = -1 Then
             MsgBox("Pilih data yang ingin diupdate di list dan pastikan semua kolom diisi.", vbExclamation)
             Exit Sub
         End If
 
         ' Validasi angka
         Dim hargaJual As Integer
-        Dim hargaKulak As Integer
-        If Not Integer.TryParse(TextBox3.Text, hargaJual) OrElse Not Integer.TryParse(TextBox4.Text, hargaKulak) Then
+        If Not Integer.TryParse(TextBox3.Text, hargaJual) Then
             MsgBox("Harga jual dan harga kulak harus berupa angka!", vbExclamation)
             Exit Sub
         End If
 
-        If hargaJual < hargaKulak Then
-            MsgBox("Harga jual tidak boleh lebih rendah dari harga kulak!", vbCritical)
-            Exit Sub
-        End If
 
         Try
             Dim namaProduk As String = TextBox2.Text
@@ -325,7 +311,7 @@ Public Class form_provider
             test_conn()
 
             ' Cek apakah data sama
-            Dim sqlCek As String = "SELECT nama_produk, harga_jual, harga_kulak, tipe FROM admin_product WHERE id = ?"
+            Dim sqlCek As String = "SELECT nama_produk, harga_jual, tipe FROM admin_product WHERE id = ?"
             Using cmdCek As New OdbcCommand(sqlCek, conn)
                 cmdCek.Parameters.AddWithValue("@id", selectedId)
 
@@ -333,10 +319,9 @@ Public Class form_provider
                     If reader.Read() Then
                         Dim oldNama = reader("nama_produk").ToString()
                         Dim oldHargaJual = Convert.ToInt32(reader("harga_jual"))
-                        Dim oldHargaKulak = Convert.ToInt32(reader("harga_kulak"))
                         Dim oldTipe = Convert.ToInt32(reader("tipe"))
 
-                        If oldNama = namaProduk AndAlso oldHargaJual = hargaJual AndAlso oldHargaKulak = hargaKulak AndAlso oldTipe = tipe Then
+                        If oldNama = namaProduk AndAlso oldHargaJual = hargaJual AndAlso oldTipe = tipe Then
                             MsgBox("Data tetap. Tidak ada perubahan yang dilakukan.", vbInformation)
                             Exit Sub
                         End If
@@ -345,11 +330,10 @@ Public Class form_provider
             End Using
 
             ' Lanjut update
-            Dim sql As String = "UPDATE admin_product SET nama_produk = ?, harga_jual = ?, harga_kulak = ?, tipe = ? WHERE id = ?"
+            Dim sql As String = "UPDATE admin_product SET nama_produk = ?, harga_jual = ?, tipe = ? WHERE id = ?"
             Using cmd As New OdbcCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@nama_produk", namaProduk)
                 cmd.Parameters.AddWithValue("@harga_jual", hargaJual)
-                cmd.Parameters.AddWithValue("@harga_kulak", hargaKulak)
                 cmd.Parameters.AddWithValue("@tipe", tipe)
                 cmd.Parameters.AddWithValue("@id", selectedId)
                 cmd.ExecuteNonQuery()
@@ -500,7 +484,6 @@ Public Class form_provider
                 ' Ambil data lain dan tampilkan di form
                 TextBox2.Text = selectedRow.Cells("nama_produk").Value.ToString() ' Nama Produk
                 TextBox3.Text = selectedRow.Cells("harga_jual").Value.ToString() ' Harga Jual
-                TextBox4.Text = selectedRow.Cells("harga_kulak").Value.ToString() ' Harga Kulak
 
                 ' Set ComboBox dengan tipe produk
                 Dim tipeProduk As Object = selectedRow.Cells("tipe").Value
@@ -524,7 +507,7 @@ Public Class form_provider
         End If
     End Sub
 
-    Private Sub TextBox4_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles TextBox4.KeyDown
+    Private Sub TextBox4_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs)
         If e.Control AndAlso e.KeyCode = Keys.V Then
             e.SuppressKeyPress = True
         End If
@@ -540,7 +523,6 @@ Public Class form_provider
         TextBox1.Clear()
         TextBox2.Clear()
         TextBox3.Clear()
-        TextBox4.Clear()
         ComboBox2.SelectedIndex = -1
         ComboBox2.Text = ""
         selectedId = -1
@@ -565,7 +547,7 @@ Public Class form_provider
         End If
     End Sub
     'hrs angka
-    Private Sub TextBox4_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TextBox4.KeyPress
+    Private Sub TextBox4_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs)
         ' Hanya izinkan angka dan tombol kontrol seperti backspace
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
@@ -600,12 +582,7 @@ Public Class form_provider
         ' Contoh lainnya: warna jika harga jual < modal
         If DataGridView1.Columns(e.ColumnIndex).Name = "harga_jual" Then
             Try
-                Dim hargaModal As Integer = Convert.ToInt32(DataGridView1.Rows(e.RowIndex).Cells("harga_kulak").Value)
                 Dim hargaJual As Integer = Convert.ToInt32(DataGridView1.Rows(e.RowIndex).Cells("harga_jual").Value)
-
-                If hargaJual < hargaModal Then
-                    e.CellStyle.ForeColor = Color.Blue
-                End If
             Catch
                 ' biarkan lewat jika error parsing
             End Try
@@ -616,7 +593,7 @@ Public Class form_provider
             test_conn() ' Make sure to open a connection
 
             ' Query to fetch harga_jual and harga_kulak based on tipe
-            Dim query As String = "SELECT harga_jual, harga_kulak FROM admin_product WHERE tipe = ? LIMIT 1"
+            Dim query As String = "SELECT harga_jual FROM admin_product WHERE tipe = ? LIMIT 1"
             Using cmd As New OdbcCommand(query, conn)
                 cmd.Parameters.AddWithValue("?", tipe)
 
@@ -624,7 +601,6 @@ Public Class form_provider
                     If reader.Read() Then
                         ' Update TextBoxes with the fetched prices
                         TextBox3.Text = reader("harga_jual").ToString()
-                        TextBox4.Text = reader("harga_kulak").ToString()
                     End If
                 End Using
             End Using
@@ -643,29 +619,22 @@ Public Class form_provider
             ' Cari produk di database berdasarkan nama produk yang ada di TextBox1
             Dim namaProduk As String = TextBox1.Text
 
-            ' Pastikan TextBox1 tidak kosong
-            'If String.IsNullOrWhiteSpace(namaProduk) Then
-            '    MsgBox("Nama produk tidak boleh kosong", vbExclamation)
-            '    Exit Sub
-            'End If
 
             ' Cari produk berdasarkan nama produk di database
             Try
                 test_conn()
 
                 ' Query untuk mendapatkan harga jual dan harga kulak berdasarkan nama produk
-                Dim query As String = "SELECT harga_jual, harga_kulak FROM admin_product WHERE nama_produk = ?"
+                Dim query As String = "SELECT harga_jual FROM admin_product WHERE nama_produk = ?"
                 Using cmd As New OdbcCommand(query, conn)
                     cmd.Parameters.AddWithValue("?", namaProduk)
                     Using reader As OdbcDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
                             ' Set harga jual dan harga kulak ke TextBox
                             TextBox3.Text = reader("harga_jual").ToString()
-                            TextBox4.Text = reader("harga_kulak").ToString()
                         Else
                             ' Tidak ada produk yang ditemukan, bersihkan TextBox
                             TextBox3.Clear()
-                            TextBox4.Clear()
                         End If
                     End Using
                 End Using
@@ -674,7 +643,6 @@ Public Class form_provider
                 MsgBox("Gagal memuat harga produk: " & ex.Message, vbCritical)
                 ' Bersihkan TextBox pada error
                 TextBox3.Clear()
-                TextBox4.Clear()
             Finally
                 ' Pastikan koneksi selalu ditutup
                 If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()

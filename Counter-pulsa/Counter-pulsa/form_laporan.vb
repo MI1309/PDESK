@@ -113,21 +113,49 @@ Public Class form_laporan
 
     Sub setupDataGridView()
         With DataGridView1
+            ' Header 
+            .BackgroundColor = Color.White
             .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
-            .ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 85, 155)
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             .EnableHeadersVisualStyles = False
+
+            ' Cell style
             .DefaultCellStyle.Font = New Font("Segoe UI", 10)
             .DefaultCellStyle.BackColor = Color.White
             .DefaultCellStyle.ForeColor = Color.Black
-            .RowTemplate.Height = 30
+            .DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255)
+            .DefaultCellStyle.SelectionForeColor = Color.Black
+
+            ' Alternating rows
             .AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
+
+            ' Grid behavior
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+            .RowTemplate.Height = 30
             .SelectionMode = DataGridViewSelectionMode.FullRowSelect
             .ReadOnly = True
-            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+            .MultiSelect = False
+
+            ' Grid border settings
+            .ScrollBars = ScrollBars.None
+            .BorderStyle = BorderStyle.None
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single           ' Garis antar cell
+            .GridColor = Color.LightGray                                   ' Warna garis pemisah
+            .RowHeadersVisible = False
+
+            ' Disable user interaction
+            .AllowUserToAddRows = False
+            .AllowUserToDeleteRows = False
+            .AllowUserToResizeRows = False
+            .AllowUserToResizeColumns = False
+            .AllowUserToOrderColumns = False
         End With
     End Sub
 
-    Private Sub Form6_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+    Private Sub form_laporan_load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         tampilData()
         setupDataGridView()
         loadUsersToRadioButtons()
@@ -138,5 +166,9 @@ Public Class form_laporan
         If previousForm IsNot Nothing Then
             previousForm.Show()
         End If
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

@@ -24,7 +24,6 @@ Partial Class form_kasir
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(form_kasir))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -37,40 +36,30 @@ Partial Class form_kasir
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.logout = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(85, 484)
+        Me.DataGridView1.Location = New System.Drawing.Point(670, 567)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1109, 206)
+        Me.DataGridView1.Size = New System.Drawing.Size(560, 249)
         Me.DataGridView1.TabIndex = 24
-        '
-        'Button4
-        '
-        Me.Button4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.Button4.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rmlg1
-        Me.Button4.Font = New System.Drawing.Font("Javanese Text", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button4.Location = New System.Drawing.Point(626, 484)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(106, 44)
-        Me.Button4.TabIndex = 23
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
+        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
         Me.Button2.Font = New System.Drawing.Font("Century Gothic", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button2.Location = New System.Drawing.Point(931, 385)
+        Me.Button2.Location = New System.Drawing.Point(1333, 435)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(175, 67)
         Me.Button2.TabIndex = 21
@@ -80,10 +69,10 @@ Partial Class form_kasir
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Button1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_46_03
+        Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
         Me.Button1.Font = New System.Drawing.Font("Century Gothic", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button1.Location = New System.Drawing.Point(931, 305)
+        Me.Button1.Location = New System.Drawing.Point(1333, 355)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(175, 67)
         Me.Button1.TabIndex = 20
@@ -94,37 +83,37 @@ Partial Class form_kasir
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Palatino Linotype", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Lucida Sans Unicode", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label2.Location = New System.Drawing.Point(86, 161)
+        Me.Label2.Location = New System.Drawing.Point(231, 270)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(247, 37)
+        Me.Label2.Size = New System.Drawing.Size(309, 34)
         Me.Label2.TabIndex = 26
-        Me.Label2.Text = "Nomor HP             :"
+        Me.Label2.Text = "NOMOR HP             :"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Palatino Linotype", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Lucida Sans Unicode", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label3.Location = New System.Drawing.Point(86, 193)
+        Me.Label3.Location = New System.Drawing.Point(231, 304)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(252, 37)
+        Me.Label3.Size = New System.Drawing.Size(309, 34)
         Me.Label3.TabIndex = 27
-        Me.Label3.Text = "Tipe Kartu             :"
+        Me.Label3.Text = "TIPE KARTU            :"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Palatino Linotype", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Lucida Sans Unicode", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label4.Location = New System.Drawing.Point(86, 231)
+        Me.Label4.Location = New System.Drawing.Point(236, 338)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(253, 37)
+        Me.Label4.Size = New System.Drawing.Size(304, 34)
         Me.Label4.TabIndex = 28
-        Me.Label4.Text = "Paket Harga           :"
+        Me.Label4.Text = "PAKET HARGA        :"
         '
         'Label5
         '
@@ -132,7 +121,7 @@ Partial Class form_kasir
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Palatino Linotype", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label5.Location = New System.Drawing.Point(357, 47)
+        Me.Label5.Location = New System.Drawing.Point(596, 97)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(467, 65)
         Me.Label5.TabIndex = 29
@@ -141,34 +130,34 @@ Partial Class form_kasir
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(356, 209)
+        Me.ComboBox1.Location = New System.Drawing.Point(607, 322)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(683, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(614, 21)
         Me.ComboBox1.TabIndex = 33
         '
         'ComboBox2
         '
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(356, 246)
+        Me.ComboBox2.Location = New System.Drawing.Point(607, 359)
         Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(683, 21)
+        Me.ComboBox2.Size = New System.Drawing.Size(614, 21)
         Me.ComboBox2.TabIndex = 34
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Palatino Linotype", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Font = New System.Drawing.Font("Lucida Sans Unicode", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label6.Location = New System.Drawing.Point(72, 358)
+        Me.Label6.Location = New System.Drawing.Point(236, 449)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(223, 41)
+        Me.Label6.Size = New System.Drawing.Size(200, 34)
         Me.Label6.TabIndex = 35
         Me.Label6.Text = "UANG BAYAR"
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(356, 305)
+        Me.TextBox3.Location = New System.Drawing.Point(607, 402)
         Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(337, 33)
@@ -176,39 +165,27 @@ Partial Class form_kasir
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(356, 169)
+        Me.TextBox2.Location = New System.Drawing.Point(607, 282)
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(683, 25)
+        Me.TextBox2.Size = New System.Drawing.Size(614, 25)
         Me.TextBox2.TabIndex = 37
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 25.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Lucida Sans Unicode", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label1.Location = New System.Drawing.Point(112, 422)
+        Me.Label1.Location = New System.Drawing.Point(256, 567)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(372, 47)
+        Me.Label1.Size = New System.Drawing.Size(355, 39)
         Me.Label1.TabIndex = 38
         Me.Label1.Text = "DATA PRODUCT      :"
         '
-        'logout
-        '
-        Me.logout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.logout.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rmlg1
-        Me.logout.Font = New System.Drawing.Font("Javanese Text", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.logout.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.logout.Location = New System.Drawing.Point(984, 696)
-        Me.logout.Name = "logout"
-        Me.logout.Size = New System.Drawing.Size(122, 50)
-        Me.logout.TabIndex = 39
-        Me.logout.UseVisualStyleBackColor = True
-        '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(356, 367)
+        Me.TextBox1.Location = New System.Drawing.Point(607, 449)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(337, 33)
@@ -218,11 +195,11 @@ Partial Class form_kasir
         '
         Me.Label7.AutoSize = True
         Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Palatino Linotype", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Font = New System.Drawing.Font("Lucida Sans Unicode", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label7.Location = New System.Drawing.Point(125, 296)
+        Me.Label7.Location = New System.Drawing.Point(236, 402)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(122, 41)
+        Me.Label7.Size = New System.Drawing.Size(108, 34)
         Me.Label7.TabIndex = 40
         Me.Label7.Text = "TOTAL"
         '
@@ -231,24 +208,49 @@ Partial Class form_kasir
         Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.Black_Cream_Elegant_Monogram_Initial_Name_I_C_Logo_
         Me.PictureBox1.InitialImage = Nothing
-        Me.PictureBox1.Location = New System.Drawing.Point(152, 19)
+        Me.PictureBox1.Location = New System.Drawing.Point(291, 67)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(175, 128)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 42
         Me.PictureBox1.TabStop = False
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = CType(resources.GetObject("PictureBox2.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.Black_Cream_Elegant_Monogram_Initial_Name_I_C_Logo_
+        Me.PictureBox2.InitialImage = Nothing
+        Me.PictureBox2.Location = New System.Drawing.Point(1149, 67)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(175, 128)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 43
+        Me.PictureBox2.TabStop = False
+        '
+        'Button3
+        '
+        Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
+        Me.Button3.Font = New System.Drawing.Font("Century Gothic", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Button3.Location = New System.Drawing.Point(1323, 539)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(175, 67)
+        Me.Button3.TabIndex = 44
+        Me.Button3.Text = "exit"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'form_kasir
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.bg_kasir__2_
-        Me.ClientSize = New System.Drawing.Size(1443, 851)
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rm__6___1_
+        Me.ClientSize = New System.Drawing.Size(1898, 984)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.logout)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox3)
@@ -260,22 +262,21 @@ Partial Class form_kasir
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Name = "form_kasir"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Form3"
         Me.TopMost = True
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -288,8 +289,9 @@ Partial Class form_kasir
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents logout As System.Windows.Forms.Button
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class

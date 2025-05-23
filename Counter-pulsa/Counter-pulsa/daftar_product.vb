@@ -8,83 +8,6 @@ Public Class daftar_product
     Dim mysql As String
     Public loggedInUserId As Integer
     Private selectedId As Integer = -1
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.Close()
-        If previousForm IsNot Nothing Then
-            previousForm.Show()
-        End If
-    End Sub
-    Sub test_conn()
-        Try
-            mysql = "DSN=pulsa;"
-            conn = New OdbcConnection(mysql)
-            conn.Open()
-        Catch ex As Exception
-            MsgBox("Koneksi gagal: " & ex.Message)
-        End Try
-    End Sub
-    Private Sub Form7_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        LoadDataToGrid()
-        setupDataGridView()
-    End Sub
-
-    ' form 5
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim f5 As New form_provider()
-        f5.previousForm = Me ' Kirim Form2 sebagai previousForm
-        f5.Show()
-        Me.Hide()
-    End Sub
-
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        ' form 8
-        Dim f7 As New form_stock()
-        f7.previousForm = Me ' Kirim Form2 sebagai previousForm
-        f7.Show()
-        Me.Hide()
-    End Sub
-    Sub setupDataGridView()
-        With DataGridView1
-            ' Header style
-            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
-            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 85, 155)
-            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-            .EnableHeadersVisualStyles = False
-
-            ' Cell style
-            .DefaultCellStyle.Font = New Font("Segoe UI", 10)
-            .DefaultCellStyle.BackColor = Color.White
-            .DefaultCellStyle.ForeColor = Color.Black
-            .DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255)
-            .DefaultCellStyle.SelectionForeColor = Color.Black
-
-            ' Alternating rows
-            .AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
-
-            ' Grid behavior
-            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
-            .RowTemplate.Height = 30
-            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
-            .ReadOnly = True
-            .MultiSelect = False
-
-            ' Grid border settings
-            .ScrollBars = ScrollBars.None
-            .BorderStyle = BorderStyle.None
-            .CellBorderStyle = DataGridViewCellBorderStyle.Single           ' Garis antar cell
-            .GridColor = Color.LightGray                                   ' Warna garis pemisah
-            .RowHeadersVisible = False
-
-            ' Disable user interaction
-            .AllowUserToAddRows = False
-            .AllowUserToDeleteRows = False
-            .AllowUserToResizeRows = False
-            .AllowUserToResizeColumns = False
-            .AllowUserToOrderColumns = False
-        End With
-    End Sub
 
     Sub LoadDataToGrid()
         Try
@@ -144,6 +67,86 @@ Public Class daftar_product
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
         End Try
     End Sub
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Me.Close()
+        If previousForm IsNot Nothing Then
+            previousForm.Show()
+        End If
+    End Sub
+    Sub test_conn()
+        Try
+            mysql = "DSN=pulsa;"
+            conn = New OdbcConnection(mysql)
+            conn.Open()
+        Catch ex As Exception
+            MsgBox("Koneksi gagal: " & ex.Message)
+        End Try
+    End Sub
+    Private Sub daftar_product_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        LoadDataToGrid()
+        setupDataGridView()
+    End Sub
+
+
+    ' form 5
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Dim f5 As New form_provider()
+        f5.previousForm = Me ' Kirim Form2 sebagai previousForm
+        f5.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        ' form 8
+        Dim f7 As New form_stock()
+        f7.previousForm = Me ' Kirim Form2 sebagai previousForm
+        f7.Show()
+        Me.Hide()
+    End Sub
+    Sub setupDataGridView()
+        With DataGridView1
+            ' Header 
+            .BackgroundColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 85, 155)
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .EnableHeadersVisualStyles = False
+
+            ' Cell style
+            .DefaultCellStyle.Font = New Font("Segoe UI", 10)
+            .DefaultCellStyle.BackColor = Color.White
+            .DefaultCellStyle.ForeColor = Color.Black
+            .DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255)
+            .DefaultCellStyle.SelectionForeColor = Color.Black
+
+            ' Alternating rows
+            .AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
+
+            ' Grid behavior
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+            .RowTemplate.Height = 30
+            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            .ReadOnly = True
+            .MultiSelect = False
+
+            ' Grid border settings
+            .ScrollBars = ScrollBars.None
+            .BorderStyle = BorderStyle.None
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single           ' Garis antar cell
+            .GridColor = Color.LightGray                                   ' Warna garis pemisah
+            .RowHeadersVisible = False
+
+            ' Disable user interaction
+            .AllowUserToAddRows = False
+            .AllowUserToDeleteRows = False
+            .AllowUserToResizeRows = False
+            .AllowUserToResizeColumns = False
+            .AllowUserToOrderColumns = False
+        End With
+
+    End Sub
     Private Sub Label2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
@@ -164,4 +167,7 @@ Public Class daftar_product
         LoadDataToGrid()
     End Sub
 
+    Private Sub DataGridView1_CellContentClick_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
 End Class

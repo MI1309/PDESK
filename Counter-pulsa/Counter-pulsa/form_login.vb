@@ -97,7 +97,7 @@ Public Class form_login
     End Sub
 
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TextBox1.Text = "" ' Clear username
         TextBox2.Text = "" ' Clear password
         ComboBox1.SelectedIndex = -1 ' Clear ComboBox selection
@@ -141,11 +141,15 @@ Public Class form_login
 
     ' Form Load Event - Setup ComboBox and TextBox Focus
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        loggedInUserUsername = ""
         Me.BeginInvoke(New MethodInvoker(Sub()
                                              TextBox1.Focus()
                                          End Sub))
         ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         ' Load role data into ComboBox
+        TextBox1.Clear()
+        TextBox2.Clear()
+
         Try
             test_conn()
             Dim cmd As New OdbcCommand("SELECT DISTINCT role FROM account", conn)
