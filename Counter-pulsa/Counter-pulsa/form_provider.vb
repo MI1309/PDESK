@@ -163,44 +163,49 @@ Public Class form_provider
     ' Setup DataGridView appearance and functionality
     Sub setupDataGridView()
         With DataGridView1
-            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .Columns("nama_produk").HeaderText = "Nama Produk"
+
             .BackgroundColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(45, 85, 155)
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             .EnableHeadersVisualStyles = False
+
+            ' Cell style
             .DefaultCellStyle.Font = New Font("Segoe UI", 10)
             .DefaultCellStyle.BackColor = Color.White
             .DefaultCellStyle.ForeColor = Color.Black
-            .RowHeadersVisible = False
-            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None ' Jangan auto tinggi
-            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells ' Lebar kolom menyesuaikan isi
-            .RowTemplate.Height = 25 ' Lebar baris kecil agar tampak horizontal
+            .DefaultCellStyle.SelectionBackColor = Color.FromArgb(230, 240, 255)
+            .DefaultCellStyle.SelectionForeColor = Color.Black
+
+            ' Alternating rows
+            .AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
+
+            ' Grid behavior
+            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None ' ✅ penting agar tinggi baris tidak berubah
+            .RowTemplate.Height = 30
             .SelectionMode = DataGridViewSelectionMode.FullRowSelect
             .ReadOnly = True
             .MultiSelect = False
-            .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
-            .ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray
-            .EnableHeadersVisualStyles = False
-            .DefaultCellStyle.Font = New Font("Segoe UI", 10)
-            .DefaultCellStyle.BackColor = Color.White
-            .DefaultCellStyle.ForeColor = Color.Black
-            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            .ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(60, 120, 200)
-            .ColumnHeadersDefaultCellStyle.ForeColor = Color.WhiteSmoke
-            .MultiSelect = False
+
+            ' Grid border settings
+            .ScrollBars = ScrollBars.None
+            .BorderStyle = BorderStyle.None
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
+            .RowHeadersVisible = False
+
+            ' Disable user interaction
             .AllowUserToAddRows = False
             .AllowUserToDeleteRows = False
             .AllowUserToResizeRows = False
             .AllowUserToResizeColumns = False
             .AllowUserToOrderColumns = False
-            .RowHeadersVisible = False
-            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells ' Atur tinggi baris otomatis
-            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill ' Kolom isi seluruh leba
-            .RowTemplate.Height = 30
-            .AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue
-            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
-            .ReadOnly = True
-            .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         End With
     End Sub
+
 
     ' Validate input fields and return boolean
     Function ValidasiInput() As Boolean

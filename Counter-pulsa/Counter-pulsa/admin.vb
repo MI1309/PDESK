@@ -6,21 +6,27 @@
     Private isLaporanLoaded As Boolean = False
 
     Private Sub admin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ' Set background warna
+        Me.BackColor = Color.FromArgb(30, 30, 60)
 
+        ' Hilangkan border window
         Me.FormBorderStyle = FormBorderStyle.None
-        Me.BackColor = Color.FromArgb(30, 30, 60) ' Background utama form
 
-        ' === Setup TabControl ===
+        ' Atur ukuran form supaya memenuhi seluruh layar
+        Me.Bounds = Screen.PrimaryScreen.Bounds
+        ' Atau sebagai alternatif, pakai:
+        ' Me.WindowState = FormWindowState.Maximized
+
+        ' Setup TabControl supaya memenuhi form
         With TabControl1
-            .Dock = DockStyle.Fill
             .DrawMode = TabDrawMode.OwnerDrawFixed
-            .ItemSize = New Size(120, 40)
+            .ItemSize = New Size(150, 40)
             .SizeMode = TabSizeMode.Fixed
             .Appearance = TabAppearance.Normal
-            .BackColor = Color.Transparent
+            .Dock = DockStyle.Fill
         End With
 
-        ' === Setup Semua TabPage ===
+        ' Setup background dan warna teks untuk setiap tab
         For Each tab As TabPage In TabControl1.TabPages
             tab.BackColor = Color.FromArgb(44, 62, 80)
             tab.ForeColor = Color.White
@@ -31,26 +37,26 @@
         TabPage3.Text = "Laporan"
         TabPage4.Text = "Logout"
 
-        ' === Label Tampilan Awal ===
+        ' Setup label untuk tampilan awal
         Label1.Text = "Welcome Admin 😁"
         Label1.Font = New Font("Segoe UI", 24, FontStyle.Bold)
         Label1.ForeColor = Color.White
         Label1.BackColor = Color.Transparent
         Label1.AutoSize = True
-        Label1.Location = New Point(790, 400)
+        Label1.Location = New Point((Me.ClientSize.Width - Label1.Width) \ 2, 400) ' tengah horizontal
 
         Label2.Text = "Pilih opsi di atas untuk lihat form"
         Label2.Font = New Font("Segoe UI", 18, FontStyle.Regular)
         Label2.ForeColor = Color.WhiteSmoke
         Label2.BackColor = Color.Transparent
         Label2.AutoSize = True
-        Label2.Location = New Point(760, 460)
+        Label2.Location = New Point((Me.ClientSize.Width - Label2.Width) \ 2, 460) ' tengah horizontal
 
         TabPage1.Controls.Add(Label1)
         TabPage1.Controls.Add(Label2)
     End Sub
 
-    ' === Custom Tampilan Tab ===
+    ' Custom drawing tab
     Private Sub TabControl1_DrawItem(ByVal sender As Object, ByVal e As DrawItemEventArgs) Handles TabControl1.DrawItem
         Dim g As Graphics = e.Graphics
         Dim tabPage As TabPage = TabControl1.TabPages(e.Index)
@@ -71,7 +77,6 @@
         End Using
     End Sub
 
-    ' === Tab Selection Handler ===
     Private isResettingTab As Boolean = False
 
     Private Sub TabControl1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TabControl1.SelectedIndexChanged
@@ -95,13 +100,11 @@
                 form_login.TextBox2.Clear()
                 form_login.ComboBox1.SelectedIndex = -1
 
-                ' Cegah event berulang
                 isResettingTab = True
                 TabControl1.SelectedIndex = 0
                 isResettingTab = False
         End Select
     End Sub
-
 
     Private Sub LoadKasirForm()
         If isKasirLoaded Then Return
@@ -116,22 +119,21 @@
         frm.Show()
         isKasirLoaded = True
     End Sub
-
     Private Sub LoadLaporanForm()
-        If isLaporanLoaded Then Return
-
+        ' Buat instance baru setiap kali
         Dim frm As New form_laporan With {
             .TopLevel = False,
             .FormBorderStyle = FormBorderStyle.None,
             .Dock = DockStyle.Fill
         }
 
+        TabPage3.Controls.Clear() ' Hapus form lama jika ada
         TabPage3.Controls.Add(frm)
         frm.Show()
-        isLaporanLoaded = True
     End Sub
 
-    ' Dummy untuk Label1_Click agar tidak error
-    Private Sub Label1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Label1.Click
+
+    Private Sub TabPage1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabPage1.Click
+
     End Sub
 End Class

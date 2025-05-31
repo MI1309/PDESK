@@ -42,59 +42,52 @@ Public Class form_login
             MsgBox("Connection failed: " & ex.Message)
         End Try
     End Sub
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        ' Validate inputs
-        If TextBox1.Text = "" And TextBox2.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Please enter valid input")
-        ElseIf TextBox1.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Username and role are empty")
-        ElseIf TextBox2.Text = "" And ComboBox1.Text = "" Then
-            MsgBox("Password and role are empty")
-        ElseIf TextBox2.Text = "" And TextBox1.Text = "" Then
-            MsgBox("Username and password are empty")
-        ElseIf ComboBox1.Text = "" Then
-            MsgBox("Please select a valid role")
-        ElseIf TextBox1.Text = "" Then
-            MsgBox("Username cannot be empty")
-        ElseIf TextBox2.Text = "" Then
-            MsgBox("Password cannot be empty")
-        Else
-            ' Connect to database and check credentials
-            Try
-                Call test_conn()
-                Dim cmd As New OdbcCommand("SELECT * FROM account WHERE username=? AND password=? AND role=?", conn)
-                cmd.Parameters.AddWithValue("@username", TextBox1.Text)
-                cmd.Parameters.AddWithValue("@password", TextBox2.Text)
-                cmd.Parameters.AddWithValue("@role", ComboBox1.Text)
+ Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        ' Validasi input
+        If TextBox1.Text = "" OrElse TextBox2.Text = "" OrElse ComboBox1.Text = "" Then
+            MsgBox("Silakan lengkapi semua field: username, password, dan role")
+            Exit Sub
+        End If
 
-                Dim rd As OdbcDataReader = cmd.ExecuteReader()
+        Try
+            Call test_conn()
 
-                If rd.HasRows Then
-                    rd.Read()
-                    ' Store the logged-in username
-                    loggedInUserUsername = TextBox1.Text
-                    Dim userRole As String = ComboBox1.Text
+            ' Enkripsi password input
+            Dim encryptedPassword As String = Encrypt(TextBox2.Text)
 
-                    ' Routing to different forms based on the role
-                    If userRole.ToLower = "admin" Then
-                        admin.Show()
-                        Me.Close()
-                    ElseIf userRole.ToLower = "kasir" Then
-                        form_kasir.loggedInUserUsername = TextBox1.Text
-                        form_kasir.Show()
-                        Me.Close()
-                    End If
-                Else
-                    MsgBox("Incorrect login credentials")
+            ' Query: cocokkan username, encrypted password, dan role
+            Dim cmd As New OdbcCommand("SELECT * FROM account WHERE username=? AND password=? AND role=?", conn)
+            cmd.Parameters.AddWithValue("@username", TextBox1.Text)
+            cmd.Parameters.AddWithValue("@password", encryptedPassword)
+            cmd.Parameters.AddWithValue("@role", ComboBox1.Text)
+
+            Dim rd As OdbcDataReader = cmd.ExecuteReader()
+
+            If rd.HasRows Then
+                rd.Read()
+                loggedInUserUsername = TextBox1.Text
+                Dim userRole As String = ComboBox1.Text.ToLower()
+
+                ' Navigasi ke form sesuai role
+                If userRole = "admin" Then
+                    admin.Show()
+                ElseIf userRole = "kasir" Then
+                    form_kasir.loggedInUserUsername = TextBox1.Text
+                    form_kasir.Show()
                 End If
 
-            Catch ex As Exception
-                MsgBox("An error occurred: " & ex.Message)
-            Finally
-                conn.Close()
-            End Try
-        End If
+                Me.Close()
+            Else
+                MsgBox("Username atau password salah.")
+            End If
+
+        Catch ex As Exception
+            MsgBox("Terjadi kesalahan saat login: " & ex.Message)
+        Finally
+            conn.Close()
+        End Try
     End Sub
+
 
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -141,6 +134,7 @@ Public Class form_login
 
     ' Form Load Event - Setup ComboBox and TextBox Focus
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         loggedInUserUsername = ""
         Me.BeginInvoke(New MethodInvoker(Sub()
                                              TextBox1.Focus()

@@ -49,9 +49,9 @@ Partial Class form_kasir
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(670, 567)
+        Me.DataGridView1.Location = New System.Drawing.Point(242, 649)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(560, 249)
+        Me.DataGridView1.Size = New System.Drawing.Size(678, 249)
         Me.DataGridView1.TabIndex = 24
         '
         'Button2
@@ -177,7 +177,7 @@ Partial Class form_kasir
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Lucida Sans Unicode", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Label1.Location = New System.Drawing.Point(256, 567)
+        Me.Label1.Location = New System.Drawing.Point(235, 594)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(355, 39)
         Me.Label1.TabIndex = 38
@@ -232,7 +232,7 @@ Partial Class form_kasir
         Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
         Me.Button3.Font = New System.Drawing.Font("Century Gothic", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button3.Location = New System.Drawing.Point(1323, 539)
+        Me.Button3.Location = New System.Drawing.Point(1333, 539)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(175, 67)
         Me.Button3.TabIndex = 44

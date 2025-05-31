@@ -87,12 +87,15 @@ Public Class form_stock
         Me.Dock = DockStyle.Fill
 
         ' Atur kontrol agar mengikuti ukuran form
-        Label1.AutoSize = True
-        Label1.Height = 30
-        Label1.Width = 100
+        Label1.AutoSize = False
+        Label1.Width = 297
+        Label1.Height = 25
         Label1.BorderStyle = BorderStyle.FixedSingle
-        'Label1.TextAlign = ContentAlignment.MiddleCenter
-        'Label1.Location = New Point(301, 272)
+        Label1.TextAlign = ContentAlignment.MiddleCenter
+        Label1.Location = New Point(680, 456)
+        Label1.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+        Label1.ForeColor = Color.Gray
+        Label1.Text = "Belum ada produk dipilih"
 
         ' Set DockStyle for ComboBoxes and Button
 

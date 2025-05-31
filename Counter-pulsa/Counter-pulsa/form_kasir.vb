@@ -67,6 +67,21 @@ Public Class form_kasir
 
                     ' Ganti header dan gaya
                     With DataGridView1
+                        ' position text
+                        .Columns("id").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("nama_produk").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("harga_jual").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("stok").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("tipe").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                        .Columns("tanggal_restock").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+                        ' label data
+                        .Columns("id").HeaderText = "Kode Produk"
+                        .Columns("nama_produk").HeaderText = "Nama Produk"
+                        .Columns("harga_jual").HeaderText = "Harga Jual"
+                        .Columns("stok").HeaderText = "Stok Tersedia"
+                        .Columns("tipe").HeaderText = "Paket Harga"
+                        .Columns("tanggal_restock").HeaderText = "Tanggal Restock"
                         ' Header 
                         .BackgroundColor = Color.White
                         .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
@@ -118,11 +133,22 @@ Public Class form_kasir
         End Try
     End Sub
     Private Sub Form3_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        Dim nomorHp As String = TextBox2.Text.Trim()
+
+        ' Bersihkan semua input jika nomor terlalu pendek
+        If nomorHp.Length < 4 Then
+            ComboBox1.Items.Clear()
+            ComboBox1.SelectedIndex = -1
+            ComboBox2.Items.Clear()
+            ComboBox2.SelectedIndex = -1
+            TextBox3.Clear()
+        End If
         ' Mode fullscreen total
         Me.FormBorderStyle = FormBorderStyle.None
         Me.Bounds = Screen.PrimaryScreen.Bounds
         Me.TopMost = True ' Pastikan berada di atas semua jendela
-
+        ComboBox1.Items.Clear()
+        ComboBox2.Items.Clear()
         ' UI setup
         TextBox3.ReadOnly = True
         DataGridView1.ReadOnly = True
@@ -134,15 +160,6 @@ Public Class form_kasir
         tampilData()
         Label5.Text = "Operator : " & loggedInUserUsername
     End Sub
-
-
-    'Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As KeyPressEventArgs) Handles TextBox1..KeyPress
-    '    ' Hanya izinkan angka dan tombol kontrol seperti backspace
-    '    If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
-    '        e.Handled = True
-    '        MsgBox("Hanya angka yang diperbolehkan di nomor telepon!")
-    '    End If
-    'End Sub
 
     Private Sub DataGridView1_CellFormatting(ByVal sender As Object, ByVal e As DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
         If DataGridView1.Columns(e.ColumnIndex).Name = "id" Then
@@ -187,7 +204,10 @@ Public Class form_kasir
     Private Sub Button4_Click(ByVal sender As Object, ByVal e As EventArgs)
         Application.Exit()
     End Sub
+
+    ' cek produk yang ada di provider
     Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+
         If ComboBox1.SelectedItem Is Nothing Then Exit Sub
 
         Dim namaProdukDipilih As String = ComboBox1.SelectedItem.ToString()
@@ -221,6 +241,9 @@ Public Class form_kasir
         End Try
     End Sub
 
+    Function CleanNumberString(ByVal input As String) As String
+        Return input.Replace(".", "").Replace(",", "").Trim()
+    End Function
 
     ' Tombol Proses
     Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
@@ -230,7 +253,7 @@ Public Class form_kasir
         Dim uangPembeli As Integer
         Dim uangInput As String = New String(TextBox1.Text.Where(Function(c) Char.IsDigit(c)).ToArray())
         If Not Integer.TryParse(uangInput, uangPembeli) Then
-            MsgBox("Uang pembeli tidak valid.")
+            MsgBox("Uang pembeli tidak valid.", MsgBoxStyle.Exclamation)
             Return
         End If
 
@@ -298,11 +321,57 @@ Public Class form_kasir
             If conn.State <> ConnectionState.Open Then conn.Open()
 
             Dim trans As OdbcTransaction = conn.BeginTransaction()
+            Dim tipeString As String = ComboBox2.SelectedItem.ToString()
+            If tipeString Is Nothing Then
+                MsgBox("Tipe produk belum dipilih.")
+                Return
+            End If
 
+            tipeString = CleanNumberString(tipeString)
+
+            Dim tipeProduk As Integer
+            If Not Integer.TryParse(tipeString, tipeProduk) Then
+                MsgBox("Tipe produk tidak valid.")
+                Return
+            End If
+
+            ' cek produk
+            Using cmdGetId As New OdbcCommand("SELECT * FROM admin_product WHERE nama_produk = ? AND harga_jual = ? AND tipe = ?", conn, trans)
+                cmdGetId.Parameters.AddWithValue("@nama_produk", productName)
+                cmdGetId.Parameters.AddWithValue("@harga_jual", hargaJual)
+                cmdGetId.Parameters.AddWithValue("@tipe", tipeProduk)
+                Dim result = cmdGetId.ExecuteScalar()
+                If result Is Nothing Then
+                    MsgBox("Produk tidak ditemukan.")
+                    trans.Rollback()
+                    Return
+                End If
+                productId = Convert.ToInt32(result)
+            End Using
+
+            ' Check stock
+            Dim availableStock As Integer = 0
+            Using cmdCheckStock As New OdbcCommand("SELECT stok FROM admin_product WHERE id = ?", conn, trans)
+                cmdCheckStock.Parameters.AddWithValue("@id", productId)
+                availableStock = Convert.ToInt32(cmdCheckStock.ExecuteScalar())
+            End Using
+
+            If availableStock < qty Then
+                MsgBox("Stok tidak mencukupi. Tersisa: " & availableStock)
+                trans.Rollback()
+                Return
+            End If
+
+            ' Update stock
+            Using cmdUpdate As New OdbcCommand("UPDATE admin_product SET stok = stok - ? WHERE id = ?", conn, trans)
+                cmdUpdate.Parameters.AddWithValue("@stok", qty)
+                cmdUpdate.Parameters.AddWithValue("@id", productId)
+                cmdUpdate.ExecuteNonQuery()
+            End Using
             Try
-                ' Dapatkan ID produk
-                Using cmdGetId As New OdbcCommand("SELECT id FROM admin_product WHERE nama_produk = ?", conn, trans)
-                    cmdGetId.Parameters.AddWithValue("@nama_produk", productName)
+                ' Dapatkan ID produk dari tipe harga
+                Using cmdGetId As New OdbcCommand("SELECT id FROM admin_product WHERE tipe = ?", conn, trans)
+                    cmdGetId.Parameters.AddWithValue("@tipe", tipeString)
                     Dim result = cmdGetId.ExecuteScalar()
                     If result Is Nothing Then
                         MsgBox("Produk tidak ditemukan.")
@@ -313,21 +382,20 @@ Public Class form_kasir
                 End Using
 
                 ' Cek stok
-                Dim availableStock As Integer = 0
+
                 Using cmdCheckStock As New OdbcCommand("SELECT stok FROM admin_product WHERE id = ?", conn, trans)
                     cmdCheckStock.Parameters.AddWithValue("@id", productId)
                     availableStock = Convert.ToInt32(cmdCheckStock.ExecuteScalar())
                 End Using
 
                 If availableStock < qty Then
-                    MsgBox("Stok tidak mencukupi. Tersisa: " & availableStock)
+                    MsgBox("Stok tidak mencukupi. Tersisa: " & availableStock, MsgBoxStyle.Exclamation)
                     trans.Rollback()
                     Return
                 End If
 
                 ' Mengambil jumlah uang pembeli dari TextBox1
                 Dim uang_pembeli As Integer = CInt(TextBox1.Text)
-
 
                 ' Simpan transaksi
                 Using cmdInsert As New OdbcCommand("INSERT INTO transaksi (nomor_tujuan, product_id, harga, quantity, product, kasir_username, uang_pembeli) VALUES (?, ?, ?, ?, ?, ?, ?)", conn, trans)
@@ -343,7 +411,7 @@ Public Class form_kasir
 
                 ' Update stok
                 ' Update stok secara eksplisit
-                Using cmdUpdate As New OdbcCommand("UPDATE admin_product SET stok = stok - 1 WHERE id = ?", conn, trans)
+                Using cmdUpdate As New OdbcCommand("UPDATE admin_product SET stok = stok WHERE id = ?", conn, trans)
                     cmdUpdate.Parameters.AddWithValue("@id", productId)
                     cmdUpdate.ExecuteNonQuery()
                 End Using
@@ -352,8 +420,9 @@ Public Class form_kasir
 
                 ' Jika ada kembalian, tampilkan kembalian dalam pesan
                 If kembalian > 0 Then
-                    MsgBox("Pembelian berhasil!" & vbCrLf &
-                           "Nomor Tujuan : " & nomorHp & vbCrLf &
+                    MsgBox("Pembelian berhasil!" & vbCrLf & vbCrLf &
+                            "Id Produk    : " & "LP" & productId & vbCrLf &
+                           "Nomor Tujuan  : " & nomorHp & vbCrLf &
                            "Produk        : " & productName & vbCrLf &
                            "Total Harga   : Rp " & totalHarga.ToString("N0") & vbCrLf &
                            "Uang Pembeli  : Rp " & uangPembeli.ToString("N0") & vbCrLf &
@@ -365,7 +434,8 @@ Public Class form_kasir
                     ComboBox2.Items.Clear()
                 Else
                     ' Jika tidak ada kembalian, tampilkan pesan tanpa kembalian
-                    MsgBox("Pembelian berhasil!" & vbCrLf &
+                    MsgBox("Pembelian berhasil!" & vbCrLf & vbCrLf &
+                           "Id Produk    : " & "LP" & productId & vbCrLf &
                            "Nomor Tujuan : " & nomorHp & vbCrLf &
                            "Produk        : " & productName & vbCrLf &
                            "Total Harga   : Rp " & totalHarga.ToString("N0") & vbCrLf &
@@ -378,9 +448,8 @@ Public Class form_kasir
                 End If
 
                 ' Refresh data
-                loadproduk()
+                namaProdukDipilih = ""
                 tampilData()
-
             Catch exTrans As Exception
                 trans.Rollback()
                 MsgBox("Terjadi kesalahan transaksi: " & exTrans.Message)
@@ -418,7 +487,7 @@ Public Class form_kasir
         ' Hanya izinkan angka dan tombol kontrol seperti backspace
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
-            MsgBox("Hanya angka yang diperbolehkan !")
+            MsgBox("Hanya angka yang diperbolehkan !", MsgBoxStyle.Exclamation)
         End If
     End Sub
     Private Sub TextBox2_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles TextBox2.KeyDown
@@ -478,8 +547,6 @@ Public Class form_kasir
 
 
     ' Saat produk dipilih, tampilkan harga
-
-
     Private Sub TextBox2_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TextBox2.TextChanged
         Dim nomorHp As String = TextBox2.Text.Trim()
 
@@ -583,11 +650,15 @@ Public Class form_kasir
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        Me.Close()
+        Me.Hide()
         form_login.Show()
         loggedInUserUsername = ""
         form_login.TextBox1.Clear()
         form_login.TextBox2.Clear()
         form_login.ComboBox1.SelectedIndex = -1
+    End Sub
+
+    Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
+
     End Sub
 End Class

@@ -21,7 +21,7 @@
 
         ' Jika ada yang kosong, tampilkan pesan
         If kosongList.Count > 0 Then
-            MsgBox("Field berikut belum diisi: " & String.Join(", ", kosongList))
+            MsgBox("Field berikut belum diisi: " & String.Join(", ", kosongList), MsgBoxStyle.Exclamation)
             Return False
         End If
 
@@ -49,7 +49,7 @@
 
         ' Jika ada yang kosong, tampilkan pesan
         If kosongList.Count > 0 Then
-            MsgBox("tidak ada data diupdate")
+            MsgBox("tidak ada data diupdate", MsgBoxStyle.Exclamation)
             Return False
         End If
 

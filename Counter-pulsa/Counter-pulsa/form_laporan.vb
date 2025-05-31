@@ -21,7 +21,7 @@ Public Class form_laporan
     Sub tampilData()
         Try
             test_conn()
-            da = New OdbcDataAdapter("SELECT * FROM transaksi", conn)
+            da = New OdbcDataAdapter("SELECT id, nomor_tujuan, product_id, harga, waktu_transaksi, product, kasir_username, uang_pembeli FROM transaksi", conn)
             ds = New DataSet()
             da.Fill(ds, "transaksi")
             DataGridView1.DataSource = ds.Tables("transaksi")
@@ -31,7 +31,6 @@ Public Class form_laporan
             If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then conn.Close()
         End Try
     End Sub
-
     Sub filterData()
         Try
             test_conn()
@@ -55,6 +54,10 @@ Public Class form_laporan
             ds = New DataSet()
             da.Fill(ds, "transaksi")
             DataGridView1.DataSource = ds.Tables("transaksi")
+
+            ' ✅ Tambahkan ini untuk menjaga tampilan
+            setupDataGridView()
+
         Catch ex As Exception
             MsgBox("Gagal memfilter data: " & ex.Message)
         Finally
@@ -62,15 +65,25 @@ Public Class form_laporan
         End Try
     End Sub
 
+
     Sub loadUsersToRadioButtons()
         Try
             test_conn()
-            Dim query As String = "SELECT username FROM account WHERE username <> 'admin'"
+            Dim query As String = "SELECT username FROM account WHERE role = 'kasir'"
             da = New OdbcDataAdapter(query, conn)
             ds = New DataSet()
             da.Fill(ds, "account")
 
             GroupBox1.Controls.Clear()
+
+            If ds.Tables("account").Rows.Count = 0 Then
+                Dim lbl As New Label()
+                lbl.Text = "Tidak ada username yang ada "
+                lbl.AutoSize = True
+                lbl.Location = New Point(20, 30)
+                GroupBox1.Controls.Add(lbl)
+                Return
+            End If
 
             Dim yOffset As Integer = 30
             For Each row As DataRow In ds.Tables("account").Rows
@@ -86,6 +99,7 @@ Public Class form_laporan
                 GroupBox1.Controls.Add(rb)
                 yOffset += rb.Height + 5
             Next
+            setupDataGridView()
         Catch ex As Exception
             MsgBox("Gagal memuat data pengguna: " & ex.Message)
         Finally
@@ -93,27 +107,47 @@ Public Class form_laporan
         End Try
     End Sub
 
+
     Private Sub RadioButton_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs)
         Dim rb As RadioButton = DirectCast(sender, RadioButton)
         If rb.Checked Then
             selectedUsername = rb.Text
             filterData()
+            setupDataGridView()
         End If
     End Sub
 
     Private Sub DateTimePicker1_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DateTimePicker1.ValueChanged
         filterData()
+        setupDataGridView()
     End Sub
+    Private RadioButtonDummy As New RadioButton()
 
-    Private Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button2.Click
+Private Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button2.Click
         DateTimePicker1.Value = DateTime.Now
         selectedUsername = ""
+        DateTimePicker1.Checked = False
+        For Each ctrl As Control In GroupBox1.Controls
+            If TypeOf ctrl Is RadioButton Then
+                CType(ctrl, RadioButton).Checked = False
+            End If
+        Next
         tampilData()
     End Sub
 
+
     Sub setupDataGridView()
         With DataGridView1
-            ' Header 
+            ' label data
+            .Columns("id").HeaderText = "Id"
+            .Columns("nomor_tujuan").HeaderText = "Nomor Tujuan"
+            .Columns("product_id").HeaderText = "Id Produk"
+            .Columns("harga").HeaderText = "Harga"
+            .Columns("waktu_transaksi").HeaderText = "Waktu Transaksi"
+            .Columns("product").HeaderText = "Produk"
+            .Columns("kasir_username").HeaderText = "Nama Kasir"
+            .Columns("uang_pembeli").HeaderText = "Uang Pembeli"
+
             .BackgroundColor = Color.White
             .ColumnHeadersDefaultCellStyle.Font = New Font("Segoe UI", 10, FontStyle.Bold)
             .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -133,7 +167,7 @@ Public Class form_laporan
 
             ' Grid behavior
             .AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None ' ✅ penting agar tinggi baris tidak berubah
             .RowTemplate.Height = 30
             .SelectionMode = DataGridViewSelectionMode.FullRowSelect
             .ReadOnly = True
@@ -142,8 +176,8 @@ Public Class form_laporan
             ' Grid border settings
             .ScrollBars = ScrollBars.None
             .BorderStyle = BorderStyle.None
-            .CellBorderStyle = DataGridViewCellBorderStyle.Single           ' Garis antar cell
-            .GridColor = Color.LightGray                                   ' Warna garis pemisah
+            .CellBorderStyle = DataGridViewCellBorderStyle.Single
+            .GridColor = Color.LightGray
             .RowHeadersVisible = False
 
             ' Disable user interaction
@@ -154,6 +188,12 @@ Public Class form_laporan
             .AllowUserToOrderColumns = False
         End With
     End Sub
+
+    Private Sub form_laporan_Activated(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Activated
+        loadUsersToRadioButtons()
+        setupDataGridView()
+    End Sub
+
 
     Private Sub form_laporan_load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         tampilData()

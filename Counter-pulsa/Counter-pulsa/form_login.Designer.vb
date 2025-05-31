@@ -41,7 +41,7 @@ Partial Class form_login
         Me.Button1.BackgroundImage = CType(resources.GetObject("Button1.BackgroundImage"), System.Drawing.Image)
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.Color.Transparent
-        Me.Button1.Location = New System.Drawing.Point(104, 267)
+        Me.Button1.Location = New System.Drawing.Point(125, 268)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(130, 46)
         Me.Button1.TabIndex = 1
@@ -54,7 +54,7 @@ Partial Class form_login
         Me.Button3.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.WhatsApp_Image_2025_05_07_at_14_461
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.Transparent
-        Me.Button3.Location = New System.Drawing.Point(321, 266)
+        Me.Button3.Location = New System.Drawing.Point(342, 267)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(130, 47)
         Me.Button3.TabIndex = 3
@@ -124,9 +124,9 @@ Partial Class form_login
         'PictureBox1
         '
         Me.PictureBox1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.hyhyrfhy
-        Me.PictureBox1.Location = New System.Drawing.Point(507, 152)
+        Me.PictureBox1.Location = New System.Drawing.Point(507, 130)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(129, 127)
+        Me.PictureBox1.Size = New System.Drawing.Size(129, 122)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 11
         Me.PictureBox1.TabStop = False
@@ -137,6 +137,7 @@ Partial Class form_login
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.backg__1___1_
         Me.ClientSize = New System.Drawing.Size(648, 343)
+        Me.ControlBox = False
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.TextBox2)

@@ -38,9 +38,9 @@ Partial Class form_laporan
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(68, 361)
+        Me.DataGridView1.Location = New System.Drawing.Point(68, 480)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(831, 281)
+        Me.DataGridView1.Size = New System.Drawing.Size(1004, 255)
         Me.DataGridView1.TabIndex = 43
         '
         'Label1
@@ -61,7 +61,7 @@ Partial Class form_laporan
         Me.Button2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.bg_data_kasir__1_
         Me.Button2.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button2.Location = New System.Drawing.Point(837, 192)
+        Me.Button2.Location = New System.Drawing.Point(1094, 518)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(176, 63)
         Me.Button2.TabIndex = 46
@@ -73,7 +73,7 @@ Partial Class form_laporan
         '
         Me.DateTimePicker1.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(129, 94)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(68, 182)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(442, 37)
         Me.DateTimePicker1.TabIndex = 47
@@ -98,9 +98,9 @@ Partial Class form_laporan
         Me.GroupBox1.Controls.Add(Me.RadioButton1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
-        Me.GroupBox1.Location = New System.Drawing.Point(68, 137)
+        Me.GroupBox1.Location = New System.Drawing.Point(68, 245)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(724, 196)
+        Me.GroupBox1.Size = New System.Drawing.Size(442, 196)
         Me.GroupBox1.TabIndex = 49
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Filter User"
