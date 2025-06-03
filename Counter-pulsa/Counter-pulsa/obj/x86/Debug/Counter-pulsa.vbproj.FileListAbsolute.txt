@@ -137,3 +137,4 @@ C:\Users\Antartika - Rafi\Music\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Debug\
 C:\Users\Antartika - Rafi\Music\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Debug\WindowsApplication1.load_product.resources
 C:\Users\Antartika - Rafi\Music\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Debug\WindowsApplication1.Resources.resources
 C:\Users\Antartika - Rafi\Music\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Debug\Counter-pulsa.vbproj.GenerateResource.Cache
+C:\Users\Antartika - Rafi\Music\PDESK\Counter-pulsa\Counter-pulsa\obj\x86\Debug\WindowsApplication1.laporan_kasir.resources

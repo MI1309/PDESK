@@ -661,4 +661,11 @@ Public Class form_kasir
     Private Sub Label1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label1.Click
 
     End Sub
+
+    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Me.Hide()
+        Dim previousForm As New laporan_kasir()
+        previousForm.previousForm = Me
+        laporan_kasir.Show()
+    End Sub
 End Class

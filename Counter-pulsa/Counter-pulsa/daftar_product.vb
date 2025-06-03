@@ -86,7 +86,10 @@ Public Class daftar_product
         LoadDataToGrid()
         setupDataGridView()
     End Sub
-
+    Private Sub daftar_product_Activated(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Activated
+        LoadDataToGrid()
+        setupDataGridView()
+    End Sub
 
     ' form 5
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)

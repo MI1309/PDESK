@@ -73,6 +73,7 @@ Public Class form_login
                     admin.Show()
                 ElseIf userRole = "kasir" Then
                     form_kasir.loggedInUserUsername = TextBox1.Text
+                    laporan_kasir.loggedInUsername = TextBox1.Text
                     form_kasir.Show()
                 End If
 

@@ -32,3 +32,4 @@ C:\Users\Antartika - Rafi\Music\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Releas
 C:\Users\Antartika - Rafi\Music\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\Counter-pulsa.exe
 C:\Users\Antartika - Rafi\Music\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\Counter-pulsa.xml
 C:\Users\Antartika - Rafi\Music\pdesk\Counter-pulsa\Counter-pulsa\obj\x86\Release\Counter-pulsa.pdb
+C:\Users\Antartika - Rafi\Music\PDESK\Counter-pulsa\Counter-pulsa\obj\x86\Release\WindowsApplication1.laporan_kasir.resources

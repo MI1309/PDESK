@@ -125,6 +125,12 @@
     <Compile Include="form_stock.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="laporan_kasir.Designer.vb">
+      <DependentUpon>laporan_kasir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="laporan_kasir.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="load_product.Designer.vb">
       <DependentUpon>load_product.vb</DependentUpon>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form_stock.resx">
       <DependentUpon>form_stock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="laporan_kasir.resx">
+      <DependentUpon>laporan_kasir.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="load_product.resx">
       <DependentUpon>load_product.vb</DependentUpon>

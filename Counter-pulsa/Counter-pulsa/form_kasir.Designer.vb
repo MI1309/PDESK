@@ -41,6 +41,7 @@ Partial Class form_kasir
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -232,12 +233,25 @@ Partial Class form_kasir
         Me.Button3.BackgroundImage = CType(resources.GetObject("Button3.BackgroundImage"), System.Drawing.Image)
         Me.Button3.Font = New System.Drawing.Font("Century Gothic", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button3.Location = New System.Drawing.Point(1333, 539)
+        Me.Button3.Location = New System.Drawing.Point(1333, 621)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(175, 67)
         Me.Button3.TabIndex = 44
-        Me.Button3.Text = "exit"
+        Me.Button3.Text = "EXIT"
         Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.Button4.BackgroundImage = CType(resources.GetObject("Button4.BackgroundImage"), System.Drawing.Image)
+        Me.Button4.Font = New System.Drawing.Font("Century Gothic", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Button4.Location = New System.Drawing.Point(1333, 529)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(175, 67)
+        Me.Button4.TabIndex = 45
+        Me.Button4.Text = "SHOW LAPORAN"
+        Me.Button4.UseVisualStyleBackColor = False
         '
         'form_kasir
         '
@@ -246,6 +260,7 @@ Partial Class form_kasir
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.rm__6___1_
         Me.ClientSize = New System.Drawing.Size(1898, 984)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
@@ -294,4 +309,5 @@ Partial Class form_kasir
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class
