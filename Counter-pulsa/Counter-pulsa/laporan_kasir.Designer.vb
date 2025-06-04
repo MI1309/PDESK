@@ -37,7 +37,7 @@ Partial Class laporan_kasir
         '
         Me.DateTimePicker1.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(53, 249)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(85, 367)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(442, 37)
         Me.DateTimePicker1.TabIndex = 54
@@ -48,7 +48,7 @@ Partial Class laporan_kasir
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Segoe Script", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(402, 44)
+        Me.Label1.Location = New System.Drawing.Point(387, 83)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(521, 80)
         Me.Label1.TabIndex = 52
@@ -57,7 +57,7 @@ Partial Class laporan_kasir
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(39, 378)
+        Me.DataGridView1.Location = New System.Drawing.Point(85, 453)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(1004, 255)
         Me.DataGridView1.TabIndex = 51
@@ -67,7 +67,7 @@ Partial Class laporan_kasir
         Me.PictureBox2.BackgroundImage = CType(resources.GetObject("PictureBox2.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.Black_Cream_Elegant_Monogram_Initial_Name_I_C_Logo_
         Me.PictureBox2.InitialImage = Nothing
-        Me.PictureBox2.Location = New System.Drawing.Point(1056, 44)
+        Me.PictureBox2.Location = New System.Drawing.Point(1056, 59)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(157, 119)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -80,7 +80,7 @@ Partial Class laporan_kasir
         Me.Button1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.bg_data_kasir__1_
         Me.Button1.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button1.Location = New System.Drawing.Point(1067, 488)
+        Me.Button1.Location = New System.Drawing.Point(1211, 645)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(176, 63)
         Me.Button1.TabIndex = 57
@@ -94,11 +94,11 @@ Partial Class laporan_kasir
         Me.Button2.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.bg_data_kasir__1_
         Me.Button2.Font = New System.Drawing.Font("Century Gothic", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Button2.Location = New System.Drawing.Point(1067, 399)
+        Me.Button2.Location = New System.Drawing.Point(1211, 556)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(176, 63)
         Me.Button2.TabIndex = 58
-        Me.Button2.Text = "CLEAR"
+        Me.Button2.Text = "CLEAR FILTER"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.Button2.UseVisualStyleBackColor = False
         '

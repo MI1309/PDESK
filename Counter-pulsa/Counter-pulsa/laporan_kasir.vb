@@ -118,6 +118,7 @@ Public Class laporan_kasir
     End Sub
 
     Private Sub laporan_kasir_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        Label1.Text = "Laporan kasir : " & loggedInUsername
         Me.WindowState = FormWindowState.Maximized
         Me.FormBorderStyle = FormBorderStyle.None
         Me.ControlBox = False

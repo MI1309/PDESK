@@ -257,6 +257,10 @@ Public Class form_stock
             ' Tampilkan stok baru
             Label1.Text = newStok.ToString()
             Label1.ForeColor = If(newStok = 0, Color.Red, Color.Black)
+            ComboBox1.Items.Clear()
+            ComboBox3.Items.Clear()
+            product()
+            Label1.Text = ""
             TextBox3.Clear()
 
             MsgBox("Stok berhasil ditambahkan!", MsgBoxStyle.Information, "Berhasil")

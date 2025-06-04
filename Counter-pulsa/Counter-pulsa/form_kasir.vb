@@ -668,4 +668,8 @@ Public Class form_kasir
         previousForm.previousForm = Me
         laporan_kasir.Show()
     End Sub
+
+    Private Sub Label5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.Click
+
+    End Sub
 End Class
